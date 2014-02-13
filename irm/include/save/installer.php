@@ -18,21 +18,9 @@
 #    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
 ################################################################################
-// get savant
-require_once(dirname(__FILE__) . '/../lib/Savant2.php'); // basepath
 
-class IrmFactory extends Savant2
-{
-    public function __construct()
-    {
-        self::Savant2(array(
-            'template_path'=>dirname(__FILE__) . '/../templates/',
-            'resource_path'=>dirname(__FILE__) . '/../lib/Savant2/')
-	);
-    }
-    function getConfiguration()
-    {
-    }
-}
+if (! file_exists(dirname(__FILE__) . '/../config/database.ini')) {
+	Header("Location: admin.php");
+} 
 
 ?>

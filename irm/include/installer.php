@@ -19,8 +19,7 @@
 #
 ################################################################################
 
-if (! file_exists(dirname(__FILE__) . '/../config/database.ini')) {
-	Header("Location: admin.php");
-} 
-
-?>
+if (! file_exists(dirname(__FILE__) . '/../config/database.ini')) 
+{
+    Header("Location: admin.php");
+}

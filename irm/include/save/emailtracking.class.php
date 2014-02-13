@@ -21,7 +21,7 @@
 /**
  * Handles collecting email from a specified pop3 account and adding
  * a job request to the database.
- */
+ */ 
 require_once("lib/pop3.php");
 require_once("lib/hildegard.class.php");
 

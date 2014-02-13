@@ -20,13 +20,6 @@
 ################################################################################
 require_once dirname(dirname(__FILE__)).'/lib/Config.php';
 
-/* ========================================================
- * If don't have MDB then spip out some nstructions
- * With translations even
- * 
- * The thing still returns even with the file missing
- * Bit confusing.  The translator at lease loads silently.
- */
 if (!Config::FileAvailable('lib/MDB.php'))
 {
 require_once dirname(dirname(__FILE__)).'/include/i18n.php';
