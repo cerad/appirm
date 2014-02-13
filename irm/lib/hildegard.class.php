@@ -1,4 +1,4 @@
-<?php
+<?
 /*
 class hildegard 
    
@@ -12,9 +12,6 @@ changes:
 2003-05-06 Achim Schmidt schmidt@waaf.net
 2003-12-06 Achim Schmidt schmidt@waaf.net
 */
-/* =============================
- * Someing thing in this file causes php to dump garbage
- * */
 class hildegard {
 
     var $head;          // the whole mails header in one string
@@ -163,27 +160,25 @@ class hildegard {
   Thanks to horde!
   function taken from: http://ftp.horde.org/pub/imp/tarballs/old/imp-2.0.0.tar.gz
 */
-
-function decode_mime_string ($string) 
-{
+function decode_mime_string ($string) {
    if (eregi("=?([A-Z,0-9,-]+)?([A-Z,0-9,-]+)?([A-Z,0-9,-,=,_]+)?=", $string)) {
       if (ereg("^=?", $string)) $string = ' ' . $string;
       $coded_strings = explode(' =?', $string);
       $counter = 1;
-      $string = $coded_strings[0]; // add non encoded text that is before the encoding 
+      $string = $coded_strings[0]; /* add non encoded text that is before the encoding */
       while ($counter < sizeof($coded_strings)) {
-         $elements = explode('?', $coded_strings[$counter]); // part 0 = charset 
+         $elements = explode('?', $coded_strings[$counter]); /* part 0 = charset */
 
-         // part 1 == encoding 
-         // part 2 == encoded part 
-         // part 3 == unencoded part beginning with a = 
-         // How can we use the charset information? 
+         /* part 1 == encoding */
+         /* part 2 == encoded part */
+         /* part 3 == unencoded part beginning with a = */
+         /* How can we use the charset information? */
 
          if (eregi("Q", $elements[1])) {
             $elements[2] = str_replace('_', ' ', $elements[2]);
             $elements[2] = eregi_replace("=([A-F,0-9]{2})", "%\\1", $elements[2]);
             $string .= urldecode($elements[2]);
-         } else { // we should check for B the only valid encoding other then Q 
+         } else { /* we should check for B the only valid encoding other then Q */
             $elements[2] = str_replace('=', '', $elements[2]);
             if ($elements[2]) { $string .= base64_decode($elements[2]); }
          }
@@ -197,3 +192,6 @@ function decode_mime_string ($string)
    }
    return $string;
 }
+
+
+?>

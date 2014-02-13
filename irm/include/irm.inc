@@ -22,10 +22,7 @@ $root_path = dirname(dirname(__FILE__));
 #
 ###############################################################################
 
-$DEV = true; // Globals are bad news
-
-/* ======================================
- * Let the system do the work
+$DEV = true;
 error_reporting(E_ALL);
 if (@$DEV){
 	ini_set('display_errors', 1);
@@ -37,7 +34,6 @@ ini_set('magic_quotes_runtime', '0');
 
 // Mask all "no variable here" notice messages.
 error_reporting(E_ALL ^ E_NOTICE);
-*/
 
 require_once dirname(__FILE__) . "/../lib/Config.php";
 require_once dirname(__FILE__) . "/irm.factory.class.php";
@@ -49,8 +45,6 @@ unset($root_path);
 
 // Hack to make our own register globals like function
 // Also has the added bonus of stripping errant slashes out of our input
-
-/* Nope Nope Nope!
 if (!ini_get("register_globals"))
 {
 	foreach ($_REQUEST as $k=>$v)
@@ -65,7 +59,7 @@ if (!ini_get("register_globals"))
 		}
 	}
 }
-*/
+
 require_once 'lib/PageHistory.php';
 
 // And awaaaaaaaay we go!
@@ -76,7 +70,7 @@ session_start();
 // Remember previous pages so we can go back if necessary
 if (!isset($_SESSION['_sess_pagehistory']))
 {
-    $_SESSION['_sess_pagehistory'] = new PageHistory();
+	$_SESSION['_sess_pagehistory'] = new PageHistory;
 }
 
 $_SESSION['_sess_pagehistory']->Add(@$_SERVER['REQUEST_URI']);
@@ -86,6 +80,8 @@ $IRMName = @$_SESSION['_sess_username'];
 require_once 'include/i18n.php';
 require_once 'include/functions.php';
 require_once 'include/User.php';
+
+
 
 $computer_fields = array(
 		'name'			 => _("Name"),

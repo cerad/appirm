@@ -18,17 +18,15 @@
 #    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
 ################################################################################
-error_reporting(E_ALL);
 
 require_once dirname(__FILE__) . '/include/mdbcheck.php';
 require_once dirname(__FILE__) . '/include/installer.php';
 require_once dirname(__FILE__) . '/include/irm.inc';
-
 require_once dirname(__FILE__) . '/include/i18n.php';
 require_once dirname(__FILE__) . '/lib/Config.php';
 require_once dirname(__FILE__) . '/lib/IRMDB.php';
 require_once dirname(__FILE__) . '/lib/Databases.php';
-die('fa0');formAction();die('fa');
+
 $viewRequest = array (	'Section' => 'menu',
 			'Header' => _("View Request"),
 			'Info' => _('If you have put in a help request and you know the ID number you can 
@@ -40,7 +38,6 @@ $viewRequest = array (	'Section' => 'menu',
 				. '<input type="text" name="ID" value="" />' . "\n"
 			);
 
-die('index.php');
 
 $faq = array (	'Section' => 'main',
 			'Header' => _('Frequently Asked Questions'),
@@ -106,7 +103,7 @@ $Content = array (	$login,
 $allMenuContent = "";
 $allMainContent = "";
 $allNavContent = "";
-die('index.php');
+
 $Page = new IrmFactory();
 
 foreach($Content as $content){
