@@ -1,0 +1,4821 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.6-b3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-06-04 15:20+1000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: kondo hiroshi <kondo-hiroshi@h7.dion.ne.jp>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Japanese\n"
+"X-Poedit-Country: JAPAN\n"
+"X-Poedit-SourceCharset: ja_JP.UTF-8\n"
+
+#: ../database/upgrades.php:554 ../database/install.php:108
+#: ../users/reports/software.php:151 ../users/reports/software.php:486
+#: ../users/setup-user-update.php:94 ../users/setup-users.php:71
+#: ../include/networking.class.php:29 ../include/networking.class.php:238
+#: ../include/tracking.class.php:1546 ../include/irm.inc:89
+#: ../include/irm.inc:117 ../include/computers.class.php:222
+#: ../include/computers.class.php:376
+msgid "Location"
+msgstr "場所"
+
+#: ../database/upgrades.php:554 ../database/install.php:108
+msgid "Locations : Use this to edit where equipment can be stored"
+msgstr "場所: 使用部所や保管場所など"
+
+#: ../database/upgrades.php:555 ../database/install.php:109
+#: ../users/reports/namelist.php:62 ../users/reports/pclist.php:87
+#: ../users/reports/iplist.php:48 ../users/reports/software.php:126
+#: ../users/reports/software.php:487 ../users/snmp-browse.php:39
+#: ../include/networking.class.php:30 ../include/networking.class.php:235
+#: ../include/irm.inc:92 ../include/irmmain.class.php:101
+#: ../include/computers.class.php:225 ../include/computers.class.php:375
+msgid "Type"
+msgstr "タイプ"
+
+#: ../database/upgrades.php:555 ../database/install.php:109
+msgid ""
+"Computer Types :These list the types of computers you can have (i.e. Dell, "
+"HP, IBM RS/6000, etc.)"
+msgstr "コンピュータ・タイプ: コンピュータの機種 (例: HP, DELL, NEC等)"
+
+#: ../database/upgrades.php:556 ../database/install.php:110
+#: ../users/reports/pclist.php:88 ../users/reports/software.php:131
+#: ../include/computers.class.php:377
+msgid "OS"
+msgstr ""
+
+#: ../database/upgrades.php:556 ../database/install.php:110
+msgid ""
+"Operating Systems : This is a list of Operating Systems your computers can "
+"run."
+msgstr "オペレーティングシステム: コンピューターで使用しているOSです。"
+
+#: ../database/upgrades.php:557 ../database/install.php:111
+#: ../users/reports/software.php:166 ../users/reports/software.php:494
+#: ../include/irm.inc:99 ../include/computers.class.php:232
+msgid "RAM Type"
+msgstr "RAMタイプ"
+
+#: ../database/upgrades.php:557 ../database/install.php:111
+msgid ""
+"RAM Types : This is the types of RAM your systems can have (i.e. Unbuffered "
+"DIMMS, SDRAM DIMMS, ECC DIMMS, etc)"
+msgstr "RAMタイプ: RAMの形状や型式 (例：SDRAM DIMMS, ECC DIMMS 等)"
+
+#: ../database/upgrades.php:558 ../database/install.php:112
+#: ../users/reports/pclist.php:90 ../users/reports/software.php:141
+#: ../users/reports/software.php:490 ../include/irm.inc:95
+#: ../include/irm.inc:115 ../include/computers.class.php:228
+#: ../include/computers.class.php:379
+msgid "Processor"
+msgstr "プロセッサー"
+
+#: ../database/upgrades.php:558 ../database/install.php:112
+msgid ""
+"Processor Types : This is a list of valid processors, i.e. Intel Pentium, "
+"Pentium II, DEC Alpha, EverSlow WinChip, etc."
+msgstr "プロセッサータイプ: CPUの型番 (例: Pentium II, Pentium III, Alpha等)"
+
+#: ../database/upgrades.php:559 ../database/install.php:113
+msgid "Network Interface"
+msgstr "ネットワークインターフェース"
+
+#: ../database/upgrades.php:559 ../database/install.php:113
+#: ../users/snmp-stat.php:68
+msgid "Network Interfaces"
+msgstr "ネットワークインターフェース"
+
+#: ../database/upgrades.php:560 ../database/install.php:114
+#: ../users/reports/software.php:496 ../include/irm.inc:101
+#: ../include/computers.class.php:234 ../include/computers.class.php:386
+msgid "Network Card Type/Brand"
+msgstr "ネットワークカード"
+
+#: ../database/upgrades.php:560 ../database/install.php:114
+msgid ""
+"Network Card Brands/Types : This is a list of some possible network cards "
+"and their speed."
+msgstr "ネットワークスピード"
+
+#: ../users/computers-groups-setup.php:27
+#: ../users/computers-groups-batch.php:26
+#: ../users/computers-software-batch.php:25
+#: ../users/computers-groups-batch-del.php:25
+#: ../users/computers-software-batch-add.php:24
+#: ../users/computer-search.php:26 ../users/computers-groups-batch-add.php:27
+#: ../users/snmp-browse.php:28 ../users/inventory-index.php:34
+#: ../include/tree.php:39 ../include/setup-groups-members.class.php:45
+#: ../include/computers.class.php:212 ../include/computers.class.php:430
+#: ../include/computers.class.php:526 ../include/computers.class.php:547
+msgid "Computers"
+msgstr "コンピュータ"
+
+#: ../users/computers-groups-setup.php:27
+#: ../users/computers-groups-batch.php:26
+msgid "Setup computers in groups"
+msgstr ""
+
+#: ../users/computers-groups-setup.php:28
+msgid ""
+"Use this utility to add computers to groups, or to remove computers from "
+"groups."
+msgstr ""
+
+#: ../users/computers-groups-setup.php:32
+#: ../users/computers-groups-batch.php:35
+msgid "Add all computers from previous search to group"
+msgstr ""
+
+#: ../users/computers-groups-setup.php:35
+msgid ""
+"NOTE: Sometimes this may take a while, depending on the number of computers "
+"you have (upwards of 10 seconds)."
+msgstr ""
+
+#: ../users/computers-groups-batch.php:27
+msgid "Use this utility to Setup computers in groups."
+msgstr ""
+
+#: ../users/computers-groups-batch.php:45 ../users/setup-lookup.php:70
+#: ../users/setup-lookup.php:99 ../users/setup-users.php:86
+#: ../include/networking.class.php:359 ../include/functions.php:988
+#: ../include/functions.php:1071 ../include/functions.php:1132
+#: ../include/setup-groups.class.php:95 ../include/knowledgebase.class.php:686
+#: ../include/connections.class.php:300 ../include/device.class.php:605
+#: ../include/software.class.php:361 ../include/software.class.php:431
+#: ../include/software.class.php:494
+#: ../include/setup-groups-members.class.php:125
+#: ../include/computers.class.php:515
+msgid "Add"
+msgstr "追加"
+
+#: ../users/computers-groups-batch.php:52 ../users/setup-lookup.php:62
+#: ../include/networking.class.php:327 ../include/functions.php:1062
+#: ../include/functions.php:1123 ../include/setup-fasttrack.class.php:247
+#: ../include/setup-groups.class.php:130
+#: ../include/knowledgebase.class.php:661
+#: ../include/setup-templates.class.php:298 ../include/device.class.php:207
+#: ../include/device.class.php:631 ../include/software.class.php:155
+#: ../include/software.class.php:278
+#: ../include/setup-groups-members.class.php:74
+#: ../include/computers.class.php:350
+msgid "Delete"
+msgstr "削除"
+
+#: ../users/computers-groups-batch.php:60
+msgid ""
+"NOTE: Sometimes this may take a while, depending on the number of \n"
+"\t\tcomputers you have (upwards of 10 seconds)."
+msgstr ""
+
+#: ../users/device-fields-add.php:24 ../users/setup-devices.php:24
+msgid "Setup - Devices"
+msgstr ""
+
+#: ../users/networking-search.php:26 ../users/inventory-index.php:35
+#: ../include/networking.class.php:111 ../include/networking.class.php:205
+#: ../include/networking.class.php:278 ../include/networking.class.php:345
+#: ../include/connections.class.php:212 ../include/connections.class.php:314
+msgid "Networking"
+msgstr "ネットワーク"
+
+#: ../users/networking-search.php:26
+#: ../users/reports/tracking-detail-search.php:162
+#: ../users/software-search.php:27 ../users/computer-search.php:26
+#: ../users/device-search.php:26 ../include/tracking.class.php:420
+#: ../include/knowledgebase.class.php:149
+msgid "Search Results"
+msgstr ""
+
+#: ../users/passwd.php:24 ../users/passwd.php:49 ../users/passwd-change.php:24
+msgid "Change Password"
+msgstr ""
+
+#: ../users/passwd.php:30
+msgid "To change your password, please fill in the form below:"
+msgstr ""
+
+#: ../users/passwd.php:34
+msgid "Old Password"
+msgstr ""
+
+#: ../users/passwd.php:39
+msgid "New Password"
+msgstr ""
+
+#: ../users/passwd.php:44
+msgid "Confirm New Password"
+msgstr ""
+
+#: ../users/setup-user-add.php:35 ../users/setup-user-update.php:50
+#: ../include/setup.functions.php:52
+msgid "setup"
+msgstr ""
+
+#: ../users/setup-user-add.php:35
+#, php-format
+msgid "%s add user %s."
+msgstr ""
+
+#: ../users/computers-software-batch.php:25
+msgid "Batch Add Software"
+msgstr ""
+
+#: ../users/computers-software-batch.php:26
+msgid ""
+"Use this utility to batch add software.  NOTE: Currently you can't add more "
+"than 1 software item at a time"
+msgstr ""
+
+#: ../users/computers-software-batch.php:27
+msgid ""
+"This has been disabled until it\n"
+"\t\t can be rewritten to support License tracking"
+msgstr ""
+
+#: ../users/computers-software-batch.php:33
+msgid ""
+"NOTE: Sometimes this may take a while, depending on the number of computers "
+"you have (in upwards of 10 seconds)."
+msgstr ""
+
+#: ../users/reports/namelist.php:42
+msgid "Name-IP List Report"
+msgstr ""
+
+#: ../users/reports/namelist.php:43
+msgid "All computers and network devices sorted by name."
+msgstr ""
+
+#: ../users/reports/namelist.php:58 ../users/reports/pclist.php:83
+#: ../users/reports/iplist.php:44 ../users/reports/iplist2.php:189
+#: ../users/reports/ipreport2.php:164 ../include/tracking.class.php:1539
+#: ../include/files.class.php:155
+msgid "ID"
+msgstr ""
+
+#: ../users/reports/namelist.php:59 ../users/reports/pclist.php:85
+#: ../users/reports/iplist.php:46 ../users/reports/software.php:120
+#: ../users/reports/software.php:484 ../users/snmp-stat.php:48
+#: ../include/networking.class.php:27 ../include/networking.class.php:231
+#: ../include/functions.php:981 ../include/irm.inc:87
+#: ../include/connections.class.php:277 ../include/connections.class.php:377
+#: ../include/ports.functions.php:99 ../include/software.class.php:30
+#: ../include/software.class.php:117 ../include/searching.functions.php:219
+#: ../include/searching.functions.php:441 ../include/computers.class.php:220
+#: ../include/computers.class.php:374
+msgid "Name"
+msgstr "名前"
+
+#: ../users/reports/namelist.php:60 ../users/reports/pclist.php:84
+#: ../users/reports/iplist.php:45 ../users/reports/software.php:181
+#: ../users/snmp-stat.php:51 ../include/networking.class.php:253
+msgid "IP"
+msgstr ""
+
+#: ../users/reports/namelist.php:61 ../users/reports/pclist.php:86
+#: ../users/reports/iplist.php:47 ../include/networking.class.php:261
+msgid "Contact"
+msgstr "使用者"
+
+#: ../users/reports/namelist.php:63 ../users/reports/pclist.php:96
+#: ../users/reports/iplist.php:49 ../users/reports/software.php:498
+#: ../include/networking.class.php:35 ../include/networking.class.php:257
+#: ../include/irm.inc:103 ../include/irm.inc:124
+#: ../include/connections.class.php:292 ../include/connections.class.php:394
+#: ../include/ports.functions.php:102 ../include/computers.class.php:236
+#: ../include/computers.class.php:388
+msgid "MAC/Network Address"
+msgstr "MACアドレス"
+
+#: ../users/reports/namelist.php:111 ../users/reports/iplist.php:99
+#: ../users/reports/default.php:48
+msgid "Number of Computers:"
+msgstr ""
+
+#: ../users/reports/tracking-count.php:51
+#: ../users/reports/tracking-summary.php:52
+#: ../users/reports/tracking-detail-search.php:46
+#: ../users/reports/tracking-detail.php:52 ../users/reports/tracking.php:89
+#: ../users/reports/tracking.php:127 ../users/index.php:158
+#: ../include/functions.php:288 ../include/helper.class.php:249
+#: ../include/helper.class.php:256 ../include/helper.class.php:362
+#: ../include/tracking.class.php:105 ../include/tracking.class.php:113
+#: ../include/tracking.class.php:121 ../include/tracking.class.php:132
+#: ../include/tracking.class.php:139 ../include/tracking.class.php:418
+#: ../include/tracking.class.php:445 ../include/tracking.class.php:553
+#: ../include/tracking.class.php:1398 ../include/tracking.class.php:1463
+#: ../include/tree.php:54
+msgid "Tracking"
+msgstr ""
+
+#: ../users/reports/tracking-count.php:51
+#: ../users/reports/tracking-summary.php:52 ../users/reports/tracking.php:89
+msgid "Report Results"
+msgstr ""
+
+#: ../users/reports/tracking-count.php:60
+#, fuzzy
+msgid "User Name"
+msgstr "ファイル名"
+
+#: ../users/reports/tracking-count.php:60
+msgid "Requests not completed or closed"
+msgstr ""
+
+#: ../users/reports/tracking-count.php:79
+#, fuzzy
+msgid "Total Tracking"
+msgstr "追跡 開始"
+
+#: ../users/reports/tracking-count.php:81
+#: ../users/reports/tracking-summary.php:152
+msgid "Total Open Tracking"
+msgstr ""
+
+#: ../users/reports/tracking-count.php:83
+#: ../users/reports/tracking-summary.php:154
+msgid "Total Closed Tracking"
+msgstr ""
+
+#: ../users/reports/pclist.php:54
+msgid "PC List Report"
+msgstr ""
+
+#: ../users/reports/pclist.php:55
+msgid ""
+"IP List Report: This report will list details of all of your Computers "
+"sorted by their IP address."
+msgstr ""
+
+#: ../users/reports/pclist.php:89 ../users/reports/software.php:136
+msgid "OS Version"
+msgstr ""
+
+#: ../users/reports/pclist.php:91 ../users/reports/software.php:491
+#: ../include/irm.inc:96 ../include/irm.inc:116
+#: ../include/computers.class.php:229 ../include/computers.class.php:380
+msgid "Processor Speed"
+msgstr "プロセッサースピード"
+
+#: ../users/reports/pclist.php:92
+msgid "RAM"
+msgstr ""
+
+#: ../users/reports/pclist.php:93
+msgid "HD"
+msgstr ""
+
+#: ../users/reports/pclist.php:94
+msgid "SN"
+msgstr ""
+
+#: ../users/reports/pclist.php:95
+msgid "SN2"
+msgstr ""
+
+#: ../users/reports/pclist.php:97 ../users/reports/software.php:206
+#: ../users/reports/software.php:500 ../users/reports/iplist2.php:194
+#: ../users/reports/ipreport2.php:169 ../include/networking.class.php:36
+#: ../include/networking.class.php:269 ../include/irm.inc:108
+#: ../include/irm.inc:128 ../include/software.class.php:33
+#: ../include/software.class.php:109 ../include/software.class.php:264
+#: ../include/software.class.php:354 ../include/computers.class.php:241
+#: ../include/computers.class.php:389
+msgid "Comments"
+msgstr "コメント"
+
+#: ../users/reports/pclist.php:174
+msgid "Number of Computers: "
+msgstr ""
+
+#: ../users/reports/pclist.php:189 ../users/reports/default.php:29
+#: ../users/reports/default.php:81 ../users/reports-index.php:33
+#: ../include/functions.php:294 ../include/tree.php:59
+msgid "Reports"
+msgstr "レポート"
+
+#: ../users/reports/pclist.php:189 ../users/reports/default.php:29
+#: ../users/reports/default.php:81 ../include/reports.inc.php:37
+msgid "Default Report"
+msgstr ""
+
+#: ../users/reports/pclist.php:190
+msgid ""
+"Welcome to the Default Report!  This report is designed to be a\r\n"
+"\t    functional model of a real IRM Report.  It provides some simple\r\n"
+"\t    data, but could really be extended with graphics, percentages,\r\n"
+"\t    graphs, and user settable options.  But it serves as a good\r\n"
+"\t    jumping point for making your own report. (NOTE: The IRM header\r\n"
+"\t    is not necessary, I just put it in.  You must do a 'connectDB();'\r\n"
+"\t    though.)"
+msgstr ""
+
+#: ../users/reports/pclist.php:197 ../users/reports/default.php:89
+msgid "To generate the report, click on this button:"
+msgstr ""
+
+#: ../users/reports/systems.php:40
+msgid "System Breakdown Report (Numbers by Type)"
+msgstr ""
+
+#: ../users/reports/systems.php:41
+msgid ""
+"This report will list the number of Computers and\r\n"
+"           Network Devices by Type.\r\n"
+"          "
+msgstr ""
+
+#: ../users/reports/systems.php:62
+msgid "&nbsp;&nbsp;<I>Number of Computers</I>:"
+msgstr ""
+
+#: ../users/reports/systems.php:66
+msgid "Systems by type"
+msgstr ""
+
+#: ../users/reports/systems.php:97
+msgid "&nbsp;&nbsp;<I>Number of Network Devices</I>:"
+msgstr ""
+
+#: ../users/reports/systems.php:101
+msgid "Network Devices by type"
+msgstr ""
+
+#: ../users/reports/iplist.php:28
+msgid "IP List Report"
+msgstr "IPリストレポート"
+
+#: ../users/reports/iplist.php:29
+msgid "All computers and network devices sorted by primary IP address."
+msgstr "全てのコンピュータとネットワーク情報をIPアドレス順に表示。"
+
+#: ../users/reports/iplist.php:100
+msgid "Number of Network Devices:"
+msgstr ""
+
+#: ../users/reports/iplist.php:101
+msgid "Total Number of Devices:"
+msgstr ""
+
+#: ../users/reports/racks.php:39 ../include/reports.inc.php:55
+msgid "Racks Report"
+msgstr ""
+
+#: ../users/reports/racks.php:40
+msgid ""
+"Welcome to the Racks Report. Select a rack \r\n"
+"from the pull-down menus below. When you click on SHOW, \r\n"
+"the system (computer or network device) located in that\r\n"
+"rack (location) will be shown.\r\n"
+msgstr ""
+
+#: ../users/reports/racks.php:61
+msgid "Select a <B>Rack</B> by name:"
+msgstr ""
+
+#: ../users/reports/racks.php:73
+msgid "Show Rack"
+msgstr ""
+
+#: ../users/reports/racks.php:74
+msgid "NameSort"
+msgstr ""
+
+#: ../users/reports/racks.php:75
+msgid "NoShow"
+msgstr ""
+
+#: ../users/reports/opentracking.php:38
+msgid "Open work requests with priority "
+msgstr ""
+
+#: ../users/reports/tracking-weekly.php:68
+msgid "New jobs opened and assigned to user."
+msgstr ""
+
+#: ../users/reports/portlistoct3.php:41
+msgid "IP Address Group"
+msgstr ""
+
+#: ../users/reports/portlistoct3.php:41 ../users/reports/dupiprep.php:39
+#: ../users/reports/tracking.php:127
+msgid "Report"
+msgstr ""
+
+#: ../users/reports/portmap-report.php:41
+msgid "Network: "
+msgstr ""
+
+#: ../users/reports/portmap-report.php:41
+msgid "Port-to-Device Mapping"
+msgstr ""
+
+#: ../users/reports/default.php:53
+msgid "Amount of Software:"
+msgstr ""
+
+#: ../users/reports/default.php:58
+msgid "Operating Systems"
+msgstr ""
+
+#: ../users/reports/default.php:82
+msgid ""
+"Welcome to the Default Report!  This report is designed to be a\n"
+"\t    functional model of a real IRM Report.  It provides some simple\n"
+"\t    data, but could really be extended with graphics, percentages,\n"
+"\t    graphs, and user settable options.  But it serves as a good\n"
+"\t    jumping point for making your own report. (NOTE: The IRM header\n"
+"\t    is not necessary, I just put it in.  You must do a 'connectDB();'\n"
+"\t    though.)"
+msgstr ""
+
+#: ../users/reports/tracking-detail-search.php:46
+#: ../users/reports/eventlog.php:22 ../users/reports/tracking-detail.php:248
+#: ../include/tracking.class.php:418 ../include/tracking.class.php:486
+#: ../include/tracking.class.php:496 ../include/knowledgebase.class.php:170
+#: ../include/searching.functions.php:180
+msgid "Search"
+msgstr ""
+
+#: ../users/reports/tracking-detail-search.php:171
+msgid "SPACE"
+msgstr ""
+
+#: ../users/reports/tracking-detail-search.php:180
+#: ../users/reports/tracking-detail-search.php:185
+msgid "AND"
+msgstr ""
+
+#: ../users/reports/tracking-detail-search.php:190
+#, php-format
+msgid "between the dates %s and %s."
+msgstr ""
+
+#: ../users/reports/tracking-detail-search.php:197
+#, php-format
+msgid "Found %s matching tracking entries"
+msgstr ""
+
+#: ../users/reports/software.php:146
+msgid "Proc. Speed"
+msgstr ""
+
+#: ../users/reports/software.php:156 ../users/reports/software.php:492
+#: ../include/networking.class.php:32 ../include/networking.class.php:245
+#: ../include/irm.inc:97 ../include/irm.inc:118
+#: ../include/computers.class.php:230 ../include/computers.class.php:381
+msgid "Serial Number"
+msgstr "シリアル番号"
+
+#: ../users/reports/software.php:161 ../include/networking.class.php:249
+#: ../include/irm.inc:119 ../include/computers.class.php:382
+msgid "Other Serial Number"
+msgstr "その他シリアル番号"
+
+#: ../users/reports/software.php:171 ../include/networking.class.php:31
+#: ../include/networking.class.php:241 ../include/irm.inc:100
+#: ../include/computers.class.php:233
+msgid "RAM Amount (in MB)"
+msgstr "RAM容量"
+
+#: ../users/reports/software.php:176 ../include/tree.php:44
+msgid "Network"
+msgstr ""
+
+#: ../users/reports/software.php:186
+msgid "Net/MAC Addr"
+msgstr ""
+
+#: ../users/reports/software.php:191
+msgid "HD Space"
+msgstr ""
+
+#: ../users/reports/software.php:196 ../users/reports/software.php:501
+#: ../include/networking.class.php:37 ../include/irm.inc:105
+#: ../include/irm.inc:126 ../include/computers.class.php:238
+#: ../include/computers.class.php:390
+msgid "Contact Person"
+msgstr "使用者"
+
+#: ../users/reports/software.php:201 ../users/reports/software.php:502
+#: ../include/networking.class.php:38 ../include/networking.class.php:265
+#: ../include/irm.inc:106 ../include/irm.inc:127
+#: ../include/computers.class.php:239 ../include/computers.class.php:391
+msgid "Contact Number"
+msgstr "連絡番号"
+
+#: ../users/reports/software.php:211 ../include/irm.inc:129
+msgid "Date Modified"
+msgstr "修正日付"
+
+#: ../users/reports/software.php:398
+#, php-format
+msgid "Previous %s"
+msgstr ""
+
+#: ../users/reports/software.php:411
+#, php-format
+msgid "Next %s"
+msgstr ""
+
+#: ../users/reports/software.php:442
+msgid "Software Installation Report"
+msgstr ""
+
+#: ../users/reports/software.php:448
+#, php-format
+msgid "Machines that have %s installed, sorted by %s"
+msgstr ""
+
+#: ../users/reports/software.php:455
+msgid "Number of Installs:"
+msgstr ""
+
+#: ../users/reports/software.php:460
+msgid "Create a new Software Report"
+msgstr ""
+
+#: ../users/reports/software.php:466 ../include/reports.inc.php:39
+msgid "Software Install Report"
+msgstr ""
+
+#: ../users/reports/software.php:468
+msgid ""
+"Welcome to the Software Install Report! This will tell which machines have a "
+"particular software package installed."
+msgstr ""
+
+#: ../users/reports/software.php:471
+msgid "Select A Software Package"
+msgstr ""
+
+#: ../users/reports/software.php:485 ../include/networking.class.php:28
+#: ../include/irm.inc:88 ../include/software.class.php:31
+#: ../include/computers.class.php:221
+msgid "IRM ID"
+msgstr ""
+
+#: ../users/reports/software.php:488 ../include/irm.inc:93
+#: ../include/irm.inc:113 ../include/computers.class.php:226
+msgid "Operating System"
+msgstr "オペレーティングシステム"
+
+#: ../users/reports/software.php:489 ../include/irm.inc:94
+#: ../include/irm.inc:114 ../include/computers.class.php:227
+msgid "Operating System Version"
+msgstr "オペレーティングシステムバージョン"
+
+#: ../users/reports/software.php:493 ../include/networking.class.php:33
+#: ../include/irm.inc:98 ../include/computers.class.php:231
+msgid "Other Number"
+msgstr "その他番号"
+
+#: ../users/reports/software.php:495
+msgid "RAM Amount"
+msgstr ""
+
+#: ../users/reports/software.php:497 ../users/reports/iplist2.php:191
+#: ../users/reports/ipreport2.php:167 ../include/networking.class.php:34
+#: ../include/irm.inc:102 ../include/irm.inc:123
+#: ../include/connections.class.php:287 ../include/connections.class.php:389
+#: ../include/ports.functions.php:101 ../include/computers.class.php:235
+#: ../include/computers.class.php:387
+msgid "IP Address"
+msgstr "IPアドレス"
+
+#: ../users/reports/software.php:499 ../include/irm.inc:104
+#: ../include/computers.class.php:237
+msgid "Hard Drive Capacity"
+msgstr "HDD容量"
+
+#: ../users/reports/software.php:503 ../include/networking.class.php:39
+#: ../include/irm.inc:107 ../include/computers.class.php:240
+msgid "Date Last Modified"
+msgstr "最終更新日"
+
+#: ../users/reports/software.php:506
+#, php-format
+msgid "sorted by %s"
+msgstr ""
+
+#: ../users/reports/software.php:508
+#, php-format
+msgid "with %s results per page"
+msgstr ""
+
+#: ../users/reports/software.php:516 ../users/reports/portmap.php:62
+#: ../include/tracking.class.php:542 ../include/searching.functions.php:108
+#: ../include/searching.functions.php:135
+msgid "Show"
+msgstr ""
+
+#: ../users/reports/locationlist.php:28
+msgid "Location List Report"
+msgstr ""
+
+#: ../users/reports/locationlist.php:29
+msgid "All devices sorted by location."
+msgstr ""
+
+#: ../users/reports/locationlist.php:58
+msgid "Total Number of Locations:"
+msgstr ""
+
+#: ../users/reports/dupiprep.php:39
+msgid "Duplicate IP Address"
+msgstr ""
+
+#: ../users/reports/eventlog.php:22
+msgid "Event Log"
+msgstr ""
+
+#: ../users/reports/eventlog.php:29
+msgid "Limit"
+msgstr ""
+
+#: ../users/reports/eventlog.php:29
+msgid "Start"
+msgstr ""
+
+#: ../users/reports/eventlog.php:31
+msgid "End"
+msgstr ""
+
+#: ../users/reports/eventlog.php:33 ../users/reports/tracking.php:182
+msgid "Go"
+msgstr ""
+
+#: ../users/reports/iplist2.php:41
+msgid "System IP Matrix Report (Sorted by IP Address)"
+msgstr ""
+
+#: ../users/reports/iplist2.php:42
+msgid ""
+"This report will list all of your Computers and associated IP addresses.\r\n"
+"            The ID field is encoded such that a CC-ID indicates a Computer "
+"and\r\n"
+"            CP-ID indicates a Computer Port.\r\n"
+"          "
+msgstr ""
+
+#: ../users/reports/iplist2.php:190 ../users/reports/ipreport2.php:165
+msgid "System Name"
+msgstr ""
+
+#: ../users/reports/iplist2.php:192 ../users/reports/ipreport2.php:168
+msgid "MAC Address"
+msgstr ""
+
+#: ../users/reports/iplist2.php:193 ../users/reports/ipreport2.php:166
+msgid "Port Name"
+msgstr ""
+
+#: ../users/reports/racks-report.php:40
+msgid "Rack"
+msgstr ""
+
+#: ../users/reports/racks-report.php:40
+msgid "Contents Report"
+msgstr ""
+
+#: ../users/reports/ipreport2.php:41
+msgid "System IP Matrix Report (Sorted by System Name)"
+msgstr ""
+
+#: ../users/reports/ipreport2.php:42
+msgid ""
+"This report will list all of your Computers and associated IP addresses.\r\n"
+"            The ID field is encoded such that a CC-ID indicates a Computer,"
+"\r\n"
+"            CP-ID indicates a Computer Port.\r\n"
+"          "
+msgstr ""
+
+#: ../users/reports/tracking-detail.php:52
+#: ../include/searching.functions.php:142
+msgid "Detailed Search"
+msgstr ""
+
+#: ../users/reports/tracking-detail.php:160
+msgid "Contains"
+msgstr ""
+
+#: ../users/reports/tracking-detail.php:161
+msgid "Equals"
+msgstr ""
+
+#: ../users/reports/tracking-detail.php:165
+msgid ""
+"This is a detailed tracking search module for IRM.  It allows trackings to\n"
+"be searched on various parameters and between date ranges.  Choose your\n"
+"search terms and dates and click the search button."
+msgstr ""
+
+#: ../users/reports/tracking-detail.php:177
+msgid "Search all of tracking where:"
+msgstr ""
+
+#: ../users/reports/tracking-detail.php:190
+msgid "AND:"
+msgstr ""
+
+#: ../users/reports/tracking-detail.php:205
+msgid "Only computers where:"
+msgstr ""
+
+#: ../users/reports/tracking-detail.php:223
+msgid "Constrain results between these (opened) dates:"
+msgstr ""
+
+#: ../users/reports/tracking-detail.php:231
+msgid "Beginning Date:"
+msgstr ""
+
+#: ../users/reports/tracking-detail.php:233
+msgid "Ending Date:"
+msgstr ""
+
+#: ../users/reports/tracking-detail.php:242
+msgid "Include followups in found trackings."
+msgstr ""
+
+#: ../users/reports/tracking.php:28
+msgid "January"
+msgstr ""
+
+#: ../users/reports/tracking.php:29
+msgid "February"
+msgstr ""
+
+#: ../users/reports/tracking.php:30
+msgid "March"
+msgstr ""
+
+#: ../users/reports/tracking.php:31
+msgid "April"
+msgstr ""
+
+#: ../users/reports/tracking.php:32
+msgid "May"
+msgstr ""
+
+#: ../users/reports/tracking.php:33
+msgid "June"
+msgstr ""
+
+#: ../users/reports/tracking.php:34
+msgid "July"
+msgstr ""
+
+#: ../users/reports/tracking.php:35
+msgid "August"
+msgstr ""
+
+#: ../users/reports/tracking.php:36
+msgid "September"
+msgstr ""
+
+#: ../users/reports/tracking.php:37
+msgid "October"
+msgstr ""
+
+#: ../users/reports/tracking.php:38
+msgid "November"
+msgstr ""
+
+#: ../users/reports/tracking.php:39
+msgid "December"
+msgstr ""
+
+#: ../users/reports/tracking.php:102
+msgid "Number of Closed Tracking:"
+msgstr ""
+
+#: ../users/reports/tracking.php:107
+msgid "Tracking by user:"
+msgstr ""
+
+#: ../users/reports/tracking.php:129
+msgid ""
+"Welcome to the Default Tracking Report! This report is designed\n"
+"\t    to inform you of the tracking requests that have been completed\n"
+"\t    or marked old during the time you specify."
+msgstr ""
+
+#: ../users/reports/tracking.php:132
+msgid ""
+"To generate the report: select a start date, an end\n"
+"\t\t      date, and click on the go button."
+msgstr ""
+
+#: ../users/reports/tracking.php:143
+msgid "Select a start date:"
+msgstr ""
+
+#: ../users/reports/tracking.php:162
+msgid "Select an end date:"
+msgstr ""
+
+#: ../users/reports/portmap.php:41
+msgid "Port Mapping Report"
+msgstr ""
+
+#: ../users/reports/portmap.php:42
+msgid ""
+"Welcome to the Port Mapping Report. Select a networking device from the\r\n"
+"pull-down menu below. When you click on SHOW, the devices connected to the"
+"\r\n"
+"ports of that device will be shown.\r\n"
+msgstr ""
+
+#: ../users/reports/portmap.php:49
+msgid "Select a Network Device by name:"
+msgstr ""
+
+#: ../users/setup-irm.php:26
+msgid "System Setup"
+msgstr ""
+
+#: ../users/setup-irm.php:52
+msgid "IRM System Setup updated."
+msgstr ""
+
+#: ../users/setup-irm.php:54
+msgid "View or modify the new settings."
+msgstr ""
+
+#: ../users/passwd-change.php:24 ../users/users-info.php:39
+#: ../include/device.class.php:355 ../include/device.class.php:377
+msgid "User"
+msgstr "ユーザー"
+
+#: ../users/passwd-change.php:29
+msgid ""
+"Your new password does not match the confirmation password.  They must be "
+"the same."
+msgstr ""
+
+#: ../users/passwd-change.php:33
+msgid "You have incorrectly entered your old password."
+msgstr ""
+
+#: ../users/passwd-change.php:39
+msgid "Password successfully updated.\n"
+msgstr ""
+
+#: ../users/addfile.php:39
+msgid "File Upload"
+msgstr ""
+
+#: ../users/reports-index.php:34
+msgid ""
+"Welcome to IRM Reports.  This feature of IRM allows you to gain information"
+"\r\n"
+"on your organization as a whole.  This is a modular section of IRM, allowing "
+"easy integration of third-party report modules.  For information regarding "
+"writting your own modules, take a look at docs/REPORTS in your IRM "
+"installation."
+msgstr ""
+"IRMレポート機能です。IRMの特徴は、全体としてあなたの組織に関する情報を得るこ"
+"とができます。これはIRMのモジュールセクションです。そして、サードパーティのレ"
+"ポートモジュールの簡単な統合を許します。あなた自身がモジュールを作成すること"
+"に関する情報のために、docs/REPORTSを参照してください。"
+
+#: ../users/reports-index.php:38
+msgid "Select a report module below:"
+msgstr ""
+
+#: ../users/software-search.php:27
+#: ../users/software-bundle-add-software.php:41
+#: ../users/computers-software-add.php:66 ../users/inventory-index.php:32
+#: ../include/tree.php:49 ../include/software.class.php:103
+#: ../include/software.class.php:308 ../include/software.class.php:374
+#: ../include/software.class.php:386
+msgid "Software"
+msgstr ""
+
+#: ../users/software-search.php:28
+#, php-format
+msgid "Showing results where %s contains [%s] in %s view."
+msgstr ""
+
+#: ../users/computers-groups-batch-del.php:25
+msgid "Delete from Group Completed"
+msgstr ""
+
+#: ../users/computers-groups-batch-del.php:37
+msgid "The delete from group operation has been completed."
+msgstr ""
+
+#: ../users/setup-lookup.php:36 ../users/setup-index.php:61
+msgid "Setup dropdowns"
+msgstr ""
+
+#: ../users/setup-lookup.php:37
+msgid ""
+"Welcome to IRM dropdown setup.  Here we will administer values that are used "
+"in the dropdown fields, when using dropdowns with devices you need to know "
+"the ID for the dropdown to work with the device."
+msgstr ""
+
+#: ../users/setup-lookup.php:42
+msgid "Lookup Configuration"
+msgstr ""
+
+#: ../users/setup-lookup.php:73
+msgid "ID : "
+msgstr ""
+
+#: ../users/setup-lookup.php:84
+msgid ""
+"Add new lookup - the ID is the name referenced in the database, this must be "
+"not have any spaces in it. The name is what is displayed on the form when "
+"entering a new device. The description is for information and is only used "
+"on this page at the present time."
+msgstr ""
+
+#: ../users/setup-lookup.php:92
+msgid "Lookup ID"
+msgstr ""
+
+#: ../users/setup-lookup.php:94
+msgid "Lookup Name"
+msgstr ""
+
+#: ../users/setup-lookup.php:96
+msgid "Lookup Description"
+msgstr ""
+
+#: ../users/computers-software-batch-add.php:24
+msgid "Batch Software Add Completed"
+msgstr ""
+
+#: ../users/computers-software-batch-add.php:39
+msgid "The batch add operation has been completed."
+msgstr ""
+
+#: ../users/setup-user-del.php:26 ../users/setup-users.php:25
+msgid "User Setup"
+msgstr ""
+
+#: ../users/setup-user-del.php:26
+msgid "User Deleted"
+msgstr ""
+
+#: ../users/setup-user-del.php:29
+#, php-format
+msgid "%s removed user %s"
+msgstr ""
+
+#: ../users/setup-user-del.php:34 ../users/setup-user-update.php:134
+#: ../users/users-info.php:58 ../include/tracking.class.php:1399
+msgid "Go Back"
+msgstr ""
+
+#: ../users/index.php:30
+msgid "Redirecting to users/helper-index.php"
+msgstr ""
+
+#: ../users/index.php:34
+msgid "Command Center"
+msgstr "受付"
+
+#: ../users/index.php:37
+msgid ""
+"Welcome to IRM, the Information Resource Manager!  This is the\n"
+"\tcommand center.  The command center is designed to allow a quick\n"
+"\tlook at all work requests assigned to you, as well as an overview\n"
+"\tof recent changes IRM.  You can navigate to any of the sub modules\n"
+"\tof IRM by choosing the appropiate entry on the toolbar above."
+msgstr ""
+"IRM、情報資源マネージャーへようこそ！ 。\n"
+"コマンドセンターは、あなたに割り当てられたすべての作業要求に\n"
+"迅速に対応できるように設計されています。ツールバーから適切な\n"
+"エントリーを選択しサブモジュールにアクセスすることでIRMの\n"
+"すべての機能を使用できます。"
+
+#: ../users/index.php:48
+msgid "Jobs for each Technician"
+msgstr ""
+
+#: ../users/index.php:48
+msgid "Display Alerts"
+msgstr ""
+
+#: ../users/index.php:54 ../users/setup-user-update.php:104
+#: ../users/setup-users.php:80
+msgid "Technician"
+msgstr ""
+
+#: ../users/index.php:55
+msgid "Work requests open"
+msgstr ""
+
+#: ../users/index.php:56 ../include/functions.php:1258
+#: ../include/tracking.class.php:644 ../include/tracking.class.php:1544
+msgid "Assigned"
+msgstr ""
+
+#: ../users/index.php:57 ../include/tracking.class.php:643
+msgid "Active"
+msgstr ""
+
+#: ../users/index.php:58 ../include/tracking.class.php:646
+msgid "New"
+msgstr ""
+
+#: ../users/index.php:59 ../include/tracking.class.php:648
+msgid "Wait"
+msgstr ""
+
+#: ../users/index.php:60 ../include/functions.php:1293
+#: ../include/setup-fasttrack.class.php:155
+#: ../include/setup-fasttrack.class.php:298 ../include/tracking.class.php:631
+msgid "Very High"
+msgstr ""
+
+#: ../users/index.php:61 ../include/functions.php:1297
+#: ../include/setup-fasttrack.class.php:156
+#: ../include/setup-fasttrack.class.php:299 ../include/tracking.class.php:632
+msgid "High"
+msgstr ""
+
+#: ../users/index.php:62 ../users/setup-user-update.php:102
+#: ../users/setup-users.php:78 ../include/functions.php:1301
+#: ../include/setup-fasttrack.class.php:157
+#: ../include/setup-fasttrack.class.php:300 ../include/tracking.class.php:633
+msgid "Normal"
+msgstr ""
+
+#: ../users/index.php:63 ../include/functions.php:1305
+#: ../include/setup-fasttrack.class.php:158
+#: ../include/setup-fasttrack.class.php:301 ../include/tracking.class.php:634
+msgid "Low"
+msgstr ""
+
+#: ../users/index.php:64 ../include/functions.php:1309
+#: ../include/setup-fasttrack.class.php:159
+#: ../include/setup-fasttrack.class.php:302 ../include/tracking.class.php:635
+msgid "Very Low"
+msgstr ""
+
+#: ../users/index.php:164
+#, php-format
+msgid "You have %s job(s) assigned to you."
+msgstr ""
+
+#: ../users/index.php:189
+msgid "Open Work Requests"
+msgstr ""
+
+#: ../users/index.php:193
+#, php-format
+msgid "You have entered %s request(s) that have not yet been completed."
+msgstr ""
+
+#: ../users/ldapupdate.php:8
+msgid "LDAP"
+msgstr ""
+
+#: ../users/ldapupdate.php:8
+msgid "update info"
+msgstr ""
+
+#: ../users/ldapupdate.php:15 ../include/User.php:155 ../include/User.php:217
+msgid "Sorry, cannot contact LDAP server"
+msgstr "LDAPサーバーに接続できません"
+
+#: ../users/ldapupdate.php:25
+msgid "Sorry, could not bind to your ldap server."
+msgstr ""
+
+#: ../users/ldapupdate.php:56
+#, php-format
+msgid "Updating user: %s, (%s)"
+msgstr ""
+
+#: ../users/ldapupdate.php:63
+#, php-format
+msgid "Deleting user: %s, (%s)"
+msgstr ""
+
+#: ../users/networking-port-discon.php:31 ../include/networking.class.php:156
+#: ../include/connections.class.php:98 ../include/connections.class.php:155
+#: ../include/connections.class.php:177 ../include/device.class.php:723
+msgid "networking"
+msgstr "ネットワーク"
+
+#: ../users/networking-port-discon.php:31 ../include/connections.class.php:98
+#: ../include/connections.class.php:155
+msgid "port"
+msgstr "ポート"
+
+#: ../users/networking-port-discon.php:31
+#, php-format
+msgid "%s disconnected port"
+msgstr ""
+
+#: ../users/software-bundle-add-software.php:41
+msgid "Bundle: Add Software Error"
+msgstr ""
+
+#: ../users/software-bundle-add-software.php:42
+msgid ""
+"We have copies of this bundle installed. You may not alter the software "
+"included with this bundle."
+msgstr ""
+
+#: ../users/software-bundle-add-software.php:44
+msgid "Return to Previous Screen"
+msgstr ""
+
+#: ../users/prefs-index.php:40
+msgid "Setup - Your Preferences"
+msgstr ""
+
+#: ../users/prefs-index.php:42
+msgid ""
+"This is the place to make IRM what you, and only you, want it to be.  Here "
+"you can change what you see in the computers list view, as well as change "
+"your password."
+msgstr ""
+
+#: ../users/prefs-index.php:52
+msgid "Here you can change what fields you see in the Computers list view."
+msgstr ""
+
+#: ../users/prefs-index.php:66
+msgid "Here you can change what you see in the Tracking view."
+msgstr ""
+
+#: ../users/prefs-index.php:72
+msgid "Advanced Tracking View"
+msgstr ""
+
+#: ../users/prefs-index.php:79
+msgid "View Oldest Tracking First"
+msgstr ""
+
+#: ../users/prefs-index.php:85
+msgid "Change"
+msgstr ""
+
+#: ../users/prefs-index.php:86 ../include/helper.class.php:570
+#: ../include/knowledgebase.class.php:449
+#: ../include/knowledgebase.class.php:617
+#: ../include/setup-templates.class.php:185 ../include/device.class.php:606
+#: ../include/software.class.php:362 ../include/computers.class.php:516
+msgid "Reset"
+msgstr "リセット"
+
+#: ../users/computers-software-add.php:66
+msgid "Searching for Licenses"
+msgstr ""
+
+#: ../users/computers-software-add.php:86
+msgid ""
+"No licenses for the software package were found, and no bundles containing "
+"the software were found either."
+msgstr ""
+
+#: ../users/computers-software-add.php:88
+msgid ""
+"Please add one or more licenses or bundles using the Software Management "
+"System."
+msgstr ""
+
+#: ../users/computers-software-add.php:90
+msgid "Return to the computer info form."
+msgstr ""
+
+#: ../users/computers-software-add.php:95
+#, php-format
+msgid ""
+"I found the following %s Software\n"
+"\t\tbundles that contain the program you were\n"
+"\t\tlooking for. You can either select the software you were \n"
+"\t\ttrying to install or you can select a bundle. Please note\n"
+"\t\tthat this will force an installation even if there is no\n"
+"\t\tavailable license. This will also use goals to allow going\n"
+"\t\tback to see what license you wanted as opposed to which one\n"
+"\t\tyou installed."
+msgstr ""
+
+#: ../users/computers-software-add.php:140
+msgid "ADD"
+msgstr ""
+
+#: ../users/computers-groups-batch-add.php:27
+msgid "Add to Group Completed"
+msgstr ""
+
+#: ../users/computers-groups-batch-add.php:46
+#, php-format
+msgid "Computer ID %s added to group %s"
+msgstr ""
+
+#: ../users/computers-groups-batch-add.php:50
+#, php-format
+msgid "Computer ID %s already in this group."
+msgstr ""
+
+#: ../users/computers-groups-batch-add.php:55
+msgid "The add to group operation has been completed."
+msgstr ""
+
+#: ../users/snmp-browse.php:28
+msgid "SNMP Browser"
+msgstr ""
+
+#: ../users/snmp-browse.php:39
+msgid "OID"
+msgstr ""
+
+#: ../users/snmp-browse.php:39
+msgid "Value"
+msgstr ""
+
+#: ../users/snmp-stat.php:28
+msgid "SNMP Status"
+msgstr ""
+
+#: ../users/snmp-stat.php:49 ../include/tracking.class.php:1540
+msgid "Status"
+msgstr ""
+
+#: ../users/snmp-stat.php:50
+msgid "Uptime*"
+msgstr ""
+
+#: ../users/snmp-stat.php:63
+msgid "Browse MIBS"
+msgstr ""
+
+#: ../users/snmp-stat.php:65
+msgid "System"
+msgstr ""
+
+#: ../users/snmp-stat.php:71
+msgid "IP Stats"
+msgstr ""
+
+#: ../users/snmp-stat.php:74
+msgid "Storage"
+msgstr ""
+
+#: ../users/snmp-stat.php:77
+msgid "Browse all common MIBS. ATTENTION this can take very long time."
+msgstr ""
+
+#: ../users/snmp-stat.php:81
+msgid "* Uptime here reflects SNMP agent uptime, not computer uptime!"
+msgstr ""
+
+#: ../users/setup-user-update.php:27 ../include/User.php:514
+msgid "Users"
+msgstr "ユーザー"
+
+#: ../users/setup-user-update.php:27
+msgid "User Update"
+msgstr ""
+
+#: ../users/setup-user-update.php:50 ../include/setup.functions.php:52
+msgid "IRM"
+msgstr ""
+
+#: ../users/setup-user-update.php:50
+#, php-format
+msgid "%s updated user %s"
+msgstr ""
+
+#: ../users/setup-user-update.php:51
+#, php-format
+msgid "Updated %s"
+msgstr ""
+
+#: ../users/setup-user-update.php:53
+msgid "Go back"
+msgstr ""
+
+#: ../users/setup-user-update.php:70 ../users/setup-users.php:51
+#: ../index.php:74
+msgid "Username"
+msgstr "ユーザー名"
+
+#: ../users/setup-user-update.php:74
+msgid "Full Name: "
+msgstr ""
+
+#: ../users/setup-user-update.php:78
+msgid "New password: "
+msgstr ""
+
+#: ../users/setup-user-update.php:84
+msgid "E-mail: "
+msgstr ""
+
+#: ../users/setup-user-update.php:88
+msgid "Phone: "
+msgstr ""
+
+#: ../users/setup-user-update.php:98
+msgid "User Type: "
+msgstr ""
+
+#: ../users/setup-user-update.php:101 ../users/setup-users.php:77
+msgid "Administrator"
+msgstr ""
+
+#: ../users/setup-user-update.php:103 ../users/setup-users.php:79
+msgid "Post Only"
+msgstr ""
+
+#: ../users/setup-user-update.php:124
+#, php-format
+msgid ""
+"The user %s is about to be deleted from the database, to cancel this action "
+"click %s"
+msgstr ""
+
+#: ../users/setup-user-update.php:124
+msgid "here"
+msgstr ""
+
+#: ../users/setup-user-update.php:132
+msgid "Invalid action request for user update."
+msgstr ""
+
+#: ../users/users-info.php:39
+#, php-format
+msgid "Info on %s"
+msgstr ""
+
+#: ../users/users-info.php:61
+#, php-format
+msgid "Requests entered by %s"
+msgstr ""
+
+#: ../users/users-info.php:67
+#, php-format
+msgid "%s has entered %s request(s) that have not yet been completed."
+msgstr ""
+
+#: ../users/users-info.php:73
+#, php-format
+msgid "Requests assigned to %s"
+msgstr ""
+
+#: ../users/users-info.php:82
+#, php-format
+msgid "%s has %s job(s) assigned to him/her."
+msgstr ""
+
+#: ../users/inventory-index.php:26 ../include/functions.php:293
+#: ../include/tree.php:34
+msgid "Inventory"
+msgstr "機器目録"
+
+#: ../users/inventory-index.php:27
+msgid ""
+"Welcome to the IRM Inventory utility!  This is where you access your "
+"inventoried items"
+msgstr ""
+"IRM 機器情報ユーティリティにようこそ！ここでは機器情報、ソフトウエア情報と"
+"いったアイテムにアクセスできます。"
+
+#: ../users/inventory-index.php:33
+msgid "Files"
+msgstr ""
+
+#: ../users/faq-index.php:26 ../index.php:43
+msgid "Frequently Asked Questions"
+msgstr "よくある質問と回答(FAQ)"
+
+#: ../users/faq-index.php:28
+msgid ""
+"This is the IRM FAQ system. It allows you to view the questions most \n"
+"frequently asked of the helpdesk."
+msgstr ""
+"こちらはIRM ＦＡＱシステムです。ヘルプデスクにおける、よくある質問と回答を見"
+"ることができます。"
+
+#: ../users/nmap.php:28 ../include/functions.php:899
+msgid "Nmap Port Scan"
+msgstr ""
+
+#: ../users/setup-index.php:34 ../include/functions.php:295
+#: ../include/setup-fasttrack.class.php:87
+#: ../include/setup-fasttrack.class.php:229
+#: ../include/setup-fasttrack.class.php:258
+#: ../include/setup-templates.class.php:93
+#: ../include/setup-templates.class.php:232 ../include/tree.php:64
+msgid "Setup"
+msgstr "セットアップ"
+
+#: ../users/setup-index.php:35
+msgid ""
+"Welcome to IRM Setup.  Here we will administer new users, setup various "
+"computer types and operating systems, network card brands, and (almost) "
+"everything else relating to IRM."
+msgstr ""
+"IRMセットアップにようこそ。ここでは、ユーザーの追加、コンピュータのタイプ、OS"
+"の種別、ネットワークカードのスピード、その他IRMに関する情報を設定します。"
+
+#: ../users/setup-index.php:41
+msgid "IRM Configuration"
+msgstr ""
+
+#: ../users/setup-index.php:45
+msgid "Setup Users"
+msgstr ""
+
+#: ../users/setup-index.php:46
+msgid "Configure IRM"
+msgstr ""
+
+#: ../users/setup-index.php:50
+msgid "Setup Devices"
+msgstr ""
+
+#: ../users/setup-index.php:51
+msgid "Manage Templates"
+msgstr ""
+
+#: ../users/setup-index.php:55
+msgid "Setup computer groups"
+msgstr ""
+
+#: ../users/setup-index.php:56
+msgid "Setup the Knowledge Base"
+msgstr ""
+
+#: ../users/setup-index.php:60
+msgid "Setup the FastTrack Templates"
+msgstr ""
+
+#: ../users/setup-index.php:65
+#, fuzzy
+msgid "Individual Preferences"
+msgstr "選択"
+
+#: ../users/setup-index.php:69 ../include/tree.php:69
+msgid "Preferences"
+msgstr "選択"
+
+#: ../users/setup-index.php:70
+msgid "Change Your Password"
+msgstr ""
+
+#: ../users/setup-users.php:26
+msgid "Welcome to the IRM User Setup utility.  Here you can "
+msgstr ""
+
+#: ../users/setup-users.php:29
+msgid "view and update users in the IRM database. \n"
+msgstr ""
+
+#: ../users/setup-users.php:30
+msgid "Click here to update the database information from LDAP."
+msgstr ""
+
+#: ../users/setup-users.php:34
+msgid "change, view, delete, and add users to the IRM database. \n"
+msgstr ""
+
+#: ../users/setup-users.php:35
+msgid "Click here to add users."
+msgstr ""
+
+#: ../users/setup-users.php:47
+msgid "Add a New User"
+msgstr ""
+
+#: ../users/setup-users.php:55
+msgid "Full Name:"
+msgstr ""
+
+#: ../users/setup-users.php:59
+msgid "Password:"
+msgstr ""
+
+#: ../users/setup-users.php:63 ../include/User.php:565
+msgid "E-mail:"
+msgstr "メールアドレス:"
+
+#: ../users/setup-users.php:67 ../include/User.php:566
+msgid "Phone:"
+msgstr "電話番号:"
+
+#: ../users/setup-users.php:75 ../include/User.php:571
+msgid "User Type:"
+msgstr "ユーザー権限:"
+
+#: ../templates/addDeviceForm.html.php:1
+msgid "New devices must not included spaces in the name."
+msgstr "新しいデバイス名に空白を含むことはできません。"
+
+#: ../index.php:31 ../index.php:34
+msgid "View Request"
+msgstr "リクエストの表示"
+
+#: ../index.php:32
+msgid ""
+"If you have put in a help request and you know the ID number you can \n"
+" view the progress of the request by entering the ID in the box below"
+msgstr ""
+"リクエストの番号を知っているならば、下のボックスにその番号を入力することでリ"
+"クエストの進捗状況を見ることができます。"
+
+#: ../index.php:44
+msgid ""
+"Helpdesk personel get many questions - many of which are\n"
+"repeated many times. A FAQ, which is a list of frequently asked questions -\n"
+"and their answers, intends to provide a quick and easy way to help you get\n"
+"an answer to a questions. If your query isn't in this list, feel free to\n"
+"post a request for help."
+msgstr ""
+"ヘルプデスク要員は、多くの質問を受け付けています。繰り返し蒸しかえされる問題"
+"のリストはＦＡＱ(よくある質問とその答)としてまとめてあります。もしあなたの質"
+"問がこのリストに無いようでしたら、Request Helpからお気軽に質問を書き込んでく"
+"ださい。"
+
+#: ../index.php:49
+msgid "Read FAQ"
+msgstr "FAQを読む"
+
+#: ../index.php:56 ../index.php:63 ../include/functions.php:287
+msgid "Request Help"
+msgstr ""
+
+#: ../index.php:57
+msgid ""
+"You can request help without logging in to IRM. To do this you\n"
+"need to select the appropriate department, click the <b>Help</b> button\n"
+"below and then follow the instructions. Your request will be filed under "
+"the\n"
+"user name of <b>guest</b> so you will need to ensure that the contact\n"
+"information is correct if you wish to recieve updates and keep in touch "
+"with\n"
+"the helpdesk."
+msgstr ""
+"あなたは、IRMにログインすることなく、援助を要請することができます。最初に下記"
+"の<b>Request Help</b>ボタンをクリックした後、あなたは適当なPCやグループを選ん"
+"で、それから指示に従う必要があります。そこではあなたの要請はguestユーザーとし"
+"て受け付けられるでしょう。あなたがアップデートを受け取ったり、ヘルプデスクと"
+"コンタクトを取り続けるにはあなたの正確な連絡先が必要です。すべての項目を正し"
+"く入力してください。"
+
+#: ../index.php:69
+msgid "IRM Login"
+msgstr "IRMへログイン"
+
+#: ../index.php:70
+msgid "Login"
+msgstr "ログイン"
+
+#: ../index.php:75
+msgid "Password"
+msgstr "パスワード"
+
+#: ../index.php:80
+msgid "Current Status"
+msgstr "現在の状況"
+
+#: ../index.php:86 ../index.php:122
+msgid "IRM - The Information Resource Manager"
+msgstr ""
+
+#: ../index.php:87
+msgid ""
+"IRM is a multi-user computer, software, peripheral and problem tracking "
+"system.\n"
+"You can use IRM, depending on your user-level, to view, edit, and add\n"
+"computer systems to a database with an extensive list of fields.  You can\n"
+"also view and post jobs if you have a problem with a computing resource."
+msgstr ""
+"IRMとはみんなのコンピュータ、ソフトウエア、周辺機器の問題追跡システムです。あ"
+"なたのユーザーレベルにあわせてデータベースの内容を表示する、編集する、追加す"
+"る、データベースにフィールドを追加するといったことが可能です。そしてあなたの"
+"抱える問題について書き込みやその回答を見ることができます。"
+
+#: ../login.php:31 ../login.php:44 ../login.php:59
+msgid "Redirecting to"
+msgstr ""
+
+#: ../login.php:31 ../login.php:44
+msgid "the login page"
+msgstr ""
+
+#: ../login.php:39
+#, php-format
+msgid "Failed login: '%s', database '%s'"
+msgstr ""
+
+#: ../login.php:59
+msgid "the system index"
+msgstr ""
+
+#: ../lib/Databases.php:23 ../lib/Databases.php:88 ../lib/Databases.php:118
+msgid "Unknown database"
+msgstr ""
+
+#: ../lib/Databases.php:48
+msgid ""
+"Section value list is not an array -- I think your config file is malformed"
+msgstr ""
+
+#: ../lib/Databases.php:59
+#, php-format
+msgid "No DSN for database %s (%s)"
+msgstr ""
+
+#: ../lib/Databases.php:68
+#, php-format
+msgid "<p id=\"warning\">Could not connect to database %s (%s): %s</p>"
+msgstr ""
+
+#: ../lib/Databases.php:129
+msgid "Installation Name"
+msgstr ""
+
+#: ../lib/Databases.php:130
+msgid "Current Version"
+msgstr ""
+
+#: ../lib/Databases.php:131
+msgid "Upgrade Version Available"
+msgstr ""
+
+#: ../lib/IRMDB.php:334
+msgid ""
+"Permission denied: you have not granted the necessary database privileges to "
+"your database user."
+msgstr ""
+
+#: ../lib/IRMDB.php:340
+msgid ""
+"Error : There seems to be a problem connecting to your database : Error code "
+"1049"
+msgstr ""
+
+#: ../lib/IRMDB.php:344
+#, php-format
+msgid "Database Error: %s (%s)"
+msgstr ""
+
+#: ../lib/Net_SNMP.php:81
+msgid "DHCP"
+msgstr ""
+
+#: ../lib/Net_SNMP.php:83 ../include/functions.php:892
+msgid "DOWN"
+msgstr ""
+
+#: ../lib/Net_SNMP.php:85 ../include/functions.php:901
+msgid "UP"
+msgstr ""
+
+#: ../lib/Net_SNMP.php:87 ../include/functions.php:905
+msgid "UNKNOWN ERROR"
+msgstr ""
+
+#: ../lib/Config.php:123
+#, php-format
+msgid "No DSN found for section [%s]"
+msgstr ""
+
+#: ../lib/Config.php:185
+#, php-format
+msgid "Unknown type of config file: %s\n"
+msgstr ""
+
+#: ../lib/Config.php:202 ../lib/Config.php:204
+#, php-format
+msgid "config file %s not found"
+msgstr ""
+
+#: ../include/networking.class.php:111
+msgid "Device Deleted"
+msgstr ""
+
+#: ../include/networking.class.php:129
+msgid "I have deleted that networking device and all associated ports."
+msgstr ""
+
+#: ../include/networking.class.php:156 ../include/computers.class.php:133
+#: ../include/computers.class.php:207 ../include/computers.class.php:293
+msgid "database"
+msgstr "データベース"
+
+#: ../include/networking.class.php:156 ../include/computers.class.php:293
+#, php-format
+msgid "%s updated record"
+msgstr "%s 更新されたレコード"
+
+#: ../include/networking.class.php:198 ../include/computers.class.php:133
+#, php-format
+msgid "%s added record"
+msgstr "%s レコードを追加しました"
+
+#: ../include/networking.class.php:206
+msgid ""
+"Welcome to the IRM Networking section.  This where you keep information "
+"about all of your networking devices."
+msgstr ""
+
+#: ../include/networking.class.php:313 ../include/computers.class.php:339
+msgid "Last Updated:"
+msgstr ""
+
+#: ../include/networking.class.php:321 ../include/functions.php:731
+#: ../include/setup-groups.class.php:122
+#: ../include/knowledgebase.class.php:653
+#: ../include/setup-templates.class.php:184
+#: ../include/connections.class.php:439 ../include/device.class.php:626
+#: ../include/software.class.php:273 ../include/computers.class.php:344
+msgid "Update"
+msgstr "更新"
+
+#: ../include/networking.class.php:346
+msgid "Fill out this form to add a new networking device."
+msgstr ""
+
+#: ../include/networking.class.php:352
+msgid "New Device"
+msgstr ""
+
+#: ../include/networking.class.php:362 ../include/connections.class.php:302
+msgid "Clear"
+msgstr "クリアー"
+
+#: ../include/networking.class.php:369
+#, php-format
+msgid "Add %s initial ports of type %s to device."
+msgstr ""
+
+#: ../include/functions.php:85
+msgid "Incorrect username or password"
+msgstr "ユーザー名またはパスワードが正しくありません"
+
+#: ../include/functions.php:89
+msgid "Session expired"
+msgstr "セッションが終了しました。"
+
+#: ../include/functions.php:115
+msgid "There are no defined databases"
+msgstr "データベースに定義されていません"
+
+#: ../include/functions.php:137
+msgid " is not initialised"
+msgstr " は初期化されていません"
+
+#: ../include/functions.php:137
+msgid "click here to setup it up"
+msgstr "こちらのsetup it upをクリックしてください"
+
+#: ../include/functions.php:286
+msgid "Home"
+msgstr "ホーム"
+
+#: ../include/functions.php:299 ../include/knowledgebase.class.php:160
+#: ../include/knowledgebase.class.php:403
+#: ../include/knowledgebase.class.php:508
+#: ../include/knowledgebase.class.php:560
+#: ../include/knowledgebase.class.php:583 ../include/tree.php:74
+msgid "Knowledge Base"
+msgstr "知識ベース"
+
+#: ../include/functions.php:304 ../include/tree.php:79
+msgid "FAQ"
+msgstr ""
+
+#: ../include/functions.php:306
+msgid "Logout"
+msgstr "ログアウト"
+
+#: ../include/functions.php:357
+msgid "You are logged into database : "
+msgstr "あなたが使用中のデータベース :"
+
+#: ../include/functions.php:363
+msgid "IRM Version "
+msgstr "IRMバージョン"
+
+#: ../include/functions.php:369
+msgid ""
+"Distribution of IRM is permitted under the terms of the GNU GPL Version 2"
+msgstr ""
+
+#: ../include/functions.php:371
+msgid ""
+"Copyright &copy; 1999-2007 Yann Ramin, Keith Schoenefeld, Matthew Palmer, "
+"Martin Stevens, and others. See the files AUTHORS and CONTRIBUTORS for more "
+"information."
+msgstr ""
+
+#: ../include/functions.php:378
+msgid "Website"
+msgstr ""
+
+#: ../include/functions.php:408
+msgid "Session expired.  Returning you to the login page."
+msgstr "セッションが無効になりました。ログインページに戻ります。"
+
+#: ../include/functions.php:420
+msgid "Permission Denied"
+msgstr "パーミッションがありません。"
+
+#: ../include/functions.php:421
+#, php-format
+msgid ""
+"You (%s) only have %s level privileges, but to access this function you need "
+"%s privileges.  Sorry."
+msgstr ""
+"あなた(%s)には %s レベルの権限しかありません。この機能を実行するには %s レベ"
+"ルの権限が必要です。"
+
+#: ../include/functions.php:462
+msgid "Critical"
+msgstr ""
+
+#: ../include/functions.php:463
+msgid "Severe"
+msgstr ""
+
+#: ../include/functions.php:464
+msgid "Important"
+msgstr ""
+
+#: ../include/functions.php:465
+msgid "Notice"
+msgstr ""
+
+#: ../include/functions.php:466
+msgid "Junk"
+msgstr ""
+
+#: ../include/functions.php:474
+msgid ""
+"Welcome to IRM's System Setup.  Here is where we will set up IRM's\n"
+"\tsystem configuration.  On this page you will be able to set system wide\n"
+"\tsettings such as whether IRM should support computer groups, whether "
+"someone\n"
+"\tshould be emailed when a new work request is entered etc."
+msgstr ""
+"ようこそIRMシステムセットアップへ。ここではIRMシステムの設定を\n"
+"おこないます。IRMはコンピューターグループやどなたかが電子メールで送ってきた要"
+"望に関するサポートを行なうことができます。"
+
+#: ../include/functions.php:482
+msgid "Front Page Status"
+msgstr ""
+
+#: ../include/functions.php:494
+msgid "Request Help Options"
+msgstr ""
+
+#: ../include/functions.php:500
+msgid ""
+"Do you wish to enable anonymous actions? (Submit ticket, read FAQ, etc)."
+msgstr ""
+
+#: ../include/functions.php:506
+msgid ""
+"Select this option if you would like to be able to group computers "
+"together.  This is valuable if you would like people to be able to submit "
+"work requests against large numbers of computers, such as a computer lab."
+msgstr ""
+"あなたがコンピュータのグループを構成したいならこのオプションを選んで下さい。"
+"たくさんのコンピュータにジョブを依頼するときに重宝します。たとえばコンピュー"
+"タラボなどです"
+
+#: ../include/functions.php:512
+msgid ""
+"If this option is selected, users will be able to search for their computer "
+"by name instead of being forced to type in an IRM ID to enter a work request."
+msgstr ""
+"このオプションを選べば、ユーザーはIRM IDによるリクエストでばなく、コンピュー"
+"タの名前で検索しその情報から作業ができます。"
+
+#: ../include/functions.php:518
+#, fuzzy
+msgid "Would you like to use the FastTrack capability?"
+msgstr "FastTrack capabilityを使用しますか？"
+
+#: ../include/functions.php:524
+#, fuzzy
+msgid "Would you like 'Track requests on Software' capability?"
+msgstr "FastTrack capabilityを使用しますか？"
+
+#: ../include/functions.php:533
+msgid "Outgoing Email Options"
+msgstr "送信メールオプション"
+
+#: ../include/functions.php:537
+msgid "Notify a person who has been assigned a work request via email."
+msgstr "電子メールによる作業依頼に対する人員の割り当て通知"
+
+#: ../include/functions.php:543
+msgid "Notify someone via email when a user has entered a new work request."
+msgstr "電子メールによる作業依頼が受け付れられたことの通知"
+
+#: ../include/functions.php:549
+msgid ""
+"The email address that should receive notification when a user has entered a "
+"work request (seperate multiple email addresses with a comma)."
+msgstr ""
+"電子メールによる作業依頼に対して、受領確認メールを出すメールアドレス(複数の"
+"メールアドレスを記入する場合はカンマで区切ります)。"
+
+#: ../include/functions.php:555
+msgid ""
+"This option allows users to request updates via email when a tracking job "
+"they entered is update in any way (e.g. someone adds a followup, it is "
+"marked complete, etc.)."
+msgstr ""
+"このオプションを有効にすれば、ジョブに対する作業についてメールで通知を受け取"
+"ることができます。(例：フォローアップの追加、ジョブの終了等)"
+
+#: ../include/functions.php:562
+msgid "Incoming Email Options"
+msgstr "受信メールのオプション"
+
+#: ../include/functions.php:566
+msgid "POP3 Server to collect mail from"
+msgstr "メールを受け取るPOP3サーバー"
+
+#: ../include/functions.php:572
+msgid "POP3 account name"
+msgstr "POP3 アカウント名"
+
+#: ../include/functions.php:578
+msgid "POP3 account password"
+msgstr "POP3 アカウントのパスワード"
+
+#: ../include/functions.php:585
+msgid "OCS-NG Connection"
+msgstr "OCS-NG 接続"
+
+#: ../include/functions.php:589
+msgid "OCS-NG Database Name - Development only do not use"
+msgstr "OCS-NG データベース名 - Development only do not use "
+
+#: ../include/functions.php:595
+msgid "OCS-NG Server Name"
+msgstr "OCS-NG サーバー名"
+
+#: ../include/functions.php:601
+msgid "OCS-NG Port Number"
+msgstr "OCS-NG ポート番号"
+
+#: ../include/functions.php:607
+msgid "OCS-NG User Name"
+msgstr "OCS-NG ユーザー名"
+
+#: ../include/functions.php:613
+msgid "OCS-NG Password"
+msgstr "OCS-NG パスワード"
+
+#: ../include/functions.php:620
+msgid "Functional Options"
+msgstr ""
+
+#: ../include/functions.php:624
+msgid ""
+"Select this option if you would like to view the last 5 system events on the "
+"home page.."
+msgstr ""
+"このホームページのシステムイベントを見るならこのオプションを選択して下さい。"
+"最近の５個が見えます"
+
+#: ../include/functions.php:631
+msgid "Send expires and pragma: nocache headers."
+msgstr ""
+
+#: ../include/functions.php:637
+msgid ""
+"Show a user the jobs assigned to him or her immediately after logging on.  "
+"If this is not selected, only the number of jobs the user has assigned is "
+"displayed."
+msgstr ""
+"ログオンの直後に彼または彼女に割り当てられる仕事をユーザーに見せてください。"
+"これが選ばれないならば、ユーザーが割り当てた仕事の数だけが表示されます。"
+
+#: ../include/functions.php:645
+msgid "Select the Minimum Log Level."
+msgstr ""
+
+#: ../include/functions.php:653
+msgid "Select the Stylesheet."
+msgstr ""
+
+#: ../include/functions.php:659
+msgid ""
+"The name of the image file you would like used for the IRM logo. Note: the "
+"filename should be specified relative to the root of the IRM installation, "
+"or leave blank for no logo."
+msgstr ""
+"あなたがIRMロゴのために使いたい画像ファイルの名前。注：ファイル名はIRMインス"
+"トールディレクトリからの相対パスとして指定するか空白を設定しロゴ無しにできま"
+"す。"
+
+#: ../include/functions.php:665
+msgid ""
+"Would you like to use the Knowledge Base system that is now built in to IRM?"
+msgstr "IRMに組み込みの知識ベースシステムを使用しますか？"
+
+#: ../include/functions.php:672
+msgid "Simple Network Management Protocol (SNMP)"
+msgstr ""
+
+#: ../include/functions.php:676
+msgid ""
+"Do you wish to enable snmp monitoring (ignore the rest of the questions in "
+"this section if you don't check this option)."
+msgstr ""
+
+#: ../include/functions.php:682
+msgid " The name of the \"read\" or \"public\" snmp community."
+msgstr ""
+
+#: ../include/functions.php:688
+msgid ""
+"Ping this host when it is loaded into the computer editor.  This option can "
+"cause big delays if the host is down - use with caution."
+msgstr ""
+
+#: ../include/functions.php:694
+msgid ""
+"Allow NMAP port scanning.  This option can cause big delays if the host is "
+"down - use with caution."
+msgstr ""
+
+#: ../include/functions.php:701
+msgid "MRTG Graphs"
+msgstr ""
+
+#: ../include/functions.php:705
+msgid "Do you wish to enable mrtg graphs against network ports"
+msgstr ""
+
+#: ../include/functions.php:711
+msgid "Location of MRTG graphs e.g. http://www.myserver.com/mrtg/"
+msgstr ""
+
+#: ../include/functions.php:720
+msgid "Interface options"
+msgstr ""
+
+#: ../include/functions.php:725
+msgid "Use the side menu?  (Requires HTML::TreeMenu package)"
+msgstr ""
+
+#: ../include/functions.php:743
+#, php-format
+msgid "%s: Illegal table name %s"
+msgstr ""
+
+#: ../include/functions.php:812 ../include/functions.php:830
+msgid "Dropdown_groups()"
+msgstr ""
+
+#: ../include/functions.php:892 ../include/functions.php:901
+#: ../include/functions.php:905
+msgid "Host:"
+msgstr ""
+
+#: ../include/functions.php:910
+msgid "Ping disabled"
+msgstr ""
+
+#: ../include/functions.php:934
+msgid "Runtime Information (SNMP)"
+msgstr ""
+
+#: ../include/functions.php:977
+msgid "Software Bundle Information ($numRows)"
+msgstr ""
+
+#: ../include/functions.php:980
+msgid "Software ID"
+msgstr ""
+
+#: ../include/functions.php:1046 ../include/functions.php:1100
+msgid "Installed Software"
+msgstr ""
+
+#: ../include/functions.php:1068
+msgid "Add software:"
+msgstr ""
+
+#: ../include/functions.php:1070
+msgid "to template."
+msgstr ""
+
+#: ../include/functions.php:1114
+msgid "license key not found"
+msgstr ""
+
+#: ../include/functions.php:1120
+#, php-format
+msgid "%s license(s)."
+msgstr ""
+
+#: ../include/functions.php:1130
+msgid "Add software"
+msgstr ""
+
+#: ../include/functions.php:1132
+msgid "to computer, using"
+msgstr ""
+
+#: ../include/functions.php:1132
+msgid "license(s)."
+msgstr ""
+
+#: ../include/functions.php:1197
+msgid "No events"
+msgstr ""
+
+#: ../include/functions.php:1201
+msgid "Last "
+msgstr ""
+
+#: ../include/functions.php:1206
+msgid "Item"
+msgstr ""
+
+#: ../include/functions.php:1207 ../include/followup.class.php:165
+msgid "Date"
+msgstr "日付"
+
+#: ../include/functions.php:1208
+msgid "Service"
+msgstr ""
+
+#: ../include/functions.php:1209
+msgid "Level"
+msgstr ""
+
+#: ../include/functions.php:1210
+msgid "Message"
+msgstr ""
+
+#: ../include/functions.php:1246 ../include/knowledgebase.class.php:345
+msgid "NEW"
+msgstr ""
+
+#: ../include/functions.php:1250
+msgid "WAIT"
+msgstr ""
+
+#: ../include/functions.php:1254
+msgid "ACTIVE"
+msgstr ""
+
+#: ../include/functions.php:1262
+msgid "OLD"
+msgstr ""
+
+#: ../include/functions.php:1266
+msgid "COMPLETE"
+msgstr ""
+
+#: ../include/functions.php:1270 ../include/tracking.class.php:649
+msgid "Duplicate"
+msgstr ""
+
+#: ../include/functions.php:1275
+msgid "Unknown!"
+msgstr ""
+
+#: ../include/functions.php:1314
+msgid "Unknown"
+msgstr ""
+
+#: ../include/setup.functions.php:52
+#, php-format
+msgid "%s %s entry %s from %s."
+msgstr ""
+
+#: ../include/helper.class.php:56
+msgid "Welcome to the IRM Help Desk"
+msgstr "ようこそ IRM ヘルプデスクへ"
+
+#: ../include/helper.class.php:59
+msgid "Tracking - This is where you can request help with a problem."
+msgstr "Tracking - これは問題に関する援助を要請するところです。"
+
+#: ../include/helper.class.php:68
+msgid "Fast Track - use Fast Track templates for common problems"
+msgstr "Fast Track - 一般の問題用のテンプレートFast Trackを使用します。"
+
+#: ../include/helper.class.php:76
+msgid "Auto Fill Selections"
+msgstr "自動選択セクション"
+
+#: ../include/helper.class.php:124
+msgid "Enter the IRM Computer ID:"
+msgstr "IRM管理のコンピュータID"
+
+#: ../include/helper.class.php:125
+msgid "IRM ID:"
+msgstr "コンピュータID番号"
+
+#: ../include/helper.class.php:126
+msgid "Continue with IRM ID"
+msgstr "コンピュータIDを入力して次へ"
+
+#: ../include/helper.class.php:148
+msgid "Or, select the name of the device:"
+msgstr "装置名による選択"
+
+#: ../include/helper.class.php:152
+msgid "Select device type and device:"
+msgstr ""
+
+#: ../include/helper.class.php:166
+#, fuzzy
+msgid "Or, select the name of the software:"
+msgstr "装置名による選択"
+
+#: ../include/helper.class.php:170
+msgid "Select software:"
+msgstr ""
+
+#: ../include/helper.class.php:177
+#, fuzzy
+msgid "Continue with software selection"
+msgstr "グループを選択して次へ"
+
+#: ../include/helper.class.php:187
+msgid "Or, you can select a group of computers:"
+msgstr "コンピューターグループによる選択"
+
+#: ../include/helper.class.php:191 ../include/helper.class.php:500
+#: ../include/setup-groups.class.php:91 ../include/knowledgebase.class.php:677
+#: ../include/software.class.php:223 ../include/software.class.php:323
+#: ../include/User.php:560
+msgid "Name:"
+msgstr "名前:"
+
+#: ../include/helper.class.php:197
+msgid "Continue with group selection"
+msgstr "グループを選択して次へ"
+
+#: ../include/helper.class.php:204
+msgid "Tracking - Add Job"
+msgstr "Tracking - Job追加"
+
+#: ../include/helper.class.php:204
+msgid "Is this the computer?"
+msgstr "コンピュータ機器選択"
+
+#: ../include/helper.class.php:205
+msgid ""
+"Please confirm that you entered the correct IRM ID or name.  If the computer "
+"matches, simply click on the computer's name below."
+msgstr ""
+"正しいIRM IDまたは名前を入力したことを確認してください。コンピュータ名が正し"
+"いなら、単に下記のコンピュータの名前をクリックしてください"
+
+#: ../include/helper.class.php:249
+msgid "Bad ID Number"
+msgstr "ID番号エラー"
+
+#: ../include/helper.class.php:250
+msgid ""
+"It appears that you have entered an incorrect IRM computer ID or group ID "
+"number."
+msgstr "IRMコンピュータIDまたはグループＩＤ番号が誤っているようです。"
+
+#: ../include/helper.class.php:251
+msgid "Please try again."
+msgstr "もういちど"
+
+#: ../include/helper.class.php:256
+msgid "Add Job"
+msgstr ""
+
+#: ../include/helper.class.php:258
+msgid ""
+"You can use this form to submit a problem report or request help with a "
+"computing resource in your organization.  Please fill out the entire form as "
+"clearly as possible."
+msgstr ""
+"あなたは、問題のレポートを提出するか、あなたの組織でコンピュータ資源で援助を"
+"要請するために、この入力画面を使用することができます。できるだけ正確にに、全"
+"ての設問に記入してください"
+
+#: ../include/helper.class.php:332
+msgid "Bad IRM ID or search terms"
+msgstr "IRM ID番号または検索文字が誤っています。"
+
+#: ../include/helper.class.php:335
+msgid ""
+"Your search terms were too vague, and yielded more than 5 results.  Please "
+"try again."
+msgstr ""
+"あなたの検索語句はあまりに漠然としていて、5つ以上の結果を与えました。もう一度"
+"ためしてください。"
+
+#: ../include/helper.class.php:362
+msgid "Preview"
+msgstr ""
+
+#: ../include/helper.class.php:368 ../include/helper.class.php:375
+#: ../include/helper.class.php:387
+msgid "The following error occured with your request for help:"
+msgstr "あなたの要請援助で以下のエラーが発生しました。"
+
+#: ../include/helper.class.php:370
+msgid "You did not enter a name."
+msgstr "名前が入力されていません。"
+
+#: ../include/helper.class.php:377
+msgid " You did not enter an e-mail address."
+msgstr "E-MAILアドレスが入力されていません。"
+
+#: ../include/helper.class.php:382
+msgid "A very unusual error occured.  Contact your sysadmin."
+msgstr "予期せぬエラーが発生しました。管理者に連絡してください。"
+
+#: ../include/helper.class.php:389
+msgid "You did not enter any problem description."
+msgstr "問題についての説明が入力されていません。"
+
+#: ../include/helper.class.php:401
+msgid ""
+"Please check that the job you are about to submit is correct.  If it is not, "
+"use the provided links to edit it."
+msgstr ""
+"あなたが提出しようとしている内容が正しいことを確認してください。正しくないよ"
+"うなら、再入力のために「job編集」ボタンを押して下さい。"
+
+#: ../include/helper.class.php:403
+msgid ""
+"Errors occured with your request for help.  Your only option is to edit the "
+"job."
+msgstr "あなたの援助の要請でエラーが発生しました。jobを再度編集してください。"
+
+#: ../include/helper.class.php:445
+msgid "Edit Job"
+msgstr "Job 編集"
+
+#: ../include/helper.class.php:450 ../include/helper.class.php:504
+#: ../include/setup-fasttrack.class.php:151
+#: ../include/setup-fasttrack.class.php:291 ../include/tracking.class.php:287
+#: ../include/tracking.class.php:1232
+msgid "Priority:"
+msgstr "優先順位"
+
+#: ../include/helper.class.php:451
+msgid "Your Name:"
+msgstr "お名前"
+
+#: ../include/helper.class.php:452
+msgid "Your E-Mail:"
+msgstr "あなたのメールアドレス"
+
+#: ../include/helper.class.php:453
+msgid "Other E-mails:"
+msgstr "その他のメールアドレス"
+
+#: ../include/helper.class.php:454
+msgid "Device Type:"
+msgstr "装置タイプ"
+
+#: ../include/helper.class.php:455
+msgid "Computer:"
+msgstr "コンピューター"
+
+#: ../include/helper.class.php:456
+msgid "Problem Report:"
+msgstr "問題に関するレポート"
+
+#: ../include/helper.class.php:460 ../include/tracking.class.php:164
+msgid "By:"
+msgstr ""
+
+#: ../include/helper.class.php:472
+msgid "Add job"
+msgstr "Jobの追加"
+
+#: ../include/helper.class.php:501
+msgid "The Device or Group you are requesting work on: "
+msgstr "あなたの機械、もしくはグループの特定"
+
+#: ../include/helper.class.php:502
+msgid "E-Mail:"
+msgstr "メール"
+
+#: ../include/helper.class.php:503
+msgid "Other E-Mails:"
+msgstr "その他のメール"
+
+#: ../include/helper.class.php:505
+msgid ""
+"How urgent is your request ? If it can wait, pick a low priority.  If you "
+"are stuck, pick a high priority.  If you are unsure how important the "
+"problem is, leave it at its present value."
+msgstr ""
+"あなたの要請の緊急度はどの程度でしょう。あなたが待つことができるならば、低い"
+"プライオリティーを選んでください。PCが動かないとかならば、高いプライオリ"
+"ティーを選んでください。あなたの判断で、問題の重要度、影響度からプライオリ"
+"ティを決めてください。"
+
+#: ../include/helper.class.php:506
+msgid ""
+"If you are entering this help request on behalf of another user, please "
+"provide their name and e-mail address below.  They will get an initial "
+"notification of this job's creation, but will not get any further e-mails."
+msgstr ""
+"あなたが他のユーザーに代わってこの援助要請を行なっていならば、彼らの名前と電"
+"子メールアドレスを下で提供してください。彼らはこのJobが開始されたことの通知を"
+"受け取りますが、その後に続く電子メールは受けとりません。"
+
+#: ../include/helper.class.php:507
+msgid ""
+"These are e-mail addresses which will get copies of all e-mails sent "
+"regarding this work request.  Separate multiple e-mail addresses with spaces "
+"or commas."
+msgstr ""
+"ここに指定したE-MAILアドレス宛に、このたびのJobに関して発生する情報すべてを"
+"メールします。複数の電子メールアドレスを指定する場合はスペースまたはコンマで"
+"区切ってください。"
+
+#: ../include/helper.class.php:536
+msgid "Email Updates"
+msgstr "E-mailによるアップデート通知"
+
+#: ../include/helper.class.php:542
+msgid "I would like to receive email updates for this help request."
+msgstr "help reuestに関するアップデート情報を受け取る。"
+
+#: ../include/helper.class.php:549 ../include/setup-fasttrack.class.php:164
+#: ../include/setup-fasttrack.class.php:310 ../include/tracking.class.php:295
+msgid "Describe the problem:"
+msgstr "問題の内容："
+
+#: ../include/helper.class.php:554
+msgid ""
+"Please explain the problem, be as clear as possible, but also keep it short."
+msgstr ""
+"問題の内容は、第三者にもわかるように書いてください。しかし、長くならないよう"
+"にしておいてください。"
+
+#: ../include/helper.class.php:557
+msgid ""
+"A good example : 'When I turn my computer on it makes a really loud grinding "
+"noise and nothing else happens.'"
+msgstr ""
+"良い例： '私のコンピュータの電源を入れたとき、ひどく大きな音を立てます。が、"
+"それだけでコンピュータは立ち上がってくれません。ディスプレーも真っ暗なままで"
+"す。'"
+
+#: ../include/helper.class.php:560
+msgid "A bad example : 'It doesn't turn on'."
+msgstr "悪い例： '電源が入りません。'"
+
+#: ../include/helper.class.php:570
+msgid "Preview Job"
+msgstr "次へ"
+
+#: ../include/helper.class.php:580
+msgid ""
+"There are open trackings on this device. Please scan this list to make sure "
+"you are not duplicating an open work request. To make additional comments on "
+"an open tracking, click the ID link and add a followup.\n"
+msgstr ""
+"オープン状態のTrackingが、この装置にあります。オープン状態のリクエストをため"
+"込まないようにこのリストにざっと目を通してください。オープン状態のTrackingに"
+"ついてのさらなるコメント追加するには、IDへのリンクをクリックして、フォロー"
+"アップを加えてください。\n"
+
+#: ../include/helper.class.php:583
+msgid "Problem Reported"
+msgstr "問題は報告されました。"
+
+#: ../include/helper.class.php:601
+msgid ""
+"If none of the above trackings matched your current issue, please submit "
+"your request below."
+msgstr ""
+"もし、最新の状況があなたのTrackingsについてマッチしないならば、以下の請願書を"
+"提出してください"
+
+#: ../include/setup-fasttrack.class.php:87
+msgid "FastTrack Templates Add Form"
+msgstr ""
+
+#: ../include/setup-fasttrack.class.php:94
+msgid "FastTrack Template Added Successfuly"
+msgstr ""
+
+#: ../include/setup-fasttrack.class.php:99
+msgid "Use this form to add a FastTrack template."
+msgstr ""
+
+#: ../include/setup-fasttrack.class.php:102
+#: ../include/setup-fasttrack.class.php:273
+msgid "Go back to FastTrack templates"
+msgstr ""
+
+#: ../include/setup-fasttrack.class.php:110
+msgid "Add FastTrack Template "
+msgstr ""
+
+#: ../include/setup-fasttrack.class.php:114
+msgid "FastTrack Template name: "
+msgstr ""
+
+#: ../include/setup-fasttrack.class.php:147 ../include/tracking.class.php:281
+msgid "Work Request Information"
+msgstr ""
+
+#: ../include/setup-fasttrack.class.php:166
+#: ../include/setup-fasttrack.class.php:320 ../include/tracking.class.php:304
+msgid "Describe the solution (will be added as a followup):"
+msgstr ""
+
+#: ../include/setup-fasttrack.class.php:229
+#: ../include/setup-fasttrack.class.php:238
+msgid "FastTrack Templates"
+msgstr ""
+
+#: ../include/setup-fasttrack.class.php:231
+msgid "Please select a FastTrack template below to edit or delete."
+msgstr ""
+
+#: ../include/setup-fasttrack.class.php:234
+msgid "Add a new FastTrack template"
+msgstr ""
+
+#: ../include/setup-fasttrack.class.php:258
+msgid "FastTrack Templates Edit"
+msgstr ""
+
+#: ../include/setup-fasttrack.class.php:270
+msgid "Use this form to edit a FastTrack template."
+msgstr ""
+
+#: ../include/setup-fasttrack.class.php:283
+msgid "FastTrack Template Name"
+msgstr ""
+
+#: ../include/setup-groups.class.php:69
+msgid "Group Setup"
+msgstr ""
+
+#: ../include/setup-groups.class.php:71
+msgid ""
+"Welcome to the IRM Group Setup utility.  Here you can change, view, delete, "
+"and add computer groups to the IRM database."
+msgstr ""
+
+#: ../include/setup-groups.class.php:72
+msgid "Add Groups"
+msgstr ""
+
+#: ../include/setup-groups.class.php:80
+msgid "Add a Group"
+msgstr ""
+
+#: ../include/setup-groups.class.php:87
+msgid "New Group"
+msgstr ""
+
+#: ../include/setup-groups.class.php:115
+msgid "ID:"
+msgstr ""
+
+#: ../include/setup-groups.class.php:116
+msgid "Group Name:"
+msgstr ""
+
+#: ../include/setup-groups.class.php:131
+msgid "Edit Group Members"
+msgstr ""
+
+#: ../include/tracking.class.php:105
+msgid "No IRM ID or Group name was selected"
+msgstr ""
+
+#: ../include/tracking.class.php:106
+msgid "ERROR: You forgot to select a computer or a group.\n"
+msgstr ""
+
+#: ../include/tracking.class.php:113
+msgid "User's name was not entered"
+msgstr ""
+
+#: ../include/tracking.class.php:114
+msgid "ERROR: You did not enter the User's Name."
+msgstr ""
+
+#: ../include/tracking.class.php:121
+msgid "User's email address was not entered"
+msgstr ""
+
+#: ../include/tracking.class.php:122
+msgid "ERROR: You did not enter the User's email address."
+msgstr ""
+
+#: ../include/tracking.class.php:132
+msgid "Bad IRM ID Number"
+msgstr ""
+
+#: ../include/tracking.class.php:133
+msgid "It appears that you have enetered an invalid IRM computer ID"
+msgstr ""
+
+#: ../include/tracking.class.php:139 ../include/tracking.class.php:445
+msgid "Added"
+msgstr ""
+
+#: ../include/tracking.class.php:191 ../include/tracking.class.php:466
+#: ../include/tracking.class.php:1411 ../include/computers.class.php:133
+#: ../include/computers.class.php:207 ../include/computers.class.php:293
+msgid "computers"
+msgstr "コンピュータ"
+
+#: ../include/tracking.class.php:191 ../include/tracking.class.php:466
+#: ../include/tracking.class.php:1411
+msgid "tracking"
+msgstr ""
+
+#: ../include/tracking.class.php:191 ../include/tracking.class.php:466
+msgid "New tracking job opened"
+msgstr ""
+
+#: ../include/tracking.class.php:192
+msgid "That tracking job has been placed into the database."
+msgstr ""
+
+#: ../include/tracking.class.php:213
+msgid "FastTrack"
+msgstr ""
+
+#: ../include/tracking.class.php:214
+msgid ""
+"Welcome to IRM FastTrack.  This is where tracking can be entered, assigned, "
+"and given a specific status all on one page.  Simply fill in the form below:"
+msgstr ""
+
+#: ../include/tracking.class.php:215
+msgid "Enter the IRM ID"
+msgstr ""
+
+#: ../include/tracking.class.php:217
+msgid ""
+"or group.  Make sure that you have selected the proper button to the left as "
+"well to indicate which identifier you are providing."
+msgstr ""
+
+#: ../include/tracking.class.php:228
+msgid "Computer"
+msgstr ""
+
+#: ../include/tracking.class.php:231 ../include/tracking.class.php:1264
+msgid "Group"
+msgstr ""
+
+#: ../include/tracking.class.php:233
+msgid " Information"
+msgstr ""
+
+#: ../include/tracking.class.php:240
+msgid "IRM ID: "
+msgstr ""
+
+#: ../include/tracking.class.php:247
+msgid "Select a group:"
+msgstr ""
+
+#: ../include/tracking.class.php:256
+msgid "User Information"
+msgstr ""
+
+#: ../include/tracking.class.php:261
+msgid "User's Name:"
+msgstr ""
+
+#: ../include/tracking.class.php:268
+msgid "User's E-Mail:"
+msgstr ""
+
+#: ../include/tracking.class.php:275
+#, fuzzy
+msgid "Other E-Mail:"
+msgstr "その他のメール"
+
+#: ../include/tracking.class.php:312
+msgid "Additional Information"
+msgstr ""
+
+#: ../include/tracking.class.php:317
+msgid "Assign to:"
+msgstr ""
+
+#: ../include/tracking.class.php:324
+msgid "Set Status to:"
+msgstr ""
+
+#: ../include/tracking.class.php:334
+msgid "Time Spent:"
+msgstr ""
+
+#: ../include/tracking.class.php:340
+msgid "Submit"
+msgstr ""
+
+#: ../include/tracking.class.php:391
+#, fuzzy
+msgid "Alerts"
+msgstr "レポート"
+
+#: ../include/tracking.class.php:421
+#, php-format
+msgid "%s tracking item(s) related to %s"
+msgstr ""
+
+#: ../include/tracking.class.php:468
+msgid "Your tracking job has been placed into the database."
+msgstr ""
+
+#: ../include/tracking.class.php:489
+msgid "Ticket only"
+msgstr ""
+
+#: ../include/tracking.class.php:490
+msgid "Followups only"
+msgstr ""
+
+#: ../include/tracking.class.php:491
+msgid "Ticket and Followups"
+msgstr ""
+
+#: ../include/tracking.class.php:494
+msgid "for the following term: "
+msgstr ""
+
+#: ../include/tracking.class.php:508 ../include/tracking.class.php:2171
+msgid "Show All Tracking"
+msgstr ""
+
+#: ../include/tracking.class.php:509 ../include/tracking.class.php:2170
+msgid "Show All Tracking inc Closed"
+msgstr ""
+
+#: ../include/tracking.class.php:510
+msgid "Show only tracking not assigned to anyone"
+msgstr ""
+
+#: ../include/tracking.class.php:515
+#, php-format
+msgid "Show only tracking assigned to %s"
+msgstr ""
+
+#: ../include/tracking.class.php:523
+msgid "My Requests"
+msgstr ""
+
+#: ../include/tracking.class.php:532
+msgid "Unassigned"
+msgstr ""
+
+#: ../include/tracking.class.php:554
+msgid ""
+"This is the IRM tracking system it allows you to view the jobs currently in "
+"the queue.  In addition, you can click on \"more info\" next to any piece of "
+"tracking in order to view more detail or add followup information."
+msgstr ""
+"IRMトラッキングシステムです。キューに溜っている仕事を示します。ID番号をクリッ"
+"クすることで\"more info\"画面に遷移します。more infoでは詳細をみたりフォロー"
+"アップの情報を付け加えることができます。"
+
+#: ../include/tracking.class.php:570
+#, php-format
+msgid "Invalid field name to sort by: %s"
+msgstr ""
+
+#: ../include/tracking.class.php:608
+#, php-format
+msgid "There are currently %s Jobs"
+msgstr "現在 %s個のジョブがあります。"
+
+#: ../include/tracking.class.php:612
+msgid "There is currently 1 Job"
+msgstr "現在 1個ののジョブがあります。"
+
+#: ../include/tracking.class.php:645
+msgid "Complete"
+msgstr ""
+
+#: ../include/tracking.class.php:647
+msgid "Old"
+msgstr ""
+
+#: ../include/tracking.class.php:693
+msgid "Error setting followup information in Tracking Class:"
+msgstr ""
+
+#: ../include/tracking.class.php:694
+msgid "Tracking ID has not been set yet"
+msgstr ""
+
+#: ../include/tracking.class.php:706
+msgid "Got zero ID for followup"
+msgstr ""
+
+#: ../include/tracking.class.php:869
+msgid "Invalid sort string:"
+msgstr ""
+
+#: ../include/tracking.class.php:975
+msgid " Year "
+msgstr ""
+
+#: ../include/tracking.class.php:978
+msgid " weeks "
+msgstr ""
+
+#: ../include/tracking.class.php:981
+msgid " days "
+msgstr ""
+
+#: ../include/tracking.class.php:984
+msgid " hours "
+msgstr ""
+
+#: ../include/tracking.class.php:987
+msgid " minutes"
+msgstr ""
+
+#: ../include/tracking.class.php:991
+msgid "Opened:"
+msgstr ""
+
+#: ../include/tracking.class.php:991
+msgid "Closed:"
+msgstr ""
+
+#: ../include/tracking.class.php:1000
+msgid "Error displaying Tracking: "
+msgstr ""
+
+#: ../include/tracking.class.php:1000
+msgid "ID is not set."
+msgstr ""
+
+#: ../include/tracking.class.php:1075
+msgid "Nobody"
+msgstr ""
+
+#: ../include/tracking.class.php:1121
+msgid "Follow Ups:"
+msgstr ""
+
+#: ../include/tracking.class.php:1195
+msgid "Request Details"
+msgstr ""
+
+#: ../include/tracking.class.php:1202
+msgid "Problem Description:"
+msgstr ""
+
+#: ../include/tracking.class.php:1214
+msgid "Date Opened: "
+msgstr ""
+
+#: ../include/tracking.class.php:1220
+msgid "Status:"
+msgstr ""
+
+#: ../include/tracking.class.php:1244
+msgid "Assigned to: "
+msgstr ""
+
+#: ../include/tracking.class.php:1251
+msgid "Author:"
+msgstr ""
+
+#: ../include/tracking.class.php:1253
+#, fuzzy
+msgid "Other Emails:"
+msgstr "その他のメールアドレス"
+
+#: ../include/tracking.class.php:1324
+msgid "Status was changed to : "
+msgstr ""
+
+#: ../include/tracking.class.php:1335
+msgid "Request was assigned to : "
+msgstr ""
+
+#: ../include/tracking.class.php:1346
+msgid "Priority was changed to : "
+msgstr ""
+
+#: ../include/tracking.class.php:1380
+msgid "Work Request was changed from : "
+msgstr ""
+
+#: ../include/tracking.class.php:1398
+msgid "Update Information"
+msgstr ""
+
+#: ../include/tracking.class.php:1401
+msgid ""
+"Since you are not a technician or administrator, you can not change the "
+"status of this work request, nor who it is assigned to."
+msgstr ""
+
+#: ../include/tracking.class.php:1403
+#, php-format
+msgid "You are %s"
+msgstr ""
+
+#: ../include/tracking.class.php:1406
+#, php-format
+msgid "Tracking %s has been updated"
+msgstr ""
+
+#: ../include/tracking.class.php:1411
+msgid "Tracking job modified"
+msgstr ""
+
+#: ../include/tracking.class.php:1419
+msgid "Knowledge Base System"
+msgstr ""
+
+#: ../include/tracking.class.php:1425
+msgid ""
+"If tracking is marked as complete, should it be used to add something to the "
+"knowledgebase?"
+msgstr ""
+"ステータスがcomplete状態の時にこのチェックを入れると、知識ベースに加えるため"
+"の画面に移動します。"
+
+#: ../include/tracking.class.php:1459
+msgid "This Tracking Entry Does Not Exist, or is missing critical details."
+msgstr ""
+
+#: ../include/tracking.class.php:1463
+msgid "More Information"
+msgstr ""
+
+#: ../include/tracking.class.php:1469
+msgid "Job Number "
+msgstr ""
+
+#: ../include/tracking.class.php:1475
+msgid "Update Tracking"
+msgstr ""
+
+#: ../include/tracking.class.php:1509
+msgid "Date Closed:"
+msgstr ""
+
+#: ../include/tracking.class.php:1510
+msgid "This job was open for:"
+msgstr ""
+
+#: ../include/tracking.class.php:1529
+msgid "No Followups on this request"
+msgstr ""
+
+#: ../include/tracking.class.php:1541
+msgid "Age"
+msgstr ""
+
+#: ../include/tracking.class.php:1542
+msgid "Pri"
+msgstr ""
+
+#: ../include/tracking.class.php:1543 ../include/followup.class.php:166
+msgid "Author"
+msgstr "発信者"
+
+#: ../include/tracking.class.php:1545 ../include/irmmain.class.php:125
+msgid "Device"
+msgstr ""
+
+#: ../include/tracking.class.php:1547 ../include/followup.class.php:167
+msgid "Description"
+msgstr "説明"
+
+#: ../include/tracking.class.php:1644
+#, php-format
+msgid "IRM: New Job %s has been ADDED to the work request system."
+msgstr ""
+
+#: ../include/tracking.class.php:1646
+#, php-format
+msgid "IRM: Job %s has been COMPLETED by %s"
+msgstr ""
+
+#: ../include/tracking.class.php:1648
+#, php-format
+msgid "IRM: Job %s has been MODIFIED by %s"
+msgstr ""
+
+#: ../include/tracking.class.php:1669
+msgid "Tracking ID:"
+msgstr ""
+
+#: ../include/tracking.class.php:1670
+msgid "  Work Request:"
+msgstr ""
+
+#: ../include/tracking.class.php:1676
+msgid "No Followups have been added."
+msgstr ""
+
+#: ../include/tracking.class.php:1680
+msgid "Followups:"
+msgstr ""
+
+#: ../include/tracking.class.php:1688
+msgid "Modify this tracking item:"
+msgstr ""
+
+#: ../include/tracking.class.php:1702 ../include/tracking.class.php:1706
+#: ../include/tracking.class.php:1804 ../include/tracking.class.php:1811
+#: ../include/tracking.class.php:1816 ../include/tracking.class.php:1822
+#: ../include/tracking.class.php:1827 ../include/tracking.class.php:1832
+#: ../include/tracking.class.php:1837 ../include/tracking.class.php:1842
+#: ../include/tracking.class.php:1847 ../include/tracking.class.php:1852
+msgid "Error committing Work Request. "
+msgstr ""
+
+#: ../include/tracking.class.php:1706
+msgid ""
+"ID has not\n"
+"\t\t\t\tbeen set. Use \"add()\" to add new Work\n"
+"\t\t\t\tRequests and \"commit\" to commit changes to\n"
+"\t\t\t\tWork Requests"
+msgstr ""
+
+#: ../include/tracking.class.php:1715 ../include/tracking.class.php:1811
+msgid "DateEntered has not been set."
+msgstr ""
+
+#: ../include/tracking.class.php:1720 ../include/tracking.class.php:1816
+msgid "Status has not been set."
+msgstr ""
+
+#: ../include/tracking.class.php:1725
+msgid "ComputerID has not been set."
+msgstr ""
+
+#: ../include/tracking.class.php:1730
+msgid "WorkRequest has not been set."
+msgstr ""
+
+#: ../include/tracking.class.php:1735 ../include/tracking.class.php:1832
+msgid "Priority has not been set."
+msgstr ""
+
+#: ../include/tracking.class.php:1740 ../include/tracking.class.php:1837
+msgid "IsGroup has not been set."
+msgstr ""
+
+#: ../include/tracking.class.php:1745 ../include/tracking.class.php:1842
+msgid "Author has not been set."
+msgstr ""
+
+#: ../include/tracking.class.php:1750 ../include/tracking.class.php:1847
+msgid "AuthorEmail has not been set."
+msgstr ""
+
+#: ../include/tracking.class.php:1755
+msgid "EmailUpdatesToAuthor has not been set."
+msgstr ""
+
+#: ../include/tracking.class.php:1804
+msgid ""
+"ID has not\n"
+"\t\t\t\tbeen set. Use \"add()\" to add new Followups\n"
+"\t\t\t\tand \"commit\" to commit changes to\n"
+"\t\t\t\tFollowups"
+msgstr ""
+
+#: ../include/tracking.class.php:1822
+msgid "  ComputerID has not been set."
+msgstr ""
+
+#: ../include/tracking.class.php:1827
+msgid " WorkRequest has not been set."
+msgstr ""
+
+#: ../include/tracking.class.php:1852
+msgid " EmailUpdatesToAuthor has not been set."
+msgstr ""
+
+#: ../include/tracking.class.php:2041
+msgid "Group Memberships"
+msgstr ""
+
+#: ../include/tracking.class.php:2140
+msgid "No Tracking Found"
+msgstr ""
+
+#: ../include/tracking.class.php:2148 ../include/reports.inc.php:42
+msgid "Tracking Summary"
+msgstr ""
+
+#: ../include/tracking.class.php:2153
+#, php-format
+msgid "Found %s tracking items, %s currently open."
+msgstr ""
+
+#: ../include/tracking.class.php:2172
+msgid "Show Current Tracking"
+msgstr ""
+
+#: ../include/tracking.class.php:2173
+msgid "Hide Tracking"
+msgstr ""
+
+#: ../include/tracking.class.php:2178
+msgid "Show Followups"
+msgstr ""
+
+#: ../include/tracking.class.php:2179
+msgid "Show Tracking"
+msgstr ""
+
+#: ../include/knowledgebase.class.php:161
+msgid ""
+"This is the IRM Knowledge Base system. It allows you to view all of the "
+"knowledge base articles that have been entered."
+msgstr ""
+"IRM知識ベースシステムです。なかに入れば知識ベースに書かれた情報はすべて閲覧可"
+"能です"
+
+#: ../include/knowledgebase.class.php:175
+msgid "Add an Article"
+msgstr ""
+
+#: ../include/knowledgebase.class.php:235
+msgid "FAQ - Detailed View"
+msgstr ""
+
+#: ../include/knowledgebase.class.php:252
+#, php-format
+msgid "Question (%s):"
+msgstr ""
+
+#: ../include/knowledgebase.class.php:255
+#: ../include/knowledgebase.class.php:493
+msgid "Answer:"
+msgstr ""
+
+#: ../include/knowledgebase.class.php:265
+#: ../include/knowledgebase.class.php:274
+msgid "faq"
+msgstr ""
+
+#: ../include/knowledgebase.class.php:265
+msgid "Add Knowledge base article to faq"
+msgstr "知識ベースの書き込みをFAQに追加"
+
+#: ../include/knowledgebase.class.php:274
+msgid "Remove Knowledge base article from faq"
+msgstr "FAQから知識ベースの書き込みを削除"
+
+#: ../include/knowledgebase.class.php:289
+msgid "This Knowledge Base entry is part of the FAQ."
+msgstr "この知識ベースの記事はFAQに登録されています。"
+
+#: ../include/knowledgebase.class.php:290
+#: ../include/knowledgebase.class.php:292
+msgid "Remove Article from the FAQ"
+msgstr "ＦＡＱから記事を削除します"
+
+#: ../include/knowledgebase.class.php:296
+msgid "This Knowledge Base entry is not part of the FAQ."
+msgstr "この知識ベースの記事はFAQに登録されていません。"
+
+#: ../include/knowledgebase.class.php:297
+#: ../include/knowledgebase.class.php:299
+msgid "Add Article to the FAQ"
+msgstr "記事をＦＡＱに追加します"
+
+#: ../include/knowledgebase.class.php:319
+#: ../include/knowledgebase.class.php:583
+msgid "Modify Article"
+msgstr "記事の修正"
+
+#: ../include/knowledgebase.class.php:327
+msgid "Delete Article"
+msgstr "記事の削除"
+
+#: ../include/knowledgebase.class.php:345
+#: ../include/knowledgebase.class.php:359
+#: ../include/knowledgebase.class.php:371
+#: ../include/knowledgebase.class.php:381
+#: ../include/knowledgebase.class.php:390
+#: ../include/knowledgebase.class.php:398
+msgid "kb"
+msgstr ""
+
+#: ../include/knowledgebase.class.php:345
+msgid "Add Knowledge base category"
+msgstr "知識ベース内にカテゴリーを追加"
+
+#: ../include/knowledgebase.class.php:359
+msgid "Update Knowledge base category"
+msgstr "知識ベース内のカテゴリーを更新"
+
+#: ../include/knowledgebase.class.php:371
+msgid "Delete Knowledge base category"
+msgstr "知識ベース内のカテゴリーを削除"
+
+#: ../include/knowledgebase.class.php:381
+msgid "Delete Knowledge base article"
+msgstr "知識ベース内の記事を削除"
+
+#: ../include/knowledgebase.class.php:390
+msgid "Modify Knowledge base article"
+msgstr "知識ベース内の記事を修正"
+
+#: ../include/knowledgebase.class.php:398
+msgid "Add Knowledge base article"
+msgstr "知識ベース内の記事を追加"
+
+#: ../include/knowledgebase.class.php:403
+#: ../include/knowledgebase.class.php:448
+#: ../include/knowledgebase.class.php:540
+msgid "Add Article"
+msgstr ""
+
+#: ../include/knowledgebase.class.php:411
+msgid "No followups were added, please put something here in the answer!"
+msgstr ""
+"フォローアップは加えられませんでした、なんらかの回答をここに入れてください！"
+
+#: ../include/knowledgebase.class.php:429
+msgid "Here is where you can add an article to the knowledge base."
+msgstr "ここではあなたの記事を知識ベースに加えることができます。"
+
+#: ../include/knowledgebase.class.php:433
+#: ../include/knowledgebase.class.php:597
+msgid "Select the category in which this article should be placed:"
+msgstr "書き込みを配置するカテゴリーを選択して下さい："
+
+#: ../include/knowledgebase.class.php:437
+msgid ""
+"Enter the question here.  Please be as detailed as possible with the \n"
+"\t\tquestion, but don't repeat information that can be inferred by the "
+"category."
+msgstr ""
+"ここには質問を書いて下さい。問題はできるだけ、詳述に記述してください。ただ"
+"し、カテゴリーから類推できることは繰り返さないでください。"
+
+#: ../include/knowledgebase.class.php:442
+msgid ""
+"Enter the answer here.  Please be as detailed as possible with the answer, "
+"including a step by step process."
+msgstr ""
+"回答はここに記述。回答に至るプロセスをを含めてでできるだけ詳しく記述してくだ"
+"さい。"
+
+#: ../include/knowledgebase.class.php:446
+#: ../include/knowledgebase.class.php:611
+msgid ""
+"Place this Knowledge Base Article into the publicly viewable FAQ as well."
+msgstr "この知識ベース内の記事をみんなが見えるＦＡＱに入れます"
+
+#: ../include/knowledgebase.class.php:458
+msgid ""
+"The following error occured with Knowledgebase Article:  You did not enter "
+"any question."
+msgstr ""
+"以下のエラーが知識ベース内の記事にありました：質問は登録されませんでした。"
+
+#: ../include/knowledgebase.class.php:464
+msgid ""
+"The following error occured with your Knowledge Base article:  You did not "
+"enter any answer."
+msgstr ""
+"以下のエラーが知識ベース内の記事にありました：回答は登録されませんでした。"
+
+#: ../include/knowledgebase.class.php:470
+msgid ""
+"The following error occured with your Knowledge Base article:  You did not "
+"enter any category (You may not post Knowledge Base Articles in Main)."
+msgstr ""
+"以下のエラーが知識ベース内の記事にありました：カテゴリーが選択されていません"
+"(Mainカテゴリーに記事を登録することはできません。)"
+
+#: ../include/knowledgebase.class.php:475
+msgid ""
+"Please check that the article you are about to submit is correct.  If it is "
+"not, use the provided links to re-edit it."
+msgstr ""
+"あなたが提出しようとしている記事が正しいことを確認してください。再編集するた"
+"めに、re-editボタンを使ってください。"
+
+#: ../include/knowledgebase.class.php:478
+msgid ""
+"Errors occured with your Knowledge Base article.  Your only option is to re-"
+"edit the article."
+msgstr ""
+"以下のエラーが知識ベース内の記事にありました：再編集するために、re-editボタン"
+"を使ってください。"
+
+#: ../include/knowledgebase.class.php:487
+#, php-format
+msgid "Category Selected was: %s"
+msgstr ""
+
+#: ../include/knowledgebase.class.php:490
+msgid "Question:"
+msgstr ""
+
+#: ../include/knowledgebase.class.php:508
+msgid "Article Preview"
+msgstr ""
+
+#: ../include/knowledgebase.class.php:529
+msgid "Re-edit Article"
+msgstr ""
+
+#: ../include/knowledgebase.class.php:542
+msgid "Save Article"
+msgstr ""
+
+#: ../include/knowledgebase.class.php:560
+msgid "Detailed View"
+msgstr ""
+
+#: ../include/knowledgebase.class.php:593
+msgid "Here is where you can modify an article that is in the knowledge base."
+msgstr ""
+
+#: ../include/knowledgebase.class.php:602
+msgid ""
+"Modify the question here.  Please be as detailed as possible with the "
+"question, but don't repeat information that can be inferred by the category."
+msgstr ""
+"質問の編集。 問題はできるだけ、詳述に記述してください。ただし、カテゴリーから"
+"類推できることは繰り返さないでください。"
+
+#: ../include/knowledgebase.class.php:606
+msgid ""
+"Modify the answer here.  Please be as detailed as possible with the answer, "
+"including a step by step process."
+msgstr ""
+"回答の編集。回答に至るプロセスをを含めてでできるだけ詳しく記述してください。"
+
+#: ../include/knowledgebase.class.php:616
+msgid "Preview Article"
+msgstr ""
+
+#: ../include/knowledgebase.class.php:624
+msgid "Knowledge Base Setup"
+msgstr ""
+
+#: ../include/knowledgebase.class.php:625
+msgid ""
+"Welcome to the IRM Knowledge Base Setup utility.  Here you can add, modify, "
+"or delete a category from the IRM Knowledge Base."
+msgstr ""
+"IRM 知識ベースセットアップユーティリティです。ここでは知識ベースのカテゴリー"
+"関して、追加、修正、削除を行なうことができます。"
+
+#: ../include/knowledgebase.class.php:627
+msgid ""
+"Warning : If you delete a category ALL the knowledge base articles in that "
+"category WILL be deleted."
+msgstr "注意：もしカテゴリーを削除すると、その下の記事は削除されてしまいます。"
+
+#: ../include/knowledgebase.class.php:645
+msgid "Category Name:"
+msgstr ""
+
+#: ../include/knowledgebase.class.php:646
+#: ../include/knowledgebase.class.php:678
+msgid "As a subcategory of: "
+msgstr ""
+
+#: ../include/knowledgebase.class.php:669
+msgid "Add a Category"
+msgstr ""
+
+#: ../include/knowledgebase.class.php:673
+msgid "New Category"
+msgstr ""
+
+#: ../include/emailtracking.class.php:96
+msgid "A message has been received with an IRM header. Dumping the message"
+msgstr "メッセージはIRMヘッダーで受け取られました。メッセージは以下のとおり"
+
+#: ../include/setup-templates.class.php:93
+msgid "Templates Editor"
+msgstr ""
+
+#: ../include/setup-templates.class.php:161
+#, php-format
+msgid "Use this form to edit template \"%s\"."
+msgstr ""
+
+#: ../include/setup-templates.class.php:162
+#: ../include/setup-templates.class.php:245
+msgid "Back to Templates"
+msgstr ""
+
+#: ../include/setup-templates.class.php:168
+msgid "Editing Template"
+msgstr ""
+
+#: ../include/setup-templates.class.php:224
+msgid "Setup - Computer Templates"
+msgstr ""
+
+#: ../include/setup-templates.class.php:232
+msgid "Templates Add Form"
+msgstr ""
+
+#: ../include/setup-templates.class.php:237
+msgid "Template Added Successfuly"
+msgstr ""
+
+#: ../include/setup-templates.class.php:244
+msgid "Use this form to add a template."
+msgstr ""
+
+#: ../include/setup-templates.class.php:253
+msgid "Add Template"
+msgstr ""
+
+#: ../include/setup-templates.class.php:272
+msgid ""
+"If you wish to add software to this template, you must do so by editing it."
+msgstr ""
+
+#: ../include/setup-templates.class.php:279
+#, php-format
+msgid ""
+"Please select a template below to edit, delete, or <a href=\"%s\">add one</"
+"a>."
+msgstr ""
+
+#: ../include/setup-templates.class.php:289
+#: ../include/templates.functions.php:45
+msgid "Computer Templates"
+msgstr ""
+
+#: ../include/files.class.php:75
+msgid "Files Attached"
+msgstr "ファイルが添付されました"
+
+#: ../include/files.class.php:97
+msgid "Attach File"
+msgstr "添付ファイル"
+
+#: ../include/files.class.php:106
+msgid "Select a file on your computer"
+msgstr "あなたのコンピューター内のファイルを選択します"
+
+#: ../include/files.class.php:146
+msgid "File Listing"
+msgstr "ファイルリスト"
+
+#: ../include/files.class.php:156
+msgid "File Name"
+msgstr "ファイル名"
+
+#: ../include/files.class.php:157
+msgid "Device Type"
+msgstr "装置タイプ"
+
+#: ../include/files.class.php:158
+msgid "Device Name"
+msgstr "装置名"
+
+#: ../include/files.class.php:208
+msgid "File exists but is not mapped to a device"
+msgstr "ファイルは存在しますが、装置に関連付けされません"
+
+#: ../include/mdbcheck.php:29
+msgid "Problem with IRM Installation"
+msgstr ""
+
+#: ../include/mdbcheck.php:32
+msgid "Error: MDB not installed or not in the include path"
+msgstr ""
+
+#: ../include/mdbcheck.php:34
+msgid ""
+"I failed to find the MDB package installed in any location in your\n"
+"include path.  This may mean one of two things:"
+msgstr ""
+
+#: ../include/mdbcheck.php:38
+msgid "You haven't got MDB installed; or"
+msgstr ""
+
+#: ../include/mdbcheck.php:39
+msgid "Your include path does not have the location of your MDB installation."
+msgstr ""
+
+#: ../include/mdbcheck.php:43
+msgid ""
+"To remedy the former problem, please run the following command as an\n"
+"administrator or root user:"
+msgstr ""
+
+#: ../include/mdbcheck.php:51
+msgid "(You may have to specify a path to the <tt>pear</tt> command)."
+msgstr ""
+
+#: ../include/mdbcheck.php:52
+msgid ""
+"If you do\n"
+"not have a <tt>pear</tt> command, you should install the basic PEAR system\n"
+"as packaged by your PHP or Linux distribution.  PEAR is the <b>PHP "
+"Extension\n"
+"and Application Repository</b>, and provides a set of basic services for "
+"the\n"
+"installation of PHP libraries such as MDB."
+msgstr ""
+
+#: ../include/mdbcheck.php:59
+msgid ""
+"If you are sure you have MDB installed, check your include path.\n"
+"The include path I have is:"
+msgstr ""
+
+#: ../include/mdbcheck.php:67
+msgid ""
+"Different paths will be separated with colons, or semicolons on windows)."
+msgstr ""
+
+#: ../include/mdbcheck.php:70
+msgid ""
+"Please check that there is a file <tt>MDB.php</tt> in one of the\n"
+"directories listed above.  If your <tt>MDB.php</tt> file is not in any of\n"
+"the above locations, or <i>no</i> include path is shown above, you will "
+"need\n"
+"to configure one in your system's <tt>php.ini</tt> file. Unfortunately, the\n"
+"location for this file varies between Operating Systems and distributions,\n"
+"so you may have to consult your system documentation or use a file "
+"searching\n"
+"command to find it."
+msgstr ""
+
+#: ../include/mdbcheck.php:79
+msgid ""
+"Once you have found your <tt>php.ini</tt> file, you will need to edit it\n"
+"using a text editor and modify the <tt>include_path</tt> parameter (search\n"
+"for it in the <tt>php.ini</tt> file) to include the necessary paths."
+msgstr ""
+
+#: ../include/mdbcheck.php:84
+msgid ""
+"If you have verified that MDB.php exists in a directory specified in\n"
+"your include_path but you are still seeing this error message, please send\n"
+"an e-mail to <tt>irm-discuss@lists.sf.net</tt> with relevant information\n"
+"such as OS and versions of relevant software, and we'll try to help you out."
+msgstr ""
+
+#: ../include/health_check.php:26 ../include/admin.class.php:312
+msgid "ERROR:"
+msgstr "エラー:"
+
+#: ../include/health_check.php:31 ../include/admin.class.php:317
+msgid "NOTICE:"
+msgstr "通知:"
+
+#: ../include/health_check.php:36 ../include/admin.class.php:322
+msgid "HOORAY:"
+msgstr "万歳:"
+
+#: ../include/health_check.php:41 ../include/admin.class.php:337
+msgid "You do not appear to have the MySQL module installed."
+msgstr "MySQLがインストールされているように思えません。"
+
+#: ../include/health_check.php:52 ../include/admin.class.php:348
+msgid "GPC variables not being registered globally."
+msgstr "GPC変数がグローバルとして登録されていません。"
+
+#: ../include/health_check.php:58 ../include/admin.class.php:354
+msgid ""
+"Your webserver isn't providing SCRIPT_FILENAME or PATH_TRANSLATED.  Please "
+"report a bug giving your OS and Webserver information."
+msgstr ""
+"あなたのWebサーバーは SCRIPT_FILENAME または PATH_TRANSLATED をサポートしてい"
+"ません。あなたのWebサーバーおよびOSについてバグレポートを送って下さい。"
+
+#: ../include/health_check.php:64 ../include/admin.class.php:360
+msgid "The current directory ('.') does not appear to be in your include_path."
+msgstr "カレントディレクトリ('.')がinclude_pathに含まれておりません。"
+
+#: ../include/health_check.php:71 ../include/admin.class.php:367
+msgid "IRM requires a minimum PHP version of 4.1.0."
+msgstr "IRMはPHPバージョン4.1.0以降を必要とします。"
+
+#: ../include/health_check.php:77
+msgid ""
+"IRM has not been properly tested with PHP 5.  Please report success and "
+"failure to irm-devel@lists.sf.net."
+msgstr ""
+
+#: ../include/health_check.php:83 ../include/admin.class.php:385
+msgid "Your configured session save path is invalid!"
+msgstr ""
+
+#: ../include/health_check.php:89 ../include/admin.class.php:391
+msgid "There were problems detected."
+msgstr "いくつかの問題を発見しました。"
+
+#: ../include/health_check.php:91 ../include/admin.class.php:393
+msgid "Your server appears healthy.  Enjoy IRM!"
+msgstr "サーバーに問題はないようです。IRMを使ってやって下さい。"
+
+#: ../include/tree.php:103
+msgid "Add computer"
+msgstr ""
+
+#: ../include/tree.php:109
+msgid "Manage groups"
+msgstr ""
+
+#: ../include/tree.php:143
+msgid "Not grouped"
+msgstr ""
+
+#: ../include/tree.php:185
+#, fuzzy
+msgid "Add Network Device"
+msgstr "装置の追加"
+
+#: ../include/tree.php:211
+msgid " - Unusable device"
+msgstr ""
+
+#: ../include/tree.php:244
+#, fuzzy
+msgid "Add Software"
+msgstr "フォームの追加"
+
+#: ../include/reports.inc.php:34
+msgid "All Open Tracking - PDF"
+msgstr ""
+
+#: ../include/reports.inc.php:35
+msgid "All Devices by IP Address"
+msgstr ""
+
+#: ../include/reports.inc.php:36
+msgid "All Devices by Location"
+msgstr ""
+
+#: ../include/reports.inc.php:38
+msgid "PC List"
+msgstr ""
+
+#: ../include/reports.inc.php:40
+msgid "Search Tracking"
+msgstr ""
+
+#: ../include/reports.inc.php:41
+msgid "Tracking Report"
+msgstr ""
+
+#: ../include/reports.inc.php:43
+msgid "Tracking Weekly"
+msgstr ""
+
+#: ../include/reports.inc.php:46
+msgid "Divider"
+msgstr ""
+
+#: ../include/reports.inc.php:49
+msgid "All IP Addresses - List with Octet Mask"
+msgstr ""
+
+#: ../include/reports.inc.php:50
+msgid "Computers IP Report - Sorted by Address"
+msgstr ""
+
+#: ../include/reports.inc.php:51
+msgid "Computers IP Report - Sorted by Name"
+msgstr ""
+
+#: ../include/reports.inc.php:52
+msgid "Duplicate IP Addresses Report"
+msgstr ""
+
+#: ../include/reports.inc.php:53
+msgid "Name List "
+msgstr ""
+
+#: ../include/reports.inc.php:54
+msgid "Port Map Report"
+msgstr ""
+
+#: ../include/reports.inc.php:56
+msgid "Systems"
+msgstr ""
+
+#: ../include/irm.inc:90 ../include/computers.class.php:223
+#: ../include/computers.class.php:393
+msgid "Surplus"
+msgstr "剰余品(ストック等)"
+
+#: ../include/irm.inc:91 ../include/computers.class.php:224
+msgid "Server"
+msgstr "サーバー"
+
+#: ../include/irm.inc:112
+msgid "Computer Type"
+msgstr ""
+
+#: ../include/irm.inc:120 ../include/computers.class.php:384
+msgid "Ram Type"
+msgstr "RAMタイプ"
+
+#: ../include/irm.inc:121
+msgid "Ram Amount (in MB)"
+msgstr "Ram容量(MB)"
+
+#: ../include/irm.inc:122
+msgid "Network Card"
+msgstr "ネットワークカード"
+
+#: ../include/irm.inc:125
+msgid "Hard Drive Space"
+msgstr "HDD容量"
+
+#: ../include/irm.inc:133
+msgid "list view"
+msgstr ""
+
+#: ../include/irm.inc:134
+msgid "full view"
+msgstr ""
+
+#: ../include/irm.inc:138
+msgid "contains"
+msgstr ""
+
+#: ../include/irm.inc:139
+msgid "is the exact phrase"
+msgstr ""
+
+#: ../include/followup.class.php:64 ../include/followup.class.php:68
+#: ../include/followup.class.php:72 ../include/followup.class.php:76
+msgid "Error adding Followup, "
+msgstr "エラーに関する、フォローアップを追加"
+
+#: ../include/followup.class.php:64
+msgid "ID != 0"
+msgstr ""
+
+#: ../include/followup.class.php:68
+msgid "trackingID is invalid"
+msgstr "トラッキングIDが不正です"
+
+#: ../include/followup.class.php:72
+msgid " author not specified"
+msgstr " 発信者が指定されていません"
+
+#: ../include/followup.class.php:76
+msgid "followupInfo not added"
+msgstr "フォローアップ情報が追加されていません"
+
+#: ../include/followup.class.php:95
+msgid "Add Followup"
+msgstr "フォローアップを追加します"
+
+#: ../include/followup.class.php:100
+msgid "Public followup"
+msgstr "公式のフォローアップ"
+
+#: ../include/followup.class.php:163
+msgid "Followups"
+msgstr "フォローアップ"
+
+#: ../include/followup.class.php:168
+msgid "Time Spent"
+msgstr ""
+
+#: ../include/followup.class.php:190
+msgid "Private Note"
+msgstr "個人メモ"
+
+#: ../include/followup.class.php:206 ../include/followup.class.php:213
+#: ../include/followup.class.php:219 ../include/followup.class.php:225
+msgid "Error committing Followup:"
+msgstr "フォローアップのcommitに失敗しました："
+
+#: ../include/followup.class.php:207
+msgid ""
+"No ID given. Use \"add\" to add new\n"
+"\t\t\t\tFollowups and \"commit\" to commit changes to Followups."
+msgstr ""
+"IDがありません。\"add\" を使って新しくフォローアップするか\n"
+"\"commit\"を使って、フォローアップを変更します。"
+
+#: ../include/followup.class.php:214
+msgid "Tracking ID is invalid."
+msgstr "Tracking IDが無効です。"
+
+#: ../include/followup.class.php:220
+msgid "Author not specified."
+msgstr "記述者名がありません。"
+
+#: ../include/followup.class.php:226
+msgid "Followup Info not added."
+msgstr "フォローアップ情報は追加されていません。"
+
+#: ../include/followup.class.php:263
+msgid "-----"
+msgstr ""
+
+#: ../include/followup.class.php:264
+msgid "Added by"
+msgstr "によって追加された"
+
+#: ../include/followup.class.php:265
+msgid " "
+msgstr ""
+
+#: ../include/connections.class.php:98
+#, php-format
+msgid "%s added port"
+msgstr "%s ポートの追加"
+
+#: ../include/connections.class.php:155
+#, php-format
+msgid "%s updated port %s"
+msgstr "%s ポートの更新 %s"
+
+#: ../include/connections.class.php:177 ../include/device.class.php:723
+#, php-format
+msgid "%s removed port %s"
+msgstr "%s ポートの削除 %s"
+
+#: ../include/connections.class.php:197
+msgid "Get"
+msgstr "取得"
+
+#: ../include/connections.class.php:206
+#, fuzzy
+msgid "Add all Ports"
+msgstr "ポートの追加"
+
+#: ../include/connections.class.php:212 ../include/ports.functions.php:274
+msgid "Add Port"
+msgstr "ポートの追加"
+
+#: ../include/connections.class.php:214
+msgid "Fill out this simple form to add a port to the device."
+msgstr "装置にポートを付け加えるためにフォームに記入して下さい。"
+
+#: ../include/connections.class.php:272 ../include/connections.class.php:372
+msgid "Logical Number:"
+msgstr "論理番号"
+
+#: ../include/connections.class.php:282 ../include/connections.class.php:382
+#: ../include/ports.functions.php:100
+msgid "Interface"
+msgstr "インターフェース"
+
+#: ../include/connections.class.php:314
+msgid "Port"
+msgstr "ポート"
+
+#: ../include/connections.class.php:315
+msgid "This is where you change the port properties."
+msgstr "ポートの諸元を変更します。"
+
+#: ../include/connections.class.php:399
+msgid "Connection"
+msgstr "接続"
+
+#: ../include/connections.class.php:403
+#, php-format
+msgid "Port %s on computer %s"
+msgstr "ポート %s はコンピューター %s にある"
+
+#: ../include/connections.class.php:413 ../include/connections.class.php:425
+#: ../include/ports.functions.php:231 ../include/ports.functions.php:238
+#: ../include/ports.functions.php:246
+msgid "Disconnect"
+msgstr "切断"
+
+#: ../include/connections.class.php:417
+#, php-format
+msgid "Port %s on network device %s"
+msgstr "ポート %s は ネットワーク装置 %s にある"
+
+#: ../include/connections.class.php:429 ../include/ports.functions.php:222
+msgid "Nothing Connected."
+msgstr "未接続"
+
+#: ../include/connections.class.php:429 ../include/ports.functions.php:66
+#: ../include/ports.functions.php:222
+msgid "Connect"
+msgstr "接続"
+
+#: ../include/connections.class.php:448
+msgid "Remove"
+msgstr "取り外し"
+
+#: ../include/device.class.php:161
+msgid " - is not a valid device type"
+msgstr " - 有効な装置タイプではありません"
+
+#: ../include/device.class.php:190
+msgid "Add new devices type"
+msgstr "装置タイプの追加"
+
+#: ../include/device.class.php:191
+msgid "Add Device"
+msgstr "装置の追加"
+
+#: ../include/device.class.php:192
+msgid "Existing device types"
+msgstr "定義済みの装置タイプ"
+
+#: ../include/device.class.php:198
+msgid "Edit Fields"
+msgstr "フィールドの編集"
+
+#: ../include/device.class.php:199
+msgid "Delete Field"
+msgstr "フィールドの削除"
+
+#: ../include/device.class.php:214
+msgid "Add new field"
+msgstr "フィールドの追加"
+
+#: ../include/device.class.php:216
+#, fuzzy
+msgid "String"
+msgstr "ネットワーク"
+
+#: ../include/device.class.php:217
+msgid "Text Area"
+msgstr ""
+
+#: ../include/device.class.php:218
+msgid "Boolean"
+msgstr ""
+
+#: ../include/device.class.php:219
+#, fuzzy
+msgid "Date Time"
+msgstr "修正日付"
+
+#: ../include/device.class.php:220
+#, fuzzy
+msgid "Add Field"
+msgstr "フィールドの追加"
+
+#: ../include/device.class.php:228 ../include/device.class.php:246
+msgid "You didn't listen did you"
+msgstr "聞いてないし話してもない"
+
+#: ../include/device.class.php:283
+msgid "Deleted device : "
+msgstr "削除された装置: "
+
+#: ../include/device.class.php:302
+#, php-format
+msgid "Editing Fields for %s device type"
+msgstr "装置タイプ %s のフィールドを編集"
+
+#: ../include/device.class.php:304
+msgid "Field names must not include spaces"
+msgstr "フィールド名に空白を含むことはできません"
+
+#: ../include/device.class.php:307
+msgid "Field Name"
+msgstr "フィールド名"
+
+#: ../include/device.class.php:308
+msgid "Type of Data"
+msgstr "データのタイプ"
+
+#: ../include/device.class.php:320
+msgid "Existing fields that will allow you to use dropdowns are as follow"
+msgstr "ドロップダウンリストが使用可能な既存のフィールドは以下のとおり"
+
+#: ../include/device.class.php:332
+msgid ""
+"If you use any of these names as a field name you will get a corresponding "
+"dropdown"
+msgstr ""
+"フィールド名としてこれらのうちのいずれかを使用すれば、対応するドロップダウン"
+"が使用可能です。"
+
+#: ../include/device.class.php:334
+msgid ""
+"If a device has a field called ip, then it will be possible to view the UP/"
+"DOWN status of the Host, if the corresponding setting is set in the main IRM "
+"configuration"
+msgstr ""
+"装置がIPアドレスを持っていれば、その装置のUP/DOWNステータスをIRMコンフィグ"
+"レーションの中で見ることができます。"
+
+#: ../include/device.class.php:336
+msgid ""
+"If a device has a field called user, then a dropdown will be presented of "
+"all the users on the system, allowing you to choose a user to link to a "
+"device."
+msgstr ""
+"装置がユーザーフィールドを持っている場合、ユーザー名のドロップダウンリストに"
+"よってユーザーを選択できるようになります。"
+
+#: ../include/device.class.php:599
+#, fuzzy
+msgid "Adding new "
+msgstr "%s を追加"
+
+#: ../include/device.class.php:622
+#, fuzzy
+msgid "Editing "
+msgstr "%s を編集"
+
+#: ../include/device.class.php:690
+msgid "Device Information"
+msgstr "装置情報"
+
+#: ../include/device.class.php:702
+msgid "Updated"
+msgstr "更新"
+
+#: ../include/device.class.php:703
+#, php-format
+msgid "%s has been updated"
+msgstr "%s は更新されました"
+
+#: ../include/device.class.php:729 ../include/software.class.php:103
+msgid "Deleted"
+msgstr "削除されました"
+
+#: ../include/device.class.php:730
+#, php-format
+msgid "%s - ID %s has been deleted"
+msgstr "%s - ID %s は削除されました"
+
+#: ../include/ports.functions.php:25
+msgid "Networking Connector Wizard"
+msgstr ""
+
+#: ../include/ports.functions.php:88
+msgid "You have now connected two devices"
+msgstr ""
+
+#: ../include/ports.functions.php:98
+msgid "Port #"
+msgstr ""
+
+#: ../include/ports.functions.php:105
+msgid "MRTG Graph"
+msgstr ""
+
+#: ../include/ports.functions.php:107
+msgid "Connected to..."
+msgstr ""
+
+#: ../include/ports.functions.php:227
+#, php-format
+msgid "Connected to port %s on computer %s"
+msgstr ""
+
+#: ../include/ports.functions.php:234
+#, php-format
+msgid "Connected to port %s on network device %s"
+msgstr ""
+
+#: ../include/ports.functions.php:241
+#, php-format
+msgid "Connected to port %s on %s device %s"
+msgstr ""
+
+#: ../include/ports.functions.php:268
+msgid "Looks like a lonely device to me.  No ports found."
+msgstr ""
+
+#: ../include/software.class.php:32 ../include/software.class.php:127
+#: ../include/searching.functions.php:220
+msgid "Platform"
+msgstr ""
+
+#: ../include/software.class.php:34 ../include/software.class.php:122
+msgid "Class"
+msgstr ""
+
+#: ../include/software.class.php:105
+msgid ""
+"Deleting this package will result in the removal of all Associated Records. "
+"Are you sure you want to delete this package. Remember you will loose the "
+"following Information about this package:"
+msgstr ""
+
+#: ../include/software.class.php:107 ../include/software.class.php:132
+msgid "Installations"
+msgstr ""
+
+#: ../include/software.class.php:108 ../include/software.class.php:137
+#: ../include/searching.functions.php:221
+msgid "Licenses"
+msgstr ""
+
+#: ../include/software.class.php:110
+#, fuzzy
+msgid "Templates"
+msgstr "テンプレートの選択"
+
+#: ../include/software.class.php:111 ../include/software.class.php:142
+msgid "Bundles"
+msgstr ""
+
+#: ../include/software.class.php:148
+msgid "No"
+msgstr ""
+
+#: ../include/software.class.php:224 ../include/software.class.php:325
+#: ../include/User.php:570
+msgid "Location:"
+msgstr "場所(部所)"
+
+#: ../include/software.class.php:232 ../include/software.class.php:330
+msgid "Platform:"
+msgstr ""
+
+#: ../include/software.class.php:236 ../include/software.class.php:335
+msgid "Class:"
+msgstr ""
+
+#: ../include/software.class.php:258
+msgid "Licenses:"
+msgstr ""
+
+#: ../include/software.class.php:259
+msgid "Installed:"
+msgstr ""
+
+#: ../include/software.class.php:260
+msgid "Remaining:"
+msgstr ""
+
+#: ../include/software.class.php:308 ../include/computers.class.php:430
+msgid "Add Form"
+msgstr "フォームの追加"
+
+#: ../include/software.class.php:309
+msgid "Fill out this form to add a new software package."
+msgstr ""
+
+#: ../include/software.class.php:317
+msgid "New Software"
+msgstr ""
+
+#: ../include/software.class.php:375
+msgid ""
+"Welcome to the IRM Software section.  This where you keep information about\n"
+"\t\tall of your software."
+msgstr ""
+
+#: ../include/software.class.php:386
+msgid "Information"
+msgstr ""
+
+#: ../include/software.class.php:421
+msgid "License Key"
+msgstr ""
+
+#: ../include/software.class.php:422
+msgid "Entitlement"
+msgstr ""
+
+#: ../include/software.class.php:423
+msgid "Oem Sticker"
+msgstr ""
+
+#: ../include/software.class.php:461
+msgid "Del"
+msgstr ""
+
+#: ../include/software.class.php:474
+msgid "Computers with this software assigned to them"
+msgstr ""
+
+#: ../include/software.class.php:487
+msgid "Add this software to :"
+msgstr ""
+
+#: ../include/searching.functions.php:34
+msgid "Setup groups with this query"
+msgstr ""
+
+#: ../include/searching.functions.php:83
+#, php-format
+msgid "%s Management"
+msgstr ""
+
+#: ../include/searching.functions.php:89
+#, php-format
+msgid "Add  %s"
+msgstr ""
+
+#: ../include/searching.functions.php:97
+#, php-format
+msgid "Select %s"
+msgstr ""
+
+#: ../include/searching.functions.php:106
+#, php-format
+msgid "Select %s by name:"
+msgstr ""
+
+#: ../include/searching.functions.php:117
+msgid "View by Location"
+msgstr ""
+
+#: ../include/searching.functions.php:126
+msgid "and show in"
+msgstr ""
+
+#: ../include/searching.functions.php:130
+msgid "sorted by"
+msgstr ""
+
+#: ../include/searching.functions.php:158
+msgid "where that field"
+msgstr ""
+
+#: ../include/searching.functions.php:167
+msgid "and then show in"
+msgstr ""
+
+#: ../include/searching.functions.php:173
+msgid "and sort by"
+msgstr ""
+
+#: ../include/searching.functions.php:195
+#, php-format
+msgid "invalid field name: %s"
+msgstr ""
+
+#: ../include/searching.functions.php:236
+msgid "Installed: "
+msgstr ""
+
+#: ../include/searching.functions.php:237
+msgid "Remaining: "
+msgstr ""
+
+#: ../include/searching.functions.php:243
+msgid "Total: "
+msgstr ""
+
+#: ../include/searching.functions.php:306
+#, php-format
+msgid "Invalid field name: %s"
+msgstr ""
+
+#: ../include/searching.functions.php:313
+#, php-format
+msgid "Invalid sort name: %s"
+msgstr ""
+
+#: ../include/searching.functions.php:328
+#, php-format
+msgid ""
+"Showing results where %s contains %s in %s view \n"
+"\t\t\tsorted by %s"
+msgstr ""
+
+#: ../include/searching.functions.php:390
+msgid "Previous 5"
+msgstr ""
+
+#: ../include/searching.functions.php:399
+msgid "Next 5"
+msgstr ""
+
+#: ../include/searching.functions.php:501
+msgid "Previous 25"
+msgstr ""
+
+#: ../include/searching.functions.php:513
+msgid "Next 25"
+msgstr ""
+
+#: ../include/setup-groups-members.class.php:45
+msgid "Group Members"
+msgstr ""
+
+#: ../include/setup-groups-members.class.php:47
+#, php-format
+msgid ""
+"Welcome to the IRM Group Setup utility.  Here you can edit members of a "
+"specified group."
+msgstr ""
+
+#: ../include/setup-groups-members.class.php:48
+msgid "You may also add computers to a group"
+msgstr ""
+
+#: ../include/setup-groups-members.class.php:55
+msgid "Group:"
+msgstr ""
+
+#: ../include/setup-groups-members.class.php:82
+msgid "No computers in this group."
+msgstr ""
+
+#: ../include/setup-groups-members.class.php:85
+msgid "add"
+msgstr ""
+
+#: ../include/setup-groups-members.class.php:87
+msgid "Add a Computer to Group"
+msgstr ""
+
+#: ../include/setup-groups-members.class.php:91
+msgid "Computer ID: "
+msgstr ""
+
+#: ../include/setup-groups-members.class.php:115
+msgid "OR Enter the computer ID"
+msgstr ""
+
+#: ../include/setup-groups-members.class.php:123
+msgid "OR Choose from a dropdown list of computers"
+msgstr ""
+
+#: ../include/User.php:95
+msgid "Sorry, cannot contact LDAP server\n"
+msgstr "LDAPサーバーに接続できません。\n"
+
+#: ../include/User.php:167 ../include/User.php:229
+#, php-format
+msgid "LDAP bind failed for %s"
+msgstr "LDAPサーバー %s への接続失敗"
+
+#: ../include/User.php:176 ../include/User.php:238
+msgid "Anonymous bind failed"
+msgstr "匿名ユーザーによる接続に失敗しました"
+
+#: ../include/User.php:307 ../include/User.php:313 ../include/User.php:319
+msgid "Error adding user: "
+msgstr "ユーザー追加エラー: "
+
+#: ../include/User.php:308
+msgid "username not set"
+msgstr "ユーザー名がありません"
+
+#: ../include/User.php:314
+msgid "password not set"
+msgstr "パスワードがありません"
+
+#: ../include/User.php:320
+msgid "full name not set"
+msgstr "フルネームがありません"
+
+#: ../include/User.php:325
+msgid "Error adding user: type not set"
+msgstr "ユーザー追加エラー: タイプがありません"
+
+#: ../include/User.php:367
+msgid "Error deleting user: name not set"
+msgstr "ユーザー削除エラー: 名前がありません"
+
+#: ../include/User.php:381
+msgid "Error updating user: name not set"
+msgstr "ユーザー更新エラー: 名前がありません"
+
+#: ../include/User.php:530
+msgid "Error displaying user: Name not set"
+msgstr "ユーザー表示エラー: 名前がありません"
+
+#: ../include/User.php:539
+msgid "edit"
+msgstr "編集"
+
+#: ../include/User.php:540
+msgid "delete"
+msgstr "削除"
+
+#: ../include/User.php:550
+#, php-format
+msgid "User \"%s\" is no longer a registered user on this system"
+msgstr "ユーザー \"%s\" はこのシステムに登録されていません"
+
+#: ../include/User.php:629
+#, php-format
+msgid "Auth level %s not found"
+msgstr "権限レベル %s は存在しません"
+
+#: ../include/computers.class.php:75 ../include/computers.class.php:90
+msgid "Error"
+msgstr "エラー"
+
+#: ../include/computers.class.php:76
+msgid ""
+"ERROR: Requested IDs can only contain digits.  Please re-enter your "
+"requested IRM ID"
+msgstr ""
+"エラー: リクエストIDは数字です。あなたのIRM IDをお確かめのうえもう一度入力し"
+"て下さい。"
+
+#: ../include/computers.class.php:91
+#, php-format
+msgid "A computer with ID %s already exists.  Please pick a new ID"
+msgstr "コンピュータID %s は存在しています。新しいIDを取り直して下さい。"
+
+#: ../include/computers.class.php:177
+#, php-format
+msgid "Redirecting to %s\n"
+msgstr "%s へ転送します。\n"
+
+#: ../include/computers.class.php:207
+#, php-format
+msgid "%s deleted record"
+msgstr "%s レコードを削除しました"
+
+#: ../include/computers.class.php:212
+msgid "Select Template"
+msgstr "テンプレートの選択"
+
+#: ../include/computers.class.php:213
+msgid ""
+"Select from one of the templates below to ease in adding a computer. If you "
+"wish to create/modify templates, please go to the setup area."
+msgstr ""
+"コンピュータを追加する際に使用するテンプレートを選択して下さい。テンプレート"
+"を作成・修正する場合はセットアップエリアへ行って下さい。"
+
+#: ../include/computers.class.php:324 ../include/computers.class.php:331
+msgid "Add Tracking"
+msgstr "Trackingの追加"
+
+#: ../include/computers.class.php:378
+msgid "OSVersion"
+msgstr "OSバージョン"
+
+#: ../include/computers.class.php:383
+msgid "Hard Drive Space in MB"
+msgstr "HDD容量"
+
+#: ../include/computers.class.php:385
+msgid "Ram Amount"
+msgstr "RAM容量"
+
+#: ../include/computers.class.php:392
+msgid "Server (constantly running)"
+msgstr "サーバー(常時稼働)"
+
+#: ../include/computers.class.php:433
+msgid "Computer Added Successfully"
+msgstr "コンピュータが追加されました"
+
+#: ../include/computers.class.php:476
+#, php-format
+msgid "Use this form to add a computer from template \"%s\":"
+msgstr "コンピュータを追加するのに使用しているテンプレート \"%s\":"
+
+#: ../include/computers.class.php:485
+#, php-format
+msgid "New Computer from \"%s\""
+msgstr "新しいコンピュータ \"%s\""
+
+#: ../include/computers.class.php:492
+msgid "Requested IRM ID (optional):"
+msgstr "IRM ID の要求(オプション)"
+
+#: ../include/computers.class.php:501
+msgid "Network Interface: "
+msgstr "ネットワークインターフェース"
+
+#: ../include/computers.class.php:504
+msgid "Add a port of this type."
+msgstr "このタイプのポートを追加"
+
+#: ../include/computers.class.php:509
+msgid "Added On: "
+msgstr "追加された: "
+
+#: ../include/computers.class.php:526
+msgid "Info"
+msgstr "情報"
+
+#: ../include/computers.class.php:548
+msgid ""
+"Welcome to the IRM Computer Tracking utility!  This is where you store "
+"information about the various computers scattered about your organization. "
+"Below are tools in which you can view your computers, as well as edit and "
+"add entries."
+msgstr ""
+"IRMコンピュータートラッキングユーティリティへようこそ。様々なコンピューターの"
+"構成情報を格納するとともに、編集・表示・印刷することができるツールです。"
+
+#: ../include/admin.class.php:31 ../include/admin.class.php:161
+#: ../include/admin.class.php:166
+msgid "Health Check"
+msgstr "システム診断"
+
+#: ../include/admin.class.php:41 ../include/admin.class.php:205
+#: ../include/admin.class.php:234
+msgid "Install"
+msgstr "インストール"
+
+#: ../include/admin.class.php:46 ../include/admin.class.php:259
+msgid "Upgrade"
+msgstr "アップグレード"
+
+#: ../include/admin.class.php:69
+msgid "Installing database tables..."
+msgstr "データベース中にテーブルをインストールしています"
+
+#: ../include/admin.class.php:74
+msgid "Installing sample data..."
+msgstr "サンプルデータをインストールしています"
+
+#: ../include/admin.class.php:78
+#, php-format
+msgid "The database '%s' has been initialised."
+msgstr "データベース '%s' は初期化されました"
+
+#: ../include/admin.class.php:81 ../include/admin.class.php:126
+msgid "There were query errors:"
+msgstr "検索エラー:"
+
+#: ../include/admin.class.php:100
+msgid ""
+"Sorry, your IRM database is pre-1.3.0.\n"
+"\t\t\t\t Upgrades from versions of IRM prior to 1.3.0 are not supported,\n"
+"\t\t\t\t due to massive and catastrophic changes to the database format."
+msgstr ""
+"IRMデータベースが1.3.0以前です。\n"
+"\t\t\t\t データベースに大きな変更が加えられたため\n"
+"\t\t\t\t IRM1.3.0以前のデータベースはアップグレードできません。"
+
+#: ../include/admin.class.php:115
+#, php-format
+msgid "Running upgrade for %s"
+msgstr "%s をアップグレードしています。"
+
+#: ../include/admin.class.php:137
+#, php-format
+msgid "The database '%s' has been upgraded to the current system version."
+msgstr ""
+"データベース '%s' は現在のシステムに適合するようアップグレードされました。 "
+
+#: ../include/admin.class.php:138
+msgid ""
+"If query errors were reported above, your database is not completely "
+"upgraded."
+msgstr ""
+"エラーレポートが表示された場合、データベースのアップグレードは完了していませ"
+"ん。"
+
+#: ../include/admin.class.php:139
+msgid "Please review the errors and deal with them as appropriate."
+msgstr "エラーとその内容を調査してください"
+
+#: ../include/admin.class.php:163
+msgid ""
+"We provide a free \"health check\" for your web server to see if some "
+"common\n"
+"\t\tproblems exist.  If there are errors, you may have problems running IRM."
+msgstr ""
+"IRMを動作させるうえであなたのWebサーバーに共通の問題がないかを\n"
+"確かめるため\"システムチェック\"を提供します。"
+
+#: ../include/admin.class.php:175
+msgid "Configuration File Check"
+msgstr "設定ファイルのチェック"
+
+#: ../include/admin.class.php:179
+#, php-format
+msgid "Section : %s"
+msgstr "セクション : %s"
+
+#: ../include/admin.class.php:181
+#, php-format
+msgid "Name : %s"
+msgstr "名前 : %s"
+
+#: ../include/admin.class.php:190
+msgid "Operating System Check"
+msgstr "オペレーティングシステムチェック"
+
+#: ../include/admin.class.php:194
+msgid "I have detected that you are running on some form of Windows system."
+msgstr "Windowsシステムで実行されていることを検知しました。"
+
+#: ../include/admin.class.php:196
+msgid ""
+"I have detected that you are running on a Unix-like system (Linux, Mac OS X, "
+"etc)."
+msgstr ""
+"Unix-ライクな(Linux,Mac OS X,*BSD,etc)システムで実行されていることを検知しま"
+"した。"
+
+#: ../include/admin.class.php:199
+msgid ""
+"If this autodetection is not correct, we have a serious problem.  Please "
+"report a bug."
+msgstr ""
+"この自動検知システムが正確でない場合、大きな問題が発生することがあります。バ"
+"グ報告をお願いします。"
+
+#: ../include/admin.class.php:213
+msgid ""
+"Caution: Any data in the database you initialise will be totally destroyed."
+msgstr "注意: 初期化するとデータベースの中はすべて破壊されます。"
+
+#: ../include/admin.class.php:217
+msgid "Select a database to initialise."
+msgstr "初期化するデータベースを選んで下さい。"
+
+#: ../include/admin.class.php:224
+msgid "Insert Sample Data?"
+msgstr "サンプルデータを導入しますか？"
+
+#: ../include/admin.class.php:229
+msgid "Create Admin Password"
+msgstr "Admin ユーザーのパスワードを作ります。"
+
+#: ../include/admin.class.php:240
+msgid "No uninitialised databases found"
+msgstr "初期化されていないデータベースはありません。"
+
+#: ../include/admin.class.php:247
+msgid "Upgrades"
+msgstr "アップグレード"
+
+#: ../include/admin.class.php:256
+msgid "Please select a database to upgrade."
+msgstr "アップグレードするデータベースを選択して下さい。"
+
+#: ../include/admin.class.php:278
+#, php-format
+msgid "Setup IRM version %s"
+msgstr "IRM バージョン %s の設定"
+
+#: ../include/admin.class.php:286
+msgid "Go to login page"
+msgstr "ログイン ページへ戻る"
+
+#: ../include/admin.class.php:300
+#, fuzzy
+msgid "Please create a database and update the database.ini file"
+msgstr "アップグレードするデータベースを選択して下さい。"
+
+#: ../include/admin.class.php:302
+msgid "In the config directory there is a file called database.ini.dist,"
+msgstr ""
+
+#: ../include/admin.class.php:304
+msgid ""
+"please copy this to database.ini and enter your database connection settings"
+msgstr ""
+
+#: ../include/admin.class.php:327
+msgid "INFORMATION:"
+msgstr "情報"
+
+#: ../include/admin.class.php:373
+msgid ""
+"IRM has not been properly tested with PHP 5.  Please report success and "
+"failure to "
+msgstr ""
+"IRMはPHPバージョン5での完全なテストを行なっていません。成功・失敗のレポートを"
+"お願いします。"
+
+#: ../include/admin.class.php:378
+msgid "Your server is running."
+msgstr "サーバーは動いています。"
+
+#~ msgid "Remove Article to the FAQ"
+#~ msgstr "記事をＦＡＱから削除します"
+
+#~ msgid "Introduction to IRM"
+#~ msgstr "はじめに"
+
+#~ msgid "Computer - Name:"
+#~ msgstr "コンピューターの名前"
+
+#~ msgid "Continue with Name"
+#~ msgstr "コンピュータ名を選択して次へ"
+
+#~ msgid "Deleted field %s :"
+#~ msgstr "%s フィールドを削除"
