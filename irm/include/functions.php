@@ -47,314 +47,317 @@ require_once dirname(__FILE__) . '/ocs.class.php';
 require_once dirname(__FILE__) . '/../FCKeditor/fckeditor.php';
 
 function fckeditor($editorname, $defaultText){
-	$oFCKeditor = new FCKeditor($editorname) ;
-	$oFCKeditor->BasePath = '../FCKeditor/';
-	$oFCKeditor->Value = $defaultText;
-	$oFCKeditor->ToolbarSet = 'Basic';
-	$oFCKeditor->Create() ;
+    $oFCKeditor = new FCKeditor($editorname) ;
+    $oFCKeditor->BasePath = '../FCKeditor/';
+    $oFCKeditor->Value = $defaultText;
+    $oFCKeditor->ToolbarSet = 'Basic';
+    $oFCKeditor->Create() ;
 }
 
 function formSubmit ($extraFields, $submit){
-	if(!$submit == ""){
-		return $extraFields . '<br /><input type="submit" value="' . $submit . '" /></form>';
-	}
+    if(!$submit == ""){
+        return $extraFields . '<br /><input type="submit" value="' . $submit . '" /></form>';
+    }
 }
 
 function redirectCheck(){
-	if (@$_REQUEST['redirect'])
-	{
-		return '<input type="hidden" name="redirect" value="'.$_REQUEST['redirect'].'" />';
-	}
+    if (@$_REQUEST['redirect'])
+    {
+        return '<input type="hidden" name="redirect" value="'.$_REQUEST['redirect'].'" />';
+    }
 }
 
 function irmConnect(){
-	$irmConnect = '<input type="hidden" name="name" value="IRMConnect" />' . "\n";
-	return $irmConnect;
+    $irmConnect = '<input type="hidden" name="name" value="IRMConnect" />' . "\n";
+    return $irmConnect;
 }
 
 function formAction ($extra = ""){
-	$formAction = '<form method="post" '.$extra.' action="login.php">' . "\n";
-	$formAction .= make_dblist(); 
-	return $formAction;
+    $formAction = '<form method="post" '.$extra.' action="login.php">' . "\n";
+    $formAction .= make_dblist(); 
+    return $formAction;
 }
 
 function loginCheck(){
-	switch ($_REQUEST['auth'])
-	{
-		case 'fail':
-			return "<b>"._('Incorrect username or password')."</b>\n";
-			break;
-		
-		case 'sess':
-			return "<b>"._('Session expired')."</b>\n";
-			break;
-	}
+    
+    $auth = isset($_REQUEST['auth']) ? $_REQUEST['auth'] : null;
+    
+    switch ($auth)
+    {
+        case 'fail':
+            return "<b>"._('Incorrect username or password')."</b>\n";
+            break;
+        
+        case 'sess':
+            return "<b>"._('Session expired')."</b>\n";
+            break;
+    }
 }
 
 function make_dblist()
 {
-	$dblist = Databases::All();
+    $dblist = Databases::All();
 
-	$dblistOutput = "";
+    $dblistOutput = "";
 
-	if (count($dblist) > 1)
-	{
-		$dblistOutput .= '<select name="dbuse" size="1">' . "\n";  
-		foreach ($dblist as $k => $d) {    
-			$dblistOutput .= '<option value="'.$k.'">'.$d.'</option>' . "\n";
-		}
-		$dblistOutput .= "</select>" . "\n"; 
-	}
-	else if (count($dblist) == 1)
-	{
-		$f = array_keys($dblist);
-		$dblistOutput .= '<input type="hidden" name="dbuse" value="'.$f[0].'" />' . "\n";
-	}
-	else
-	{
-		trigger_error(_("There are no defined databases"), E_USER_ERROR);
-	}
-	
-	return $dblistOutput;
+    if (count($dblist) > 1)
+    {
+        $dblistOutput .= '<select name="dbuse" size="1">' . "\n";  
+        foreach ($dblist as $k => $d) {    
+            $dblistOutput .= '<option value="'.$k.'">'.$d.'</option>' . "\n";
+        }
+        $dblistOutput .= "</select>" . "\n"; 
+    }
+    else if (count($dblist) == 1)
+    {
+        $f = array_keys($dblist);
+        $dblistOutput .= '<input type="hidden" name="dbuse" value="'.$f[0].'" />' . "\n";
+    }
+    else
+    {
+        trigger_error(_("There are no defined databases"), E_USER_ERROR);
+    }
+    
+    return $dblistOutput;
 }
 
 function currentStatus()
 {
-	$uninitdblist = Databases::Uninitialised();
+    $uninitdblist = Databases::Uninitialised();
 
-	// get array of all databases.
-	$dblist = Databases::All();
+    // get array of all databases.
+    $dblist = Databases::All();
 
-	$statusText = "";
+    $statusText = "";
 
-	foreach ($dblist as $key => $value)
-	{
-		$status = 0;
+    foreach ($dblist as $key => $value)
+    {
+        $status = 0;
 
-		foreach($uninitdblist as $db){
-			if ($db == $value)
-			{		
-				$statusText .= $db . _(" is not initialised") . " - <a href=admin.php>" . _("click here to setup it up") . "</a><br />";
-				$status = 1;
-			}
-		}
-		
-		if ($status != 1){
-			$_SESSION['_sess_database'] = $key;
+        foreach($uninitdblist as $db){
+            if ($db == $value)
+            {        
+                $statusText .= $db . _(" is not initialised") . " - <a href=admin.php>" . _("click here to setup it up") . "</a><br />";
+                $status = 1;
+            }
+        }
+        
+        if ($status != 1){
+            $_SESSION['_sess_database'] = $key;
 
-			User::Authenticate("IRMConnect","password");
+            User::Authenticate("IRMConnect","password");
 
-			$DB = Config::Database();
-			$statusText .= '<p id="warning">';
-			$statusText .=  $value .  " : " . Config::Get('status');
-			$statusText .= "</p>";
-		}
-	}
-	
-	return $statusText;
+            $DB = Config::Database();
+            $statusText .= '<p id="warning">';
+            $statusText .=  $value .  " : " . Config::Get('status');
+            $statusText .= "</p>";
+        }
+    }
+    
+    return $statusText;
 }
 
 function SetupStyle($stylesheet)
 {
-	if ($stylesheet == "default")
-	{
-		$stylesheet = "default.css";
-	}
-  	print '<link href="'.Config::AbsLoc('styles/' . $stylesheet).'" rel="stylesheet" type="text/css" />' . "\n";
+    if ($stylesheet == "default")
+    {
+        $stylesheet = "default.css";
+    }
+      print '<link href="'.Config::AbsLoc('styles/' . $stylesheet).'" rel="stylesheet" type="text/css" />' . "\n";
 }
 
 function TreeMenuRights($usertype)
 {
-	//Check if user type should be able to see the treemenu.
-	if($usertype == "post-only"){
-		$sidemenu = false;
-	} else {
-		$sidemenu = true;
-	}
-	return $sidemenu;
+    //Check if user type should be able to see the treemenu.
+    if($usertype == "post-only"){
+        $sidemenu = false;
+    } else {
+        $sidemenu = true;
+    }
+    return $sidemenu;
 }
 
 // Parse a provided URL and add the extra arguments given as an assoc. array
 function appendURLArguments($baseURL, $newargs)
 {
-	preg_match('/^([^?]+)\??(.*)$/', $baseURL, $matches);
-	$URL = $matches[1];
-	parse_str($matches[2], $argarray);
-	foreach ($newargs as $f => $v)
-	{
-		$argarray[$f] = $v;
-	}
+    preg_match('/^([^?]+)\??(.*)$/', $baseURL, $matches);
+    $URL = $matches[1];
+    parse_str($matches[2], $argarray);
+    foreach ($newargs as $f => $v)
+    {
+        $argarray[$f] = $v;
+    }
 
-	// Now reassemble
-	$args = array();
-	foreach ($argarray as $f => $v)
-	{
-		$args[] = urlencode($f)."=".urlencode($v);
-	}
-	
-	return $URL . "?" . join('&', $args);
+    // Now reassemble
+    $args = array();
+    foreach ($argarray as $f => $v)
+    {
+        $args[] = urlencode($f)."=".urlencode($v);
+    }
+    
+    return $URL . "?" . join('&', $args);
 }
 
 function SetupSortableTables()
 {
-	PRINT '<script src="'.Config::AbsLoc('javascript/sorttable.js').'" language="JavaScript" type="text/javascript"></script>' . "\n";
+    PRINT '<script src="'.Config::AbsLoc('javascript/sorttable.js').'" language="JavaScript" type="text/javascript"></script>' . "\n";
 }
 
 function SetupDHTMLTree()
 {
 
-	PRINT '<script src="'.Config::AbsLoc('javascript/TreeMenu.js').'" language="JavaScript" type="text/javascript"></script>' . "\n";
+    PRINT '<script src="'.Config::AbsLoc('javascript/TreeMenu.js').'" language="JavaScript" type="text/javascript"></script>' . "\n";
 }
 
 function PrintIcon($icon)
-{	
-	return '<img src="'.Config::AbsLoc('images/icons/' . $icon).'" border="0" alt="' . $icon . '" />' . "\n";
+{    
+    return '<img src="'.Config::AbsLoc('images/icons/' . $icon).'" border="0" alt="' . $icon . '" />' . "\n";
 }
 
 function MenuItem($userbase, $link, $icon, $text)
 {
-	$displayType = "";
-	
-	switch($displayType)
-	{
-		case "text":
-			$graphicDisplay = "";
-			$textDisplay = $text;
-			break;
-		case "graphic":
-			$graphicDisplay = PrintIcon($icon);
-			$textDisplay = "";
-			break;
-		default:
-			$graphicDisplay = PrintIcon($icon) . "<br />" ;
-			$textDisplay = $text;
-			break;
-	}
+    $displayType = "";
+    
+    switch($displayType)
+    {
+        case "text":
+            $graphicDisplay = "";
+            $textDisplay = $text;
+            break;
+        case "graphic":
+            $graphicDisplay = PrintIcon($icon);
+            $textDisplay = "";
+            break;
+        default:
+            $graphicDisplay = PrintIcon($icon) . "<br />" ;
+            $textDisplay = $text;
+            break;
+    }
 
-	return '<td class="nav" align="center"><a href="' . $userbase . "/" . $link . '">' . $graphicDisplay . $textDisplay . "</a></td>";
+    return '<td class="nav" align="center"><a href="' . $userbase . "/" . $link . '">' . $graphicDisplay . $textDisplay . "</a></td>";
 }
 function commonHeader($title) 
 {
-	global $IRMName;
+    global $IRMName;
 
-	if (Config::Get('sendexpire')) {
-		header("Expires: Fri, Jun 12 1981 08:20:00 GMT Pragma: no-cache\n");
-	}
-	PRINT "<!-- IRM is (c) 1999-2007 Yann Ramin, Keith Schoenefeld, and others -->\n";
-	PRINT "<!-- Yann Ramin atrus@atrustrivalie.org -->\n";
-	PRINT "<!-- Keith Schoenefeld keith-p@schoenefeld.org -->\n";
-	PRINT "<!-- Some code is (c) 1999 Brandon Neill bneill@learn2.com	-->\n";
-	PRINT "<!-- http://www.stackworks.net/irm/ -->\n";
-	PRINT '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">' . "\n";
-	PRINT "<html>\n";
-	PRINT "<head>\n";
-	PRINT "<title>IRM: $title</title>\n";
-	if (Config::Get('sendexpire'))
-	{
-		PRINT "<META HTTP-EQUIV=\"Expires\" CONTENT=\"Fri, Jun 12 1981 08:20:00 GMT\">\n";
-		PRINT "<META HTTP-EQUIV=\"Pragma\" CONTENT=\"no-cache\">\n";
-		PRINT "<META HTTP-EQUIV=\"Cache-Control\" CONTENT=\"no-cache\">\n";
-	}
-	$stylesheet = Config::Get('stylesheet');
-	SetupStyle($stylesheet);
-	SetupSortableTables();
-	SetupDHTMLTree();
-	PRINT "</head>\n";
-	PRINT "<body>\n";
-	
-	//Display the main navigation bar
-	PRINT '<div id="banner">';
-	PRINT "<!-- Main Information -->\n";
-	PRINT "<table>\n";
-	PRINT '<tr class="nav">';
+    if (Config::Get('sendexpire')) {
+        header("Expires: Fri, Jun 12 1981 08:20:00 GMT Pragma: no-cache\n");
+    }
+    PRINT "<!-- IRM is (c) 1999-2007 Yann Ramin, Keith Schoenefeld, and others -->\n";
+    PRINT "<!-- Yann Ramin atrus@atrustrivalie.org -->\n";
+    PRINT "<!-- Keith Schoenefeld keith-p@schoenefeld.org -->\n";
+    PRINT "<!-- Some code is (c) 1999 Brandon Neill bneill@learn2.com    -->\n";
+    PRINT "<!-- http://www.stackworks.net/irm/ -->\n";
+    PRINT '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">' . "\n";
+    PRINT "<html>\n";
+    PRINT "<head>\n";
+    PRINT "<title>IRM: $title</title>\n";
+    if (Config::Get('sendexpire'))
+    {
+        PRINT "<META HTTP-EQUIV=\"Expires\" CONTENT=\"Fri, Jun 12 1981 08:20:00 GMT\">\n";
+        PRINT "<META HTTP-EQUIV=\"Pragma\" CONTENT=\"no-cache\">\n";
+        PRINT "<META HTTP-EQUIV=\"Cache-Control\" CONTENT=\"no-cache\">\n";
+    }
+    $stylesheet = Config::Get('stylesheet');
+    SetupStyle($stylesheet);
+    SetupSortableTables();
+    SetupDHTMLTree();
+    PRINT "</head>\n";
+    PRINT "<body>\n";
+    
+    //Display the main navigation bar
+    PRINT '<div id="banner">';
+    PRINT "<!-- Main Information -->\n";
+    PRINT "<table>\n";
+    PRINT '<tr class="nav">';
 
-	$user = new User($IRMName);
-	$usertype = $user->getType();
-	$uname = $user->getName();
-	$userbase = Config::AbsLoc('users');
+    $user = new User($IRMName);
+    $usertype = $user->getType();
+    $uname = $user->getName();
+    $userbase = Config::AbsLoc('users');
 
-	$homeImage = "go-home.png";
-	$requestImage = "accessories-text-editor.png";
-	$inventoryImage = "address-book-new.png";
-	$trackingImage = "battery.png";
-	$reportImage = "printer.png";
-	$setupImage = "preferences-desktop.png";
-	$knowledgeBaseImage = "applications-internet.png";
-	$logoutImage = "system-log-out.png";
-	$faqImage = "system-search.png";
+    $homeImage = "go-home.png";
+    $requestImage = "accessories-text-editor.png";
+    $inventoryImage = "address-book-new.png";
+    $trackingImage = "battery.png";
+    $reportImage = "printer.png";
+    $setupImage = "preferences-desktop.png";
+    $knowledgeBaseImage = "applications-internet.png";
+    $logoutImage = "system-log-out.png";
+    $faqImage = "system-search.png";
 
-	PRINT MenuItem($userbase, "index.php", $homeImage, _("Home"));
-	PRINT MenuItem($userbase, "helper-index.php", $requestImage, _("Request Help"));
-	PRINT MenuItem($userbase, "tracking-index.php?action=display&amp;show=u:$uname", $trackingImage, _("Tracking"));
+    PRINT MenuItem($userbase, "index.php", $homeImage, _("Home"));
+    PRINT MenuItem($userbase, "helper-index.php", $requestImage, _("Request Help"));
+    PRINT MenuItem($userbase, "tracking-index.php?action=display&amp;show=u:$uname", $trackingImage, _("Tracking"));
 
-	if($usertype == "tech" || $usertype == "admin")
-	{
-		# Inventory Things
-		PRINT MenuItem($userbase, "inventory-index.php", $inventoryImage, _("Inventory"));
-		PRINT MenuItem($userbase, "reports-index.php", $reportImage, _("Reports"));
-		PRINT MenuItem($userbase, "setup-index.php", $setupImage, _("Setup"));
-		
-		if(Config::Get('knowledgebase'))
-		{
-			PRINT MenuItem($userbase, "knowledgebase-index.php", $knowledgeBaseImage, _("Knowledge Base"));
-		}
-	}
-	if (Config::Get('knowledgebase'))
-	{
-		PRINT MenuItem($userbase, "faq-index.php", $faqImage, _("FAQ"));
-	}
-	PRINT MenuItem($userbase, "logout.php", $logoutImage, _("Logout"));
-	
-	PRINT '<td class="nav">';
-	PRINT date("M d H:i");
-	PRINT " </td>\n";
+    if($usertype == "tech" || $usertype == "admin")
+    {
+        # Inventory Things
+        PRINT MenuItem($userbase, "inventory-index.php", $inventoryImage, _("Inventory"));
+        PRINT MenuItem($userbase, "reports-index.php", $reportImage, _("Reports"));
+        PRINT MenuItem($userbase, "setup-index.php", $setupImage, _("Setup"));
+        
+        if(Config::Get('knowledgebase'))
+        {
+            PRINT MenuItem($userbase, "knowledgebase-index.php", $knowledgeBaseImage, _("Knowledge Base"));
+        }
+    }
+    if (Config::Get('knowledgebase'))
+    {
+        PRINT MenuItem($userbase, "faq-index.php", $faqImage, _("FAQ"));
+    }
+    PRINT MenuItem($userbase, "logout.php", $logoutImage, _("Logout"));
+    
+    PRINT '<td class="nav">';
+    PRINT date("M d H:i");
+    PRINT " </td>\n";
 
 
-	PRINT "</tr>\n";
+    PRINT "</tr>\n";
 
-	PRINT "</table>\n";
+    PRINT "</table>\n";
 
-	PRINT "</div>";
+    PRINT "</div>";
 
-	if (Config::FileAvailable('HTML/TreeMenu.php') && Config::Get('tree_menu'))
-	{
-		$sidemenu = TreeMenuRights($usertype);	
-	} else {
-		$sidemenu = false;
-	}
+    if (Config::FileAvailable('HTML/TreeMenu.php') && Config::Get('tree_menu'))
+    {
+        $sidemenu = TreeMenuRights($usertype);    
+    } else {
+        $sidemenu = false;
+    }
 
-	if ($sidemenu)
-	{
-		require_once 'include/tree.php';
-		//Display the DHTML Tree Menu
-		PRINT '<div id="leftcontent">';
-		$tree = buildTree();
-		$tree->printMenu();
-		PRINT "</div>";
-	}
-	
-	//Display the Main Information
-	if ($sidemenu)
-	{
-		PRINT '<div id="centercontent">';
-	}
-	logo(); 
-	PRINT "<h3>$title</h3>\n";
-	PRINT "<hr />\n";
+    if ($sidemenu)
+    {
+        require_once 'include/tree.php';
+        //Display the DHTML Tree Menu
+        PRINT '<div id="leftcontent">';
+        $tree = buildTree();
+        $tree->printMenu();
+        PRINT "</div>";
+    }
+    
+    //Display the Main Information
+    if ($sidemenu)
+    {
+        PRINT '<div id="centercontent">';
+    }
+    logo(); 
+    PRINT "<h3>$title</h3>\n";
+    PRINT "<hr />\n";
 }
 
 function logo()
 {
-	$LOGO = Config::Get('logo');
-	if ($LOGO != ""){
-		PRINT '<a href="' .Config::Absloc('users/') . 'index.php">';
-		PRINT '<img src="'.Config::AbsLoc('images/' . $LOGO) .'" class="logographic"  alt="logo"/></a><br />';
-	}
+    $LOGO = Config::Get('logo');
+    if ($LOGO != ""){
+        PRINT '<a href="' .Config::Absloc('users/') . 'index.php">';
+        PRINT '<img src="'.Config::AbsLoc('images/' . $LOGO) .'" class="logographic"  alt="logo"/></a><br />';
+    }
 }
 
 function displayConnectedDatabase()
-{	
-	$connectedDatabase =  _("You are logged into database : ") . @$_SESSION['_sess_database'] . "<br />\n";
+{    
+    $connectedDatabase =  _("You are logged into database : ") . @$_SESSION['_sess_database'] . "<br />\n";
 	return $connectedDatabase;
 }
 

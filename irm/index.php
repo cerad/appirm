@@ -18,7 +18,7 @@
 #    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 #
 ################################################################################
-
+error_reporting(E_ALL);
 require_once dirname(__FILE__) . '/include/mdbcheck.php';
 require_once dirname(__FILE__) . '/include/installer.php';
 require_once dirname(__FILE__) . '/include/irm.inc';
@@ -27,78 +27,91 @@ require_once dirname(__FILE__) . '/lib/Config.php';
 require_once dirname(__FILE__) . '/lib/IRMDB.php';
 require_once dirname(__FILE__) . '/lib/Databases.php';
 
-$viewRequest = array (	'Section' => 'menu',
-			'Header' => _("View Request"),
-			'Info' => _('If you have put in a help request and you know the ID number you can 
+/* ==================================================
+ * ***5
+ * formAction()
+<form method="post"  action="login.php">
+<select name="dbuse" size="1">
+<option value="budge">Budge Database</option>
+<option value="testing">Test Database</option>
+<option value="example">An example DB</option>
+</select>
+ * irmConnect()
+<input type="hidden" name="name" value="IRMConnect" />
+ */
+$viewRequest = array (    'Section' => 'menu',
+            'Header' => _("View Request"),
+            'Info' => _('If you have put in a help request and you know the ID number you can 
  view the progress of the request by entering the ID in the box below'),
-			'Submit' => _('View Request'),
-			'Fields' => formAction()
-				. irmConnect()
-				. '<input type="hidden" name="redirect" value="users/tracking-index.php?action=detail&amp;ID=" />' . "\n"
-				. '<input type="text" name="ID" value="" />' . "\n"
-			);
+            'Submit' => _('View Request'),
+            'Fields' => formAction()
+                . irmConnect()
+                . '<input type="hidden" name="redirect" value="users/tracking-index.php?action=detail&amp;ID=" />' . "\n"
+                . '<input type="text" name="ID" value="" />' . "\n"
+            );
 
-
-$faq = array (	'Section' => 'main',
-			'Header' => _('Frequently Asked Questions'),
-			'Info' => _('Helpdesk personel get many questions - many of which are
+$faq = array (    'Section' => 'main',
+            'Header' => _('Frequently Asked Questions'),
+            'Info' => _('Helpdesk personel get many questions - many of which are
 repeated many times. A FAQ, which is a list of frequently asked questions -
 and their answers, intends to provide a quick and easy way to help you get
 an answer to a questions. If your query isn\'t in this list, feel free to
 post a request for help.'),
-			'Submit' =>_('Read FAQ') ,
-			'Fields' => formAction() 
-				. irmConnect()
-				. '<input type="hidden" name="redirect" value="users/faq-index.php" />' . "\n"
-			);
+            'Submit' =>_('Read FAQ') ,
+            'Fields' => formAction() 
+                . irmConnect()
+                . '<input type="hidden" name="redirect" value="users/faq-index.php" />' . "\n"
+            );
 
-$request = array (	'Section' => 'main' ,
-			'Header' => _('Request Help'),
-			'Info' =>_('You can request help without logging in to IRM. To do this you
+$request = array (    'Section' => 'main' ,
+            'Header' => _('Request Help'),
+            'Info' =>_('You can request help without logging in to IRM. To do this you
 need to select the appropriate department, click the <b>Help</b> button
 below and then follow the instructions. Your request will be filed under the
 user name of <b>guest</b> so you will need to ensure that the contact
 information is correct if you wish to recieve updates and keep in touch with
 the helpdesk.') ,
-			'Submit' => _('Request Help'),
-			'Fields' => formAction()
-				. irmConnect()
-			);
+            'Submit' => _('Request Help'),
+            'Fields' => formAction()
+                . irmConnect()
+            );
 
-$login = array (	'Section' => 'menu',
-			'Header' => _('IRM Login'),
-			'Submit' => _('Login'),
-			'Fields' => loginCheck()
-				. formAction('name="login"')
-				. "<br />"
-				. _('Username') . '<br /><input type="text" name="name" value="" /><br />' . "\n"
-				. _('Password') . '<br /><input type="password" name="password" value="" /><br />' . "\n"
-				. redirectCheck()
-			);
+$login = array (    'Section' => 'menu',
+            'Header' => _('IRM Login'),
+            'Submit' => _('Login'),
+            'Fields' => loginCheck()
+                . formAction('name="login"')
+                . "<br />"
+                . _('Username') . '<br /><input type="text" name="name" value="" /><br />' . "\n"
+                . _('Password') . '<br /><input type="password" name="password" value="" /><br />' . "\n"
+                . redirectCheck()
+            );
 
-$status = array (	'Section' => 'main',
-			'Header' => _('Current Status'),
-			'Info' => currentStatus(),
-			'Submit' => '',
-			);
-
-$introduction = array (	'Section' => 'nav',
-			'Header' =>  _('IRM - The Information Resource Manager'),
-			'Info' =>_('IRM is a multi-user computer, software, peripheral and problem tracking system.
+//echo redirectCheck(); // ***5 blank for now
+die('before status');
+$status = array (    'Section' => 'main',
+            'Header' => _('Current Status'),
+            'Info' => currentStatus(),
+            'Submit' => '',
+            );
+echo currentStatus(); die();
+$introduction = array (    'Section' => 'nav',
+            'Header' =>  _('IRM - The Information Resource Manager'),
+            'Info' =>_('IRM is a multi-user computer, software, peripheral and problem tracking system.
 You can use IRM, depending on your user-level, to view, edit, and add
 computer systems to a database with an extensive list of fields.  You can
 also view and post jobs if you have a problem with a computing resource.') ,
-			'Submit' => '',
-			'Fields' => ''
-			);
+            'Submit' => '',
+            'Fields' => ''
+            );
 
-$Content = array (	$login,
-			$status,
-			$viewRequest,
-			$introduction,
-			$faq,
-			$request
-			);
+$Content = array (    $login,
+            $status,
+            $viewRequest,
+            $introduction,
+            $faq,
+            $request
+            );
 
 $allMenuContent = "";
 $allMainContent = "";
@@ -107,16 +120,16 @@ $allNavContent = "";
 $Page = new IrmFactory();
 
 foreach($Content as $content){
-	$Page->assign('header', $content['Header']);
-	$Page->assign('body', $content['Info'] . formSubmit($content['Fields'], $content['Submit']));
+    $Page->assign('header', $content['Header']);
+    $Page->assign('body', $content['Info'] . formSubmit($content['Fields'], $content['Submit']));
 
-	if($content['Section'] == "menu"){
-		$allMenuContent .= $Page->fetch('section.html.php');
-	} elseif($content['Section'] == "main"){
-		$allMainContent .= $Page->fetch('section.html.php');
-	} elseif($content['Section'] == "nav"){
-		$allNavContent .= $Page->fetch('section.html.php');
-	}
+    if($content['Section'] == "menu"){
+        $allMenuContent .= $Page->fetch('section.html.php');
+    } elseif($content['Section'] == "main"){
+        $allMainContent .= $Page->fetch('section.html.php');
+    } elseif($content['Section'] == "nav"){
+        $allNavContent .= $Page->fetch('section.html.php');
+    }
 }
 
 $Page->assign('title', _('IRM - The Information Resource Manager'));

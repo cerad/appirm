@@ -23,43 +23,51 @@ $root_path = dirname(dirname(__FILE__));
 ###############################################################################
 
 $DEV = true;
+/* =================================
+ * ***5 Really dont need any of this stuff
+ *
 error_reporting(E_ALL);
+
 if (@$DEV){
-	ini_set('display_errors', 1);
+    ini_set('display_errors', 1);
 } else {
-	ini_set('display_errors', 0);
+    ini_set('display_errors', 0);
 }
 
 ini_set('magic_quotes_runtime', '0');
 
 // Mask all "no variable here" notice messages.
 error_reporting(E_ALL ^ E_NOTICE);
-
+*/
 require_once dirname(__FILE__) . "/../lib/Config.php";
 require_once dirname(__FILE__) . "/irm.factory.class.php";
 
 $pathsep = Config::PathSeparator();
 
+// ***5 $root_path is an absolute path to appirm\irm
 ini_set('include_path', "$root_path$pathsep" . ini_get('include_path'));
 unset($root_path);
 
 // Hack to make our own register globals like function
 // Also has the added bonus of stripping errant slashes out of our input
+/* =========================================
+ * ***5 This is evil
+ *
 if (!ini_get("register_globals"))
 {
-	foreach ($_REQUEST as $k=>$v)
-	{
-		if (get_magic_quotes_gpc())
-		{
-			$_REQUEST[$k] = stripslashes($v);
-		}
-		if (!isset($GLOBALS[$k]))
-		{
-			${$k} = $_REQUEST[$k];
-		}
-	}
+    foreach ($_REQUEST as $k=>$v)
+    {
+        if (get_magic_quotes_gpc())
+        {
+            $_REQUEST[$k] = stripslashes($v);
+        }
+        if (!isset($GLOBALS[$k]))
+        {
+            ${$k} = $_REQUEST[$k];
+        }
+    }
 }
-
+*/
 require_once 'lib/PageHistory.php';
 
 // And awaaaaaaaay we go!
@@ -70,7 +78,7 @@ session_start();
 // Remember previous pages so we can go back if necessary
 if (!isset($_SESSION['_sess_pagehistory']))
 {
-	$_SESSION['_sess_pagehistory'] = new PageHistory;
+    $_SESSION['_sess_pagehistory'] = new PageHistory;
 }
 
 $_SESSION['_sess_pagehistory']->Add(@$_SERVER['REQUEST_URI']);
@@ -84,57 +92,57 @@ require_once 'include/User.php';
 
 
 $computer_fields = array(
-		'name'			 => _("Name"),
-		'ID'			 => _("IRM ID"),
-		'location'		 => _("Location"),
-		'flags_surplus'		 => _("Surplus"),
-		'flags_server'		 => _("Server")	,
-		'type'			 => _("Type"),
-		'os'			 => _("Operating System"),
-		'osver'			 => _("Operating System Version"),
-		'processor'		 => _("Processor"),
-		'processor_speed'	 => _("Processor Speed"),
-		'serial'		 => _("Serial Number"),
-		'otherserial'		 => _("Other Number"),
-		'ramtype'		 => _("RAM Type"),
-		'ram'			 => _("RAM Amount (in MB)"),
-		'network'		 => _("Network Card Type/Brand"),
-		'ip'			 => _("IP Address"),
-		'mac'			 => _("MAC/Network Address"),
-		'hdspace'		 => _("Hard Drive Capacity"),
-		'contact'		 => _("Contact Person"),
-		'contact_num'		 => _("Contact Number"),
-		'date_mod'		 => _("Date Last Modified"),
-		'comments'		 => _("Comments")
-		);
+        'name'             => _("Name"),
+        'ID'             => _("IRM ID"),
+        'location'         => _("Location"),
+        'flags_surplus'         => _("Surplus"),
+        'flags_server'         => _("Server")    ,
+        'type'             => _("Type"),
+        'os'             => _("Operating System"),
+        'osver'             => _("Operating System Version"),
+        'processor'         => _("Processor"),
+        'processor_speed'     => _("Processor Speed"),
+        'serial'         => _("Serial Number"),
+        'otherserial'         => _("Other Number"),
+        'ramtype'         => _("RAM Type"),
+        'ram'             => _("RAM Amount (in MB)"),
+        'network'         => _("Network Card Type/Brand"),
+        'ip'             => _("IP Address"),
+        'mac'             => _("MAC/Network Address"),
+        'hdspace'         => _("Hard Drive Capacity"),
+        'contact'         => _("Contact Person"),
+        'contact_num'         => _("Contact Number"),
+        'date_mod'         => _("Date Last Modified"),
+        'comments'         => _("Comments")
+        );
 
 $computerListElements = array(
-	      'type'			 => _("Computer Type"),
-              'os'			 => _("Operating System"),
-              'osver'			 => _("Operating System Version"),
-              'processor'		 => _("Processor"),
-              'processor_speed'		 => _("Processor Speed"),
-              'location'		 => _("Location"),
-              'serial'			 => _("Serial Number"),
-              'otherserial'		 => _("Other Serial Number"),
-              'ramtype'			 => _("Ram Type"),
-              'ram'			 => _("Ram Amount (in MB)"),
-              'network'			 => _("Network Card"),
-              'ip'			 => _("IP Address"),
-              'mac'			 => _("MAC/Network Address"),
-              'hdspace'			 => _("Hard Drive Space"),
-              'contact' 		 => _("Contact Person"),
-              'contact_num' 		 => _("Contact Number"),
-              'comments' 		 => _("Comments"),
-              'date_mod'		 => _("Date Modified")
+          'type'             => _("Computer Type"),
+              'os'             => _("Operating System"),
+              'osver'             => _("Operating System Version"),
+              'processor'         => _("Processor"),
+              'processor_speed'         => _("Processor Speed"),
+              'location'         => _("Location"),
+              'serial'             => _("Serial Number"),
+              'otherserial'         => _("Other Serial Number"),
+              'ramtype'             => _("Ram Type"),
+              'ram'             => _("Ram Amount (in MB)"),
+              'network'             => _("Network Card"),
+              'ip'             => _("IP Address"),
+              'mac'             => _("MAC/Network Address"),
+              'hdspace'             => _("Hard Drive Space"),
+              'contact'          => _("Contact Person"),
+              'contact_num'          => _("Contact Number"),
+              'comments'          => _("Comments"),
+              'date_mod'         => _("Date Modified")
 );
 
 $show_list_full = array(
-		'list'			 => _("list view"),
-		'full'			 => _("full view")
-		);
+        'list'             => _("list view"),
+        'full'             => _("full view")
+        );
 
 $phrasetype = array(
-		'contains'		 => _("contains"),
-		'exact'			 => _("is the exact phrase")
-		);
+        'contains'         => _("contains"),
+        'exact'             => _("is the exact phrase")
+        );
