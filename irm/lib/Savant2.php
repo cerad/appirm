@@ -23,16 +23,16 @@ define('SAVANT2_ERROR_COMPILE_FAIL', -8);
 */
 
 if (! isset($GLOBALS['_SAVANT2']['error'])) {
-	$GLOBALS['_SAVANT2']['error'] = array(
-		SAVANT2_ERROR_ASSIGN       => 'assign() parameters not correct',
-		SAVANT2_ERROR_ASSIGNREF    => 'assignRef() parameters not correct',
-		SAVANT2_ERROR_COMPILER     => 'compiler not an object or has no compile() method',
-		SAVANT2_ERROR_NOFILTER     => 'filter file not found',
-		SAVANT2_ERROR_NOPLUGIN     => 'plugin file not found',
-		SAVANT2_ERROR_NOSCRIPT     => 'compiled template script file not found',
-		SAVANT2_ERROR_NOTEMPLATE   => 'template source file not found',
-		SAVANT2_ERROR_COMPILE_FAIL => 'template source failed to compile'
-	);
+    $GLOBALS['_SAVANT2']['error'] = array(
+        SAVANT2_ERROR_ASSIGN       => 'assign() parameters not correct',
+        SAVANT2_ERROR_ASSIGNREF    => 'assignRef() parameters not correct',
+        SAVANT2_ERROR_COMPILER     => 'compiler not an object or has no compile() method',
+        SAVANT2_ERROR_NOFILTER     => 'filter file not found',
+        SAVANT2_ERROR_NOPLUGIN     => 'plugin file not found',
+        SAVANT2_ERROR_NOSCRIPT     => 'compiled template script file not found',
+        SAVANT2_ERROR_NOTEMPLATE   => 'template source file not found',
+        SAVANT2_ERROR_COMPILE_FAIL => 'template source failed to compile'
+    );
 }
 
 
@@ -71,422 +71,422 @@ if (! isset($GLOBALS['_SAVANT2']['error'])) {
 */
 
 class Savant2 {
-	
-	
-	/**
-	* 
-	* PHP5 ONLY:  Whether or not to use __autoload().  Default is false.
-	* 
-	* @access private
-	* 
-	* @var bool
-	* 
-	*/
-	
-	var $_autoload = false;
-	
-	
-	/**
-	* 
-	* PHP5 ONLY: What method __call() will alias to.
-	* 
-	* Generally 'plugin' or 'splugin' (as __call() is intended for those).
-	* 
-	* @access private
-	* 
-	* @var string
-	* 
-	*/
-	
-	var $_call = 'plugin';
-	
-	
-	/**
-	* 
-	* The custom compiler (pre-processor) object, if any.
-	* 
-	* @access private
-	* 
-	* @var object
-	* 
-	*/
-	
-	var $_compiler = null;
-	
-	
-	/**
-	* 
-	* The class type to use when instantiating error objects.
-	* 
-	* @access private
-	* 
-	* @var string
-	* 
-	*/
-	
-	var $_error = null;
-	
-	
-	/**
-	* 
-	* Array of callbacks used to escape output.
-	* 
-	* @access private
-	* 
-	* @var array
-	* 
-	* @see setEscape()
-	* 
-	* @see addEscape()
-	* 
-	* @see escape()
-	* 
-	* @see _()
-	* 
-	*/
-	
-	var $_escape = array('htmlspecialchars');
-	
-	
-	/**
-	* 
-	* Whether or not to extract assigned variables into fetch() scope.
-	* 
-	* When true, all variables and references assigned to Savant2 are
-	* extracted into the local scope of the template script at fetch()
-	* time, and may be addressed as "$varname" instead of
-	* "$this->varname".  The "$this->varname" notation will also work.
-	* 
-	* When false, you //must// use "$this->varname" in your templates to
-	* address a variable instead of "$varname".  This has three
-	* benefits: speed (no time spent extracting variables), memory use
-	* (saves RAM by not making new references to variables), and clarity
-	* (any $this->varname is obviously an assigned var, and vars created
-	* within the template are not prefixed with $this).
-	* 
-	* @access private
-	* 
-	* @var bool
-	* 
-	*/
-	
-	var $_extract = false;
-	
-	
-	/**
-	* 
-	* The output of the template script.
-	* 
-	* @access private
-	* 
-	* @var string
-	* 
-	*/
-	
-	var $_output = null;
-	
-	
-	/**
-	* 
-	* The set of search directories for resources (plugins/filters) and
-	* templates.
-	* 
-	* @access private
-	* 
-	* @var array
-	* 
-	*/
-	
-	var $_path = array(
-		'resource' => array(),
-		'template' => array()
-	);
-	
-	
-	/**
-	* 
-	* Array of resource (plugin/filter) object instances.
-	* 
-	* @access private
-	* 
-	* @var array
-	* 
-	*/
-	
-	var $_resource = array(
-		'plugin' => array(),
-		'filter' => array()
-	);
-	
-	
-	/**
-	* 
-	* Whether or not to automatically self-reference in plugins and filters.
-	* 
-	* @access private
-	* 
-	* @var bool
-	* 
-	*/
-	
-	var $_reference = false;
-	
-	
-	/**
-	* 
-	* Whether or not to restrict template includes only to registered paths.
-	* 
-	* @access private
-	* 
-	* @var bool
-	* 
-	*/
-	
-	var $_restrict = false;
-	
-	
-	/**
-	* 
-	* The path to the compiled template script file.
-	* 
-	* By default, the template source and template script are the same file.
-	*
-	* @access private
-	* 
-	* @var string
-	* 
-	*/
-	
-	var $_script = null;
-	
-	
-	/**
-	* 
-	* The name of the default template source file.
-	* 
-	* @access private
-	* 
-	* @var string
-	* 
-	*/
-	
-	var $_template = null;
-	
-	
-	// -----------------------------------------------------------------
-	//
-	// Constructor and general property setters
-	//
-	// -----------------------------------------------------------------
-	
-	
-	/**
-	* 
-	* Constructor.
-	* 
-	* @access public
-	* 
-	* @param array $conf An associative array of configuration keys for
-	* the Savant2 object.  Any, or none, of the keys may be set. The
-	* keys are:
-	* 
-	* 'template_path' => The default path string or array of directories
-	* to search for templates.
-	* 
-	* 'resource_path' => The default path string or array of directories
-	* to search for plugin and filter resources.
-	* 
-	* 'error' => The custom error class that Savant2 should use
-	* when returning errors.
-	* 
-	* 'extract' => Whether or not to extract variables into the local
-	* scope when executing a template.
-	* 
-	* 'template' => The default template source name to use.
-	* 
-	*/
-	
-	function Savant2($conf = array())
-	{
-		// set the default template search dirs
-		if (isset($conf['template_path'])) {
-			// user-defined dirs
-			$this->setPath('template', $conf['template_path']);
-		} else {
-			// default directory only
-			$this->setPath('template', null);
-		}
-		
-		// set the default filter search dirs
-		if (isset($conf['resource_path'])) {
-			// user-defined dirs
-			$this->setPath('resource', $conf['resource_path']);
-		} else {
-			// default directory only
-			$this->setPath('resource', null);
-		}
-		
-		// do we allow __autoload() use?
-		if (isset($conf['autoload'])) {
-			$this->setAutoload($conf['autload']);
-		}
-		
-		// set the error class
-		if (isset($conf['error'])) {
-			$this->setError($conf['error']);
-		}
-		
-		// set the extraction flag
-		if (isset($conf['extract'])) {
-			$this->setExtract($conf['extract']);
-		}
-		
-		// set the restrict flag
-		if (isset($conf['restrict'])) {
-			$this->setRestrict($conf['restrict']);
-		}
-		
-		// set the Savant reference flag
-		if (isset($conf['reference'])) {
-			$this->setReference($conf['reference']);
-		}
-		
-		// set the default template
-		if (isset($conf['template'])) {
-			$this->setTemplate($conf['template']);
-		}
-		
-		// set the output escaping callbacks
-		if (isset($config['escape'])) {
-			call_user_func_array(
-				array($this, 'setEscape'),
-				(array) $config['escape']
-			);
-		}	
-	}
-	
-	/**
-	* 
-	* Sets whether or not __autoload() is used when loading classes.
-	* 
-	* @access public
-	* 
-	* @param bool $flag True to use __autoload(), false to not use it.
-	* 
-	* @return void
-	* 
-	*/
-	
-	function setAutoload($flag) {
-		$this->_autoload = (bool) $flag;
-	}
-	
-	
-	/**
-	* 
-	* Sets a custom compiler/pre-processor for template sources.
-	* 
-	* By default, Savant2 does not use a compiler; use this to set your
-	* own custom compiler (pre-processor) for template sources.
-	* 
-	* @access public
-	* 
-	* @param object $compiler The compiler object; it must have a
-	* "compile()" method.  If null or false, the current compiler object
-	* is removed from Savant2.
-	* 
-	* @return void
-	* 
-	* @throws object An error object with a SAVANT2_ERROR_COMPILER code.
-	* 
-	*/
-	
-	function setCompiler(&$compiler)
-	{
-		if (! $compiler) {
-			// nullify any current compiler
-			$this->_compiler = null;
-		} elseif (is_object($compiler) && method_exists($compiler, 'compile')) {
-			// refer to a compiler object
-			$this->_compiler =& $compiler;
-		} else {
-			// no usable compiler passed
-			$this->_compiler = null;
-			return $this->error(SAVANT2_ERROR_COMPILER);
-		}
-	}
-	
-	
-	/**
-	* 
-	* Sets the method that __call() will alias to.
-	* 
-	* @access public
-	* 
-	* @param string $method The Savant2 method for __call() to alias to,
-	* generally 'plugin' or 'splugin'.
-	* 
-	* @return void
-	* 
-	*/
-	
-	function setCall($method = 'plugin')
-	{
-		$this->_call = $method;
-	}
-	
-	
-	/**
-	* 
-	* Sets the custom error class for Savant2 errors.
-	* 
-	* @access public
-	* 
-	* @param string $error The name of the custom error class name; if
-	* null or false, resets the error class to 'Savant2_Error'.
-	* 
-	* @return void
-	* 
-	*/
-	
-	function setError($error)
-	{
-		if (! $error) {
-			$this->_error = null;
-		} else {
-			$this->_error = $error;
-		}
-	}
-	
-	
-	/**
-	*
-	* Turns path checking on/off.
-	* 
-	* @access public
-	*
-	* @param bool $flag True to turn on path checks, false to turn off.
-	*
-	* @return void
-	*
-	*/
-	
-	function setRestrict($flag = false)
-	{
-		if ($flag) {
-			$this->_restrict = true;
-		} else {
-			$this->_restrict = false;
-		}
-	}
-	
-	
-	/**
-	*
-	* Turns extraction of variables on/off.
-	* 
-	* @access public
-	*
+    
+    
+    /**
+    * 
+    * PHP5 ONLY:  Whether or not to use __autoload().  Default is false.
+    * 
+    * @access private
+    * 
+    * @var bool
+    * 
+    */
+    
+    var $_autoload = false;
+    
+    
+    /**
+    * 
+    * PHP5 ONLY: What method __call() will alias to.
+    * 
+    * Generally 'plugin' or 'splugin' (as __call() is intended for those).
+    * 
+    * @access private
+    * 
+    * @var string
+    * 
+    */
+    
+    var $_call = 'plugin';
+    
+    
+    /**
+    * 
+    * The custom compiler (pre-processor) object, if any.
+    * 
+    * @access private
+    * 
+    * @var object
+    * 
+    */
+    
+    var $_compiler = null;
+    
+    
+    /**
+    * 
+    * The class type to use when instantiating error objects.
+    * 
+    * @access private
+    * 
+    * @var string
+    * 
+    */
+    
+    var $_error = null;
+    
+    
+    /**
+    * 
+    * Array of callbacks used to escape output.
+    * 
+    * @access private
+    * 
+    * @var array
+    * 
+    * @see setEscape()
+    * 
+    * @see addEscape()
+    * 
+    * @see escape()
+    * 
+    * @see _()
+    * 
+    */
+    
+    var $_escape = array('htmlspecialchars');
+    
+    
+    /**
+    * 
+    * Whether or not to extract assigned variables into fetch() scope.
+    * 
+    * When true, all variables and references assigned to Savant2 are
+    * extracted into the local scope of the template script at fetch()
+    * time, and may be addressed as "$varname" instead of
+    * "$this->varname".  The "$this->varname" notation will also work.
+    * 
+    * When false, you //must// use "$this->varname" in your templates to
+    * address a variable instead of "$varname".  This has three
+    * benefits: speed (no time spent extracting variables), memory use
+    * (saves RAM by not making new references to variables), and clarity
+    * (any $this->varname is obviously an assigned var, and vars created
+    * within the template are not prefixed with $this).
+    * 
+    * @access private
+    * 
+    * @var bool
+    * 
+    */
+    
+    var $_extract = false;
+    
+    
+    /**
+    * 
+    * The output of the template script.
+    * 
+    * @access private
+    * 
+    * @var string
+    * 
+    */
+    
+    var $_output = null;
+    
+    
+    /**
+    * 
+    * The set of search directories for resources (plugins/filters) and
+    * templates.
+    * 
+    * @access private
+    * 
+    * @var array
+    * 
+    */
+    
+    var $_path = array(
+        'resource' => array(),
+        'template' => array()
+    );
+    
+    
+    /**
+    * 
+    * Array of resource (plugin/filter) object instances.
+    * 
+    * @access private
+    * 
+    * @var array
+    * 
+    */
+    
+    var $_resource = array(
+        'plugin' => array(),
+        'filter' => array()
+    );
+    
+    
+    /**
+    * 
+    * Whether or not to automatically self-reference in plugins and filters.
+    * 
+    * @access private
+    * 
+    * @var bool
+    * 
+    */
+    
+    var $_reference = false;
+    
+    
+    /**
+    * 
+    * Whether or not to restrict template includes only to registered paths.
+    * 
+    * @access private
+    * 
+    * @var bool
+    * 
+    */
+    
+    var $_restrict = false;
+    
+    
+    /**
+    * 
+    * The path to the compiled template script file.
+    * 
+    * By default, the template source and template script are the same file.
+    *
+    * @access private
+    * 
+    * @var string
+    * 
+    */
+    
+    var $_script = null;
+    
+    
+    /**
+    * 
+    * The name of the default template source file.
+    * 
+    * @access private
+    * 
+    * @var string
+    * 
+    */
+    
+    var $_template = null;
+    
+    
+    // -----------------------------------------------------------------
+    //
+    // Constructor and general property setters
+    //
+    // -----------------------------------------------------------------
+    
+    
+    /**
+    * 
+    * Constructor.
+    * 
+    * @access public
+    * 
+    * @param array $conf An associative array of configuration keys for
+    * the Savant2 object.  Any, or none, of the keys may be set. The
+    * keys are:
+    * 
+    * 'template_path' => The default path string or array of directories
+    * to search for templates.
+    * 
+    * 'resource_path' => The default path string or array of directories
+    * to search for plugin and filter resources.
+    * 
+    * 'error' => The custom error class that Savant2 should use
+    * when returning errors.
+    * 
+    * 'extract' => Whether or not to extract variables into the local
+    * scope when executing a template.
+    * 
+    * 'template' => The default template source name to use.
+    * 
+    */
+    
+    function Savant2($conf = array())
+    {
+        // set the default template search dirs
+        if (isset($conf['template_path'])) {
+            // user-defined dirs
+            $this->setPath('template', $conf['template_path']);
+        } else {
+            // default directory only
+            $this->setPath('template', null);
+        }
+        
+        // set the default filter search dirs
+        if (isset($conf['resource_path'])) {
+            // user-defined dirs
+            $this->setPath('resource', $conf['resource_path']);
+        } else {
+            // default directory only
+            $this->setPath('resource', null);
+        }
+        
+        // do we allow __autoload() use?
+        if (isset($conf['autoload'])) {
+            $this->setAutoload($conf['autload']);
+        }
+        
+        // set the error class
+        if (isset($conf['error'])) {
+            $this->setError($conf['error']);
+        }
+        
+        // set the extraction flag
+        if (isset($conf['extract'])) {
+            $this->setExtract($conf['extract']);
+        }
+        
+        // set the restrict flag
+        if (isset($conf['restrict'])) {
+            $this->setRestrict($conf['restrict']);
+        }
+        
+        // set the Savant reference flag
+        if (isset($conf['reference'])) {
+            $this->setReference($conf['reference']);
+        }
+        
+        // set the default template
+        if (isset($conf['template'])) {
+            $this->setTemplate($conf['template']);
+        }
+        
+        // set the output escaping callbacks
+        if (isset($config['escape'])) {
+            call_user_func_array(
+                array($this, 'setEscape'),
+                (array) $config['escape']
+            );
+        }    
+    }
+    
+    /**
+    * 
+    * Sets whether or not __autoload() is used when loading classes.
+    * 
+    * @access public
+    * 
+    * @param bool $flag True to use __autoload(), false to not use it.
+    * 
+    * @return void
+    * 
+    */
+    
+    function setAutoload($flag) {
+        $this->_autoload = (bool) $flag;
+    }
+    
+    
+    /**
+    * 
+    * Sets a custom compiler/pre-processor for template sources.
+    * 
+    * By default, Savant2 does not use a compiler; use this to set your
+    * own custom compiler (pre-processor) for template sources.
+    * 
+    * @access public
+    * 
+    * @param object $compiler The compiler object; it must have a
+    * "compile()" method.  If null or false, the current compiler object
+    * is removed from Savant2.
+    * 
+    * @return void
+    * 
+    * @throws object An error object with a SAVANT2_ERROR_COMPILER code.
+    * 
+    */
+    
+    function setCompiler(&$compiler)
+    {
+        if (! $compiler) {
+            // nullify any current compiler
+            $this->_compiler = null;
+        } elseif (is_object($compiler) && method_exists($compiler, 'compile')) {
+            // refer to a compiler object
+            $this->_compiler =& $compiler;
+        } else {
+            // no usable compiler passed
+            $this->_compiler = null;
+            return $this->error(SAVANT2_ERROR_COMPILER);
+        }
+    }
+    
+    
+    /**
+    * 
+    * Sets the method that __call() will alias to.
+    * 
+    * @access public
+    * 
+    * @param string $method The Savant2 method for __call() to alias to,
+    * generally 'plugin' or 'splugin'.
+    * 
+    * @return void
+    * 
+    */
+    
+    function setCall($method = 'plugin')
+    {
+        $this->_call = $method;
+    }
+    
+    
+    /**
+    * 
+    * Sets the custom error class for Savant2 errors.
+    * 
+    * @access public
+    * 
+    * @param string $error The name of the custom error class name; if
+    * null or false, resets the error class to 'Savant2_Error'.
+    * 
+    * @return void
+    * 
+    */
+    
+    function setError($error)
+    {
+        if (! $error) {
+            $this->_error = null;
+        } else {
+            $this->_error = $error;
+        }
+    }
+    
+    
+    /**
+    *
+    * Turns path checking on/off.
+    * 
+    * @access public
+    *
+    * @param bool $flag True to turn on path checks, false to turn off.
+    *
+    * @return void
+    *
+    */
+    
+    function setRestrict($flag = false)
+    {
+        if ($flag) {
+            $this->_restrict = true;
+        } else {
+            $this->_restrict = false;
+        }
+    }
+    
+    
+    /**
+    *
+    * Turns extraction of variables on/off.
+    * 
+    * @access public
+    *
 	* @param bool $flag True to turn on extraction, false to turn off.
 	*
 	* @return void
@@ -1419,7 +1419,7 @@ class Savant2 {
 			! is_a($this->_resource['plugin'][$name], $class)) {
 			
 			// instantiate it
-			$this->_resource['plugin'][$name] =& new $class($conf);
+			$this->_resource['plugin'][$name] = new $class($conf);
 			
 			// add a Savant reference if requested
 			if ($savantRef) {
@@ -1621,7 +1621,7 @@ class Savant2 {
 			! is_a($this->_resource['filter'][$name], $class)) {
 			
 			// instantiate it
-			$this->_resource['filter'][$name] =& new $class($conf);
+			$this->_resource['filter'][$name] = new $class($conf);
 			
 			// add a Savant reference if requested
 			if ($savantRef) {
@@ -1760,7 +1760,7 @@ class Savant2 {
 		}
 		
 		// instantiate and return the error class
-		$err =& new $class($conf);
+		$err = new $class($conf);
 		return $err;
 	}
 	
