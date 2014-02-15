@@ -10,19 +10,14 @@ class Databases
     /** Return the list of defined databases.
      * @return array A hash of dbid => name pairs
      */
-    static function All()
+    static function all()
     {
         $data = Config::ReadConfig('database');
 
         $rv = array();
         foreach ($data as $id => $vals)
         {
-            $name = @$vals['name'];
-            if (!$name)
-            {
-                $name = _("Unknown database");
-            }
-            
+            $name = isset($vals['name']) ? $vals['name'] : _("Unknown database");
             $rv[$id] = $name;
         }
         return $rv;
@@ -33,69 +28,40 @@ class Databases
      * check on each configured database to see if it looks like a
      * configured IRM database, and if so, does not put it in the list.
      */
-    function Uninitialised()
+    static function unInitialised()
     {
-        ///* //{{{
-        $dflsocket = ini_get('mysql.default_socket');
         $rv = array();
 
         $data = Config::ReadConfig('database');
         foreach ($data as $id => $vals)
         {
-            if (!is_array($vals))
-            {
-                echo '<p id="warning">'
-                    ._("Section value list is not an array -- I think your config file is malformed")
-                    ."</p>\n";
-                break;
-            }
+            if (!is_array($vals)) throw new \Exception("Config file is malformed");
                         
-            $DSN = @$vals['DSN'];
-            $socket = @$vals['socket'];
+            $DSN = $vals['DSN'];
             
-            if (!$DSN)
+            try
             {
-                echo "<p>".sprintf(
-                        _("No DSN for database %s (%s)"),
-                        @$vals['name'], $id)
-                    ."</p>\n";
-                continue;
+                $dbh = new IRMDB($DSN);
             }
-
-            $dbh = new IRMDB($DSN, $socket);
-            if ($dbh->error)
+            catch (\Exception $e)
             {
-                $dberror = sprintf(_('<p id="warning">Could not connect to database %s (%s): %s</p>'),
-                    @$vals['name'], $id,
-                    $dbh->error->getMessage()
-                );
-                unset($dbh);
-                continue;
+              //echo('could not connect');
             }
-
-
+            if (!$dbh->isConnected()) break;
+            
             // Bollocks query just to try and trigger an error if
             // there's no table.  Can't use a query that isn't
             // guaranteed to work on any version of IRM.
-            $dbh->pushErrorHandling(PEAR_ERROR_RETURN);
-            $err = $dbh->query("SELECT * FROM computers WHERE ID=0");
-            
-            if (MDB::isError($err))
+            try
             {
-                $name = @$vals['name'];
-                if (!$name)
-                {
-                    $name = _("Unknown database");
-                }
-            
-                $rv[$id] = $name;
+                $dbh->query5("SELECT * FROM computers WHERE ID=0");
             }
-            
-            $dbh->disconnect();
+            catch (\Exception $e)
+            {
+                $rv[$id] = $vals['name'];
+            }
             unset($dbh);
         }
-
-        ini_set('mysql.default_socket', $dflsocket);
         return $rv;
     }
 

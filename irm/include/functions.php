@@ -123,10 +123,10 @@ function make_dblist()
 
 function currentStatus()
 {
-    $uninitdblist = Databases::Uninitialised();
+    $uninitdblist = Databases::unInitialised();
 
     // get array of all databases.
-    $dblist = Databases::All();
+    $dblist = Databases::all();
 
     $statusText = "";
 

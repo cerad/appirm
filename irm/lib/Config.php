@@ -118,6 +118,7 @@ class Config
     static function Database()
     {
         require_once dirname(__FILE__) . '/../lib/IRMDB.php';
+        
         global $DB;
         
         $dbcfg = Config::CurrentSection('database');
@@ -226,7 +227,7 @@ class Config
     static function CurrentSection($type, $current = NULL)
     {
         $cfg = Config::ReadConfig($type);
-        
+ 
         if ($current === NULL)
         {
             $current = @$_SESSION['_sess_database'];

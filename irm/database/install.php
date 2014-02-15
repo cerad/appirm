@@ -2,121 +2,122 @@
 
 require_once dirname(__FILE__) . '/../lib/Config.php';
 
-$adminpassword = "admin";
+$adminpassword = isset($_POST['adminpassword']) ? $_POST['adminpassword'] : "admin";
+
 $INSTALL = array();
 $SAMPLEDATA = array();
 
 $INSTALL[] = "CREATE TABLE comp_group (
-	comp_id int(11) DEFAULT '0' NOT NULL,
-	group_id int(11) DEFAULT '0' NOT NULL,
-	KEY lab_id (group_id))";
+    comp_id int(11) DEFAULT '0' NOT NULL,
+    group_id int(11) DEFAULT '0' NOT NULL,
+    KEY lab_id (group_id))";
 
 $SAMPLEDATA[] = "INSERT INTO comp_group VALUES (1,1)";
 
 $INSTALL[] = "CREATE TABLE computers__ID (
-	sequence BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-	PRIMARY KEY (sequence))";
-	
+    sequence BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY (sequence))";
+    
 $INSTALL[] = "CREATE TABLE computers (
-	ID BIGINT UNSIGNED NOT NULL,
-	name varchar(200),
-	type varchar(100),
-	flags_server tinyint(4) DEFAULT '0' NOT NULL,
-	flags_surplus tinyint(4) DEFAULT '0' NOT NULL,
-	os varchar(100),
-	osver varchar(20),
-	processor varchar(30),
-	processor_speed varchar(30),
-	location varchar(200) DEFAULT '' NOT NULL,
-	serial varchar(200) DEFAULT '' NOT NULL,
-	otherserial varchar(200) DEFAULT '' NOT NULL,
-	ramtype varchar(200) DEFAULT '' NOT NULL,
-	ram varchar(6) DEFAULT '' NOT NULL,
-	network varchar(200) DEFAULT '' NOT NULL,
-	ip varchar(20),
-	mac varchar(30),
-	hdspace varchar(6),
-	contact varchar(90),
-	contact_num varchar(90),
-	comments text NOT NULL,
-	date_mod datetime,
-	PRIMARY KEY (ID),
-	KEY location (location),
-	KEY flags (flags_server))";
+    ID BIGINT UNSIGNED NOT NULL,
+    name varchar(200),
+    type varchar(100),
+    flags_server tinyint(4) DEFAULT '0' NOT NULL,
+    flags_surplus tinyint(4) DEFAULT '0' NOT NULL,
+    os varchar(100),
+    osver varchar(20),
+    processor varchar(30),
+    processor_speed varchar(30),
+    location varchar(200) DEFAULT '' NOT NULL,
+    serial varchar(200) DEFAULT '' NOT NULL,
+    otherserial varchar(200) DEFAULT '' NOT NULL,
+    ramtype varchar(200) DEFAULT '' NOT NULL,
+    ram varchar(6) DEFAULT '' NOT NULL,
+    network varchar(200) DEFAULT '' NOT NULL,
+    ip varchar(20),
+    mac varchar(30),
+    hdspace varchar(6),
+    contact varchar(90),
+    contact_num varchar(90),
+    comments text NOT NULL,
+    date_mod datetime,
+    PRIMARY KEY (ID),
+    KEY location (location),
+    KEY flags (flags_server))";
 
 $SAMPLEDATA[] = "INSERT INTO computers 
-		(ID, name, type, os, osver, processor, processor_speed,
-		location, ramtype, ram,
-		network, ip, mac, hdspace)
-		VALUES (1,'Ants','iMac DV','Mac OS','9.0.4','PowerPC G3',
-		'400','Library Back Room','SDRAM DIMMs (<10ns)','192',
-		'Generic 100Mbps Card','DHCP','00 50 E4','13')";
+        (ID, name, type, os, osver, processor, processor_speed,
+        location, ramtype, ram,
+        network, ip, mac, hdspace)
+        VALUES (1,'Ants','iMac DV','Mac OS','9.0.4','PowerPC G3',
+        '400','Library Back Room','SDRAM DIMMs (<10ns)','192',
+        'Generic 100Mbps Card','DHCP','00 50 E4','13')";
 $SAMPLEDATA[] = "INSERT INTO computers__ID (sequence) VALUES (1)";
-	
+    
 $INSTALL[] = "CREATE TABLE devices ( name char(200))";
 
 $INSTALL[] = "CREATE TABLE event_log (
-	ID int(11) NOT NULL auto_increment,
-	item int(11) DEFAULT '0' NOT NULL,
-	itemtype varchar(10) DEFAULT '' NOT NULL,
-	date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
-	service varchar(20),
-	level tinyint(4) DEFAULT '0' NOT NULL,
-	message text NOT NULL,
-	PRIMARY KEY (ID),
-	KEY comp (item),
-	KEY date (date))";
-		
+    ID int(11) NOT NULL auto_increment,
+    item int(11) DEFAULT '0' NOT NULL,
+    itemtype varchar(10) DEFAULT '' NOT NULL,
+    date datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+    service varchar(20),
+    level tinyint(4) DEFAULT '0' NOT NULL,
+    message text NOT NULL,
+    PRIMARY KEY (ID),
+    KEY comp (item),
+    KEY date (date))";
+        
 $INSTALL[] = "CREATE TABLE followups (
-	ID int(11) NOT NULL auto_increment,
-	tracking int(11),
-	date datetime,
-	author varchar(200),
-	contents text,
-	minspent int(11) NOT NULL default 0,
-	public tinyint NOT NULL default 1,
-	PRIMARY KEY (ID))";
-		
+    ID int(11) NOT NULL auto_increment,
+    tracking int(11),
+    date datetime,
+    author varchar(200),
+    contents text,
+    minspent int(11) NOT NULL default 0,
+    public tinyint NOT NULL default 1,
+    PRIMARY KEY (ID))";
+        
 $INSTALL[] = "CREATE TABLE groups (
-	ID int(11) NOT NULL auto_increment,
-	name varchar(200) DEFAULT '' NOT NULL,
-	PRIMARY KEY (ID),
-	KEY ID (ID),
-	UNIQUE ID_2 (ID))";
+    ID int(11) NOT NULL auto_increment,
+    name varchar(200) DEFAULT '' NOT NULL,
+    PRIMARY KEY (ID),
+    KEY ID (ID),
+    UNIQUE ID_2 (ID))";
 
 $SAMPLEDATA[] = "INSERT INTO groups VALUES (1,'test')";
-		
+        
 $INSTALL[] = "CREATE TABLE inst_software (
-	ID int(11) NOT NULL auto_increment,
-	cID int(11) DEFAULT '0' NOT NULL,
-	sID int(11) DEFAULT '0' NOT NULL,
-	lID int(11) NOT NULL default '0',
-	gID int(11),
-	lCnt int(11) NOT NULL DEFAULT '1',
-	PRIMARY KEY (ID),
-	KEY cID (cID),
-	KEY sID (sID),
-	KEY lID (lID))";
+    ID int(11) NOT NULL auto_increment,
+    cID int(11) DEFAULT '0' NOT NULL,
+    sID int(11) DEFAULT '0' NOT NULL,
+    lID int(11) NOT NULL default '0',
+    gID int(11),
+    lCnt int(11) NOT NULL DEFAULT '1',
+    PRIMARY KEY (ID),
+    KEY cID (cID),
+    KEY sID (sID),
+    KEY lID (lID))";
 
 $INSTALL[] = "CREATE TABLE lookups(
-		id varchar(50) NOT NULL,
-		name varchar(50) NOT NULL,
-		description varchar(255),
-		PRIMARY KEY(id))";
+        id varchar(50) NOT NULL,
+        name varchar(50) NOT NULL,
+        description varchar(255),
+        PRIMARY KEY(id))";
 
 $INSTALL[] = "INSERT INTO lookups VALUES
-		('locations', '"._('Location')."', '"._('Locations : Use this to edit where equipment can be stored')."'),
-		('type', '"._('Type')."', '"._('Computer Types :These list the types of computers you can have (i.e. Dell, HP, IBM RS/6000, etc.)')."'),
-		('os', '"._('OS')."', '"._('Operating Systems : This is a list of Operating Systems your computers can run.')."'),
-		('ram', '"._('RAM Type')."', '"._('RAM Types : This is the types of RAM your systems can have (i.e. Unbuffered DIMMS, SDRAM DIMMS, ECC DIMMS, etc)')."'),
-		('processor', '"._('Processor')."', '"._('Processor Types : This is a list of valid processors, i.e. Intel Pentium, Pentium II, DEC Alpha, EverSlow WinChip, etc.')."'),
-		('iface', '"._('Network Interface')."', '"._('Network Interfaces')."'),
-		('network', '"._('Network Card Type/Brand')."', '"._('Network Card Brands/Types : This is a list of some possible network cards and their speed.')."')";
+        ('locations', '"._('Location')."', '"._('Locations : Use this to edit where equipment can be stored')."'),
+        ('type', '"._('Type')."', '"._('Computer Types :These list the types of computers you can have (i.e. Dell, HP, IBM RS/6000, etc.)')."'),
+        ('os', '"._('OS')."', '"._('Operating Systems : This is a list of Operating Systems your computers can run.')."'),
+        ('ram', '"._('RAM Type')."', '"._('RAM Types : This is the types of RAM your systems can have (i.e. Unbuffered DIMMS, SDRAM DIMMS, ECC DIMMS, etc)')."'),
+        ('processor', '"._('Processor')."', '"._('Processor Types : This is a list of valid processors, i.e. Intel Pentium, Pentium II, DEC Alpha, EverSlow WinChip, etc.')."'),
+        ('iface', '"._('Network Interface')."', '"._('Network Interfaces')."'),
+        ('network', '"._('Network Card Type/Brand')."', '"._('Network Card Brands/Types : This is a list of some possible network cards and their speed.')."')";
 
 $INSTALL[] = "CREATE TABLE lookup_data(
-		lookup varchar(50) NOT NULL,
-		value varchar(255) NOT NULL,
-		INDEX(lookup))";
+        lookup varchar(50) NOT NULL,
+        value varchar(255) NOT NULL,
+        INDEX(lookup))";
 
 $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('iface','10Mbps Ethernet (UTP)')";
 $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('iface','100Mbps Ethernet (UTP)')";
@@ -126,12 +127,12 @@ $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('iface','Frame Relay')";
 $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('iface','ISDN')";
 $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('iface','T1/E1 +')";
 $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('iface','Serial Link')";
-	
+    
 $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('locations','Library Back Room')";
 $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('locations','Room 34')";
 $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('locations','MAOS Lab')";
 $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('locations','Office')";
-		
+        
 $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('network','3Com (100Mbps)')";
 $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('network','3Com (10Mbps)')";
 $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('network','Intel (100Mbps)')";
@@ -142,7 +143,7 @@ $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('network','None')";
 $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('network','AMD 10Mbps')";
 $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('network','Realtek 10Mbps')";
 $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('network','Realtek 100Mbps')";
-		
+        
 $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('os','Linux (Debian)')";
 $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('os','Linux (RedHat)')";
 $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('os','Linux (Caldera)')";
@@ -155,7 +156,7 @@ $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('os','Mac OS')";
 $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('os','IRIX')";
 $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('os','Solaris')";
 $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('os','Max OS X')";
-		
+        
 $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('processor','Intel Pentium')";
 $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('processor','Intel Pentium II')";
 $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('processor','AMD K6-1')";
@@ -178,7 +179,7 @@ $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('processor','PowerPC 603')";
 $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('processor','PowerPC 601')";
 $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('processor','68040')";
 $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('processor','68040')";
-		
+        
 $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('ram','36pin SIMMS')";
 $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('ram','72pin SIMMS (Fast Page)')";
 $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('ram','72pin SIMMS (EDO)')";
@@ -188,7 +189,7 @@ $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('ram','SDRAM DIMMs (<10ns)')";
 $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('ram','ECC DIMMs')";
 $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('ram','Other')";
 $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('ram','iMac DIMMS')";
-		
+        
 $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('type','Generic PC')";
 $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('type','Macintosh PPC (other)')";
 $SAMPLEDATA[] = "INSERT INTO lookup_data VALUES ('type','Macintosh 68K (68030)')";
@@ -386,7 +387,7 @@ $INSTALL[] = "CREATE TABLE tracking__ID (
 $INSTALL[] = "CREATE TABLE tracking_status (
 	status		VARCHAR(255) NOT NULL,
 	closed		TINYINT UNSIGNED NOT NULL DEFAULT 0,
-	PRIMARY KEY (status)) TYPE=InnoDB";
+	PRIMARY KEY (status))"; // TYPE=InnoDB
 
 $INSTALL[] = "INSERT INTO tracking_status (status, closed) VALUES
 		('new', 0),
@@ -414,7 +415,7 @@ $INSTALL[] = "CREATE TABLE tracking (
 	INDEX (status),
 	device varchar (200),
 	FOREIGN KEY (status) REFERENCES tracking_status (status),
-	PRIMARY KEY (ID)) TYPE=InnoDB";
+	PRIMARY KEY (ID))"; // TYPE=InnoDB";
 
 $INSTALL[] = "CREATE TABLE users (
 	name char(255) DEFAULT '' NOT NULL,
@@ -430,11 +431,7 @@ $INSTALL[] = "CREATE TABLE users (
 	comments text,
 	PRIMARY KEY(name),
 	KEY (type))";
-
-$adminpassword = $_POST['adminpassword'];
-if ($adminpassword == ""){
-   $adminpassword = "admin";
-   }		
+	
 $INSTALL[] = "INSERT INTO users
 	(name, password, fullname, email,
 	 location, phone, type)

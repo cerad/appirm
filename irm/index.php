@@ -88,13 +88,13 @@ $login = array (    'Section' => 'menu',
             );
 
 //echo redirectCheck(); // ***5 blank for now
-die('before status');
+//echo currentStatus();
 $status = array (    'Section' => 'main',
             'Header' => _('Current Status'),
             'Info' => currentStatus(),
             'Submit' => '',
             );
-echo currentStatus(); die();
+
 $introduction = array (    'Section' => 'nav',
             'Header' =>  _('IRM - The Information Resource Manager'),
             'Info' =>_('IRM is a multi-user computer, software, peripheral and problem tracking system.
@@ -116,7 +116,7 @@ $Content = array (    $login,
 $allMenuContent = "";
 $allMainContent = "";
 $allNavContent = "";
-
+die('Just before factory');
 $Page = new IrmFactory();
 
 foreach($Content as $content){
