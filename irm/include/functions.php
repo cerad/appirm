@@ -142,12 +142,16 @@ function currentStatus()
             }
         }
         
-        if ($status != 1){
+        if ($status != 1)
+        {
             $_SESSION['_sess_database'] = $key;
 
+            // ***5 This is supposed to fail, not sure what the point is
+            // Maybe triggers error which in turn makes it back to database?
             User::Authenticate("IRMConnect","password");
 
-            $DB = Config::Database();
+          //$DB = Config::Database();
+            
             $statusText .= '<p id="warning">';
             $statusText .=  $value .  " : " . Config::Get('status');
             $statusText .= "</p>";

@@ -24,9 +24,9 @@ require_once(dirname(__FILE__) . '/../lib/Savant2.php'); // basepath
 class IrmFactory extends Savant2
 {
     
-    function IrmFactory()
+    public function __construct()
     {
-        parent::Savant2(array(
+        self::Savant2(array(
             'template_path'=>dirname(__FILE__) . '/../templates/',
             'resource_path'=>dirname(__FILE__) . '/../lib/Savant2/')
         );

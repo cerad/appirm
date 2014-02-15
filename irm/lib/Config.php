@@ -130,17 +130,14 @@ class Config
 
         if (!$DB)
         {
-            $DB = new IRMDB($dbcfg['DSN'], @$dbcfg['dbsocket']);
-            $DB->DieOnError();
+            $DB = new IRMDB($dbcfg['DSN']);
         }
         
-        if ($dbcfg['DSN'] !== @$DB->dsn)
+        if ($dbcfg['DSN'] !== $DB->getDSN())
         {
             unset($DB);
-            $DB = new IRMDB($dbcfg['DSN'], @$dbcfg['dbsocket']);
-            $DB->DieOnError();
+            $DB = new IRMDB($dbcfg['DSN']);
         }
-
         return $DB;
     }
 
@@ -252,17 +249,10 @@ class Config
         }
         
         $DB = Config::Database();
-        $qvar = $DB->getTextValue($var);
-        $val = $DB->getOne("SELECT value FROM config WHERE variable=$qvar");
+
+        $val = $DB->getOne5('SELECT value FROM config WHERE variable=:var', array('var' => $var));
         
-        if ($val === NULL)
-        {
-            return $DEFAULT_CONFIG[$var];
-        }
-        else
-        {
-            return $val;
-        }
+        return $val === NULL ? $DEFAULT_CONFIG[$var] : $val;
     }
 
     /** Set the value of the specified system config variable.

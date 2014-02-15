@@ -29,6 +29,7 @@ class IRMDB
         $this->conn = $pdo;
     }
     public function isConnected() { return $this->conn ? true : false; }
+    public function getDSN()      { return $this->dsn; }
     
     /** Decease if the database is suffering from an error.
      */
@@ -126,10 +127,17 @@ class IRMDB
         echo substr($sql,0,30) . "\n";
         return $this->conn->exec($sql);
     }
-    function getOne()
+    // This is avtually supposed to return one column
+    function getOne5($sql,$params)
     {
-        $args = func_get_args();
-        return call_user_func_array(array(&$this->_dbh, 'getOne'), $args);
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute($params);
+        
+        $val = $stmt->fetchColumn();
+        
+        // PDO return false on no more rows
+        // IRM appears to check for null
+        return $val === FALSE ? NULL : $val;
     }
     
     function getRow()
@@ -150,7 +158,7 @@ class IRMDB
         return call_user_func_array(array(&$this->_dbh, 'getAll'), $args);
     }
     
-    function getTextValue()
+    function getTextValue5($value)
     {
         $args = func_get_args();
         return call_user_func_array(array(&$this->_dbh, 'getTextValue'), $args);

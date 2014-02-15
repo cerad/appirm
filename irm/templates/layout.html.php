@@ -2,13 +2,13 @@
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
 <head>
-<title><? echo $this->title ?></title>
-<link href="<? print $this->stylesheet ?>" rel="stylesheet" type="text/css" />
+<title><?php echo $this->title; ?></title>
+<link href="<?php print $this->stylesheet; ?>" rel="stylesheet" type="text/css" />
 </head>
 <body id="main" onload="document.login.name.focus()">
-<div class="nav"><? print $this->content_nav ?></div>
-<div id="login"><? print $this->content_menu ?></div>
-<div id="centerlogincontent"><? print $this->content_main ?></div>
+<div class="nav"><?php print $this->content_nav; ?></div>
+<div id="login"><?php print $this->content_menu; ?></div>
+<div id="centerlogincontent"><?php print $this->content_main; ?></div>
 
 </body>
 </html>

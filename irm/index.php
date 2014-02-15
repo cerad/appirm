@@ -116,25 +116,37 @@ $Content = array (    $login,
 $allMenuContent = "";
 $allMainContent = "";
 $allNavContent = "";
-die('Just before factory');
+
 $Page = new IrmFactory();
 
-foreach($Content as $content){
-    $Page->assign('header', $content['Header']);
-    $Page->assign('body', $content['Info'] . formSubmit($content['Fields'], $content['Submit']));
+foreach($Content as $content)
+{
+    // Not all content has all the fields
+    $contentHeader  = isset($content['Header' ]) ? $content['Header' ] : null;
+    $contentInfo    = isset($content['Info'   ]) ? $content['Info'   ] : null;
+    $contentFields  = isset($content['Fields' ]) ? $content['Fields' ] : null;
+    $contentSubmit  = isset($content['Submit' ]) ? $content['Submit' ] : null;
+    $contentSection = isset($content['Section']) ? $content['Section'] : null;
+    
+    $Page->assign('header', $contentHeader);
+    $Page->assign('body',   $contentInfo . formSubmit($contentFields, $contentSubmit));
 
-    if($content['Section'] == "menu"){
-        $allMenuContent .= $Page->fetch('section.html.php');
-    } elseif($content['Section'] == "main"){
-        $allMainContent .= $Page->fetch('section.html.php');
-    } elseif($content['Section'] == "nav"){
-        $allNavContent .= $Page->fetch('section.html.php');
+    switch($contentSection)
+    {
+        case 'menu':
+            $allMenuContent .= $Page->fetch('section.html.php');
+            break;
+        case 'main':
+            $allMainContent .= $Page->fetch('section.html.php');
+            break;
+        case 'nav':
+            $allNavContent .= $Page->fetch('section.html.php');
+            break;
     }
 }
-
 $Page->assign('title', _('IRM - The Information Resource Manager'));
 $Page->assign('stylesheet', 'styles/default.css');
-$Page->assign('content_nav', $allNavContent);
+$Page->assign('content_nav',  $allNavContent);
 $Page->assign('content_menu', $allMenuContent);
 $Page->assign('content_main', $allMainContent);
 
