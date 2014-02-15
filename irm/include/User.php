@@ -253,47 +253,50 @@ class User
     {
         $DB = Config::Database();
 
-        $name = $DB->getTextValue($this->udata['Name']);
+        $name = $this->udata['Name'];
         
-        $result = $DB->getRow("SELECT name,fullname,email,location,phone,type,comments FROM users WHERE (name = $name)");
-
+        $sql1 = 'SELECT name,fullname,email,location,phone,type,comments FROM users WHERE name = :name';
+      
+        $user = new DataRow($DB->getRow5($sql1,array('name' => $name)));
+        
         // If there is no matching user in the database redirect back to the main index/login page
-        if (count($result) == 0){
+        if (count($user) == 0)
+        {
             header("Location: ".Config::AbsLoc("index.php"));
-             exit();
+            exit();
         }
+        $this->udata['Name']     = $user['name'];
+        $this->udata['Fullname'] = $user['fullname'];
+        $this->udata['Email']    = $user['email'];
+        $this->udata['Location'] = $user['location'];
+        $this->udata['Phone']    = $user['phone'];
+        $this->udata['Type']     = $user['type'];
+        $this->udata['Comments'] = $user['comments'];
 
-        $this->udata['Name'] = $result['name'];
-        $this->udata['Fullname'] = $result['fullname'];
-        $this->udata['Email'] = $result['email'];
-        $this->udata['Location'] = $result['location'];
-        $this->udata['Phone'] = $result['phone'];
-        $this->udata['Type'] = $result['type'];
-        $this->udata['Comments'] = $result['comments'];
-
-        $result = $DB->getRow("SELECT * FROM prefs WHERE (user = $name)");
-        $this->setDisplayComputerType($result["type"]);
-        $this->setDisplayOperatingSystem($result["os"]);
-        $this->setDisplayOperatingSystemVersion($result["osver"]);
-        $this->setDisplayProcessor($result["processor"]);
-        $this->setDisplayProcessorSpeed($result["processor_speed"]);
-        $this->setDisplayLocation($result["location"]);
-        $this->setDisplaySerial($result["serial"]);
-        $this->setDisplayOtherSerial($result["otherserial"]);
-        $this->setDisplayRamType($result["ramtype"]);
-        $this->setDisplayRam($result["ram"]);
-        $this->setDisplayNetwork($result["network"]);
-        $this->setDisplayIP($result["ip"]);
-        $this->setDisplayMachineAddress($result["mac"]);
-        $this->setDisplayHardDriveSize($result["hdspace"]);
-        $this->setDisplayContact($result["contact"]);
-        $this->setDisplayContactNumber($result["contact_num"]);
-        $this->setDisplayComments($result["comments"]);
-        $this->setDisplayDateMod($result["date_mod"]);
-        $this->setAdvancedTracking($result["advanced_tracking"]);
-        $this->setTrackingOrder($result["tracking_order"]);
+        $sql2 = 'SELECT * FROM prefs WHERE user = :name';
+        $result = new DataRow($DB->getRow5($sql2,array('name' => $name)));
+   
+        $this->setDisplayComputerType          ($result->type);
+        $this->setDisplayOperatingSystem       ($result->os);
+        $this->setDisplayOperatingSystemVersion($result->osver);
+        $this->setDisplayProcessor             ($result->processor);
+        $this->setDisplayProcessorSpeed        ($result->processor_speed);
+        $this->setDisplayLocation              ($result->location);
+        $this->setDisplaySerial                ($result->serial);
+        $this->setDisplayOtherSerial           ($result->otherserial);
+        $this->setDisplayRamType               ($result->ramtype);
+        $this->setDisplayRam                   ($result->ram);
+        $this->setDisplayNetwork               ($result->network);
+        $this->setDisplayIP                    ($result->ip);
+        $this->setDisplayMachineAddress        ($result->mac);
+        $this->setDisplayHardDriveSize         ($result->hdspace);
+        $this->setDisplayContact               ($result->contact);
+        $this->setDisplayContactNumber         ($result->contact_num);
+        $this->setDisplayComments              ($result->comments);
+        $this->setDisplayDateMod               ($result->date_mod);
+        $this->setAdvancedTracking             ($result->advanced_tracking);
+        $this->setTrackingOrder                ($result->tracking_order);
     }
-
     function add($isLDAP = false)
     {
         if($this->udata['Name'] == "")

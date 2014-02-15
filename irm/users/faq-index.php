@@ -18,9 +18,11 @@
 #
 #
 ################################################################################
+error_reporting(E_ALL);
 
 require_once '../include/irm.inc';
 require_once 'include/i18n.php';
+
 AuthCheck("post-only");
 
 commonHeader(_("Frequently Asked Questions"));

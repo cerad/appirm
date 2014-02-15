@@ -20,92 +20,94 @@
 ################################################################################
 function getFAQCategories()
 {
-	$query = "select * from kbarticles where (faq = 'yes')";
+    $query = "select * from kbarticles where (faq = 'yes')";
 
-	$DB = Config::Database();
-	$data = $DB->getAll($query);
-	$catNumbers = array();
-	foreach ($data as $result)
-	{
-		getFAQParentCategories($result["categoryID"], $catNumbers);
-		#	$catNumbers[] = $result["categoryID"];
-	}
+    $DB = Config::Database();
+    $data = $DB->getAll5($query);
+    $catNumbers = array();
+    foreach ($data as $result)
+    {
+        getFAQParentCategories($result["categoryID"], $catNumbers);
+        #    $catNumbers[] = $result["categoryID"];
+    }
 
-	return($catNumbers);
-}	
+    return($catNumbers);
+}    
 
 function getFAQParentCategories($ID, &$catNumbers)
 {
-	$query = "select * from kbcategories where (ID = '$ID')";
-
-	$DB = Config::Database();
-	$result = $DB->getRow($query);
-	if(count($result) > 0)
-	{
-		$parentID = $result["parentID"];
-		if(!in_array($parentID, $catNumbers))
-		{
-			getFAQParentCategories($parentID, $catNumbers);
-		}
-		if(!in_array($ID, $catNumbers))
-		{
-			$szecatNumbers = sizeof($catNumbers);
-			$catNumbers[$szecatNumbers] = $ID;
-		}
-	}
+    $DB = Config::Database();
+        
+    $query = "select * from kbcategories where (ID = :id)";
+    $result = $DB->getRow5($query,array('id' => $ID));
+        
+    if(count($result) > 0)
+    {
+        $parentID = $result["parentID"];
+        if(!in_array($parentID, $catNumbers))
+        {
+            getFAQParentCategories($parentID, $catNumbers);
+        }
+        if(!in_array($ID, $catNumbers))
+        {
+            $szecatNumbers = sizeof($catNumbers);
+            $catNumbers[$szecatNumbers] = $ID;
+        }
+    }
 }
 
 function faqdisplaycategories($parentID=0)
 {
-	// display the articles of this category, then explore the childeren
-	faqdisplayarticles($parentID);
+    // display the articles of this category, then explore the childeren
+    faqdisplayarticles($parentID);
 
-	$catNumbers = getFAQCategories();
-	$query = "select * from kbcategories where (parentID = $parentID) order by name asc";
+    $catNumbers = getFAQCategories();
+    $query = "select * from kbcategories where (parentID = :parentID) order by name asc";
 
-	$DB = Config::Database();
-	$data = $DB->getAll($query);
-	if(count($data) > 0)
-	{
-		PRINT "<ul>\n";
+    $DB = Config::Database();
+    $data = $DB->getAll5($query,array('parentID' => $parentID));
+        
+    if(count($data) > 0)
+    {
+        PRINT "<ul>\n";
 
-		foreach ($data as $result)
-		{
-			$name = $result["name"];
-			$ID = $result["ID"];
-			if(in_array($ID, $catNumbers))
-			{
-				PRINT "<li><B>$name</B>\n";
-				faqdisplaycategories($ID);
-			}
-		}
-		PRINT "</ul>\n";
-	} 
+        foreach ($data as $result)
+        {
+            $name = $result["name"];
+            $ID = $result["ID"];
+            if(in_array($ID, $catNumbers))
+            {
+                PRINT "<li><B>$name</B>\n";
+                faqdisplaycategories($ID);
+            }
+        }
+        PRINT "</ul>\n";
+    } 
 }
 
 function faqdisplayarticles($parentID)
 {
-	$query = "select * from kbarticles where (categoryID = $parentID) and (faq = 'yes') order by question asc";
+    $query = "select * from kbarticles where (categoryID = :parentID) and (faq = 'yes') order by question asc";
 
-	$DB = Config::Database();
-	$data = $DB->getAll($query);
-	PRINT "<ul>\n";
-	foreach ($data as $result)
-	{
-		$ID = $result["ID"];
-		faqdisplayarticle($ID);
-	}
-	PRINT "</ul>\n";
+    $DB = Config::Database();
+    $data = $DB->getAll5($query,array('parentID' => $parentID));
+    PRINT "<ul>\n";
+    foreach ($data as $result)
+    {
+        $ID = $result["ID"];
+        faqdisplayarticle($ID);
+    }
+    PRINT "</ul>\n";
 }
 
 function faqdisplayarticle($ID)
 {
-	$query = "select * from kbarticles where (ID=$ID)";
+    $query = "select * from kbarticles where (ID=:ID)";
 
-	$DB = Config::Database();
-	$result = $DB->getRow($query);
-	$question = $result["question"];
-	PRINT '<li><A HREF="'.Config::AbsLoc("users/faq-detail.php?ID=$ID&action=faqdetail").'">';
-	PRINT htmlspecialchars($question) . "</A>\n";
+    $DB = Config::Database();
+    $result = $DB->getRow5($query,array('ID' => $ID));
+    $question = $result["question"];
+    PRINT '<li><A HREF="'.Config::AbsLoc("users/faq-detail.php?ID=$ID&action=faqdetail").'">';
+    PRINT htmlspecialchars($question) . "</A>\n";
 }
 ?>

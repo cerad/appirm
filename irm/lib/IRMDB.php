@@ -3,6 +3,42 @@
 require_once 'MDB.php';
 require_once dirname(__FILE__) . '/../include/i18n.php';
 
+class DataRow implements \ArrayAccess,\Countable
+{
+    protected $container;
+    
+    public function __construct(Array $data) { $this->container = $data; }
+    public function __get($offset)
+    {
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+    }
+    public function __set($offset,$value)
+    {
+        $this->container[$offset] = $value;
+        return $this;
+    }
+    public function offsetSet($offset, $value) 
+    {    
+        $this->container[$offset] = $value;
+        return $this;
+    }
+    public function offsetExists($offset) 
+    {
+        return isset($this->container[$offset]);
+    }
+    public function offsetUnset($offset) 
+    {
+        unset($this->container[$offset]);
+    }
+    public function offsetGet($offset) 
+    {
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+    }
+    public function count() 
+    { 
+        return count($this->container); 
+    }
+}
 /* ==============================================
  * ***5 This looks to be a wrapper for MDB.
  *      Replace with PDP
@@ -128,7 +164,7 @@ class IRMDB
         return $this->conn->exec($sql);
     }
     // This is avtually supposed to return one column
-    function getOne5($sql,$params)
+    function getOne5($sql,$params = array())
     {
         $stmt = $this->conn->prepare($sql);
         $stmt->execute($params);
@@ -140,22 +176,28 @@ class IRMDB
         return $val === FALSE ? NULL : $val;
     }
     
-    function getRow()
+    function getRow5($sql,$params = array())
     {
-        $args = func_get_args();
-        return call_user_func_array(array(&$this->_dbh, 'getRow'), $args);
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute($params);
+        
+        $rows = $stmt->fetchAll();
+        if (count($rows) == 1) return $rows[0];
+        
+        return array();        
     }
     
-    function getCol()
+    function getCol5()
     {
         $args = func_get_args();
         return call_user_func_array(array(&$this->_dbh, 'getCol'), $args);
     }
     
-    function getAll()
+    function getAll5($sql, $params = array())
     {
-        $args = func_get_args();
-        return call_user_func_array(array(&$this->_dbh, 'getAll'), $args);
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute($params);
+        return $stmt->fetchAll();
     }
     
     function getTextValue5($value)

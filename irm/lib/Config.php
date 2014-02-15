@@ -90,13 +90,16 @@ class Config
         
         // Next, get the name of the script file relative to the root
         // of the IRM installation
-        $relativescript = ereg_replace("^$instroot", '', $sfile);
+        // ***5 was ereg_replace, needs delimiter at end
+        $relativescript = preg_replace("^$instroot^", '', $sfile);
 
         // Now, we can get the web location of the root of the IRM
         // installation by stripping out the script-file specific
         // portion from the web location of the script
-        $webroot = ereg_replace("$relativescript\$", '', $sloc);
+      //$webroot = preg_replace("$relativescript\$", '', $sloc);
+        $webroot = str_replace($relativescript, '', $sloc);
 
+        
         if ($args !== NULL)
         {
             $arglist = array();

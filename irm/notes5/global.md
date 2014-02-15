@@ -25,3 +25,5 @@ But not being super consistent.
 Use __construct for constructors.
 
 Replace parent:: with self::
+
+ereg_replace is now preg_replace - Have not looked at the differences yet
