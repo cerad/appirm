@@ -1,0 +1,91 @@
+<?php
+#    IRMplus - Resource and Trouble Tracking Manager
+#    Copyright (C) 2002 G. Hartlieb, M. Moorcroft
+#
+#    Derived from IRM
+#
+#    This program is free software; you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation; either version 2 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License (in file COPYING) for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program; if not, write to the Free Software
+#    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#
+#
+################################################################################
+#                                  CHANGELOG                                   #
+################################################################################
+#  11/2002 - G. hartlieb: Created                                              #
+################################################################################
+
+include_once("../include/irm_conf.php");
+include_once("../include/func.header_footer");
+include_once("../include/class.user");
+
+
+AuthCheck("post-only");
+
+commonHeader("IRM Select Ticket Owner");
+
+echo "<p>Original Ticket Owner: <b>$customer</b> NEMS:<b>$NEMS</b></p>"; 
+
+print "Click on the computer's ID to select.";
+
+print "<hr noshade>";
+
+$query = "SELECT COUNT(*) FROM computer 
+          WHERE weight > 0 AND 
+                (owner LIKE '%$name%' OR user LIKE '%$name%')";
+$sth = $adb->prepare($query);
+$res = $sth->execute() or print( mysql_error().': '.$query );
+
+// Number of rows returned from above query.
+list($numrows) = $sth->fetchrow_array();
+
+if ( $numrows < 1 ) {
+   print "Bad IRM ID or search terms";
+
+} elseif ($numRows > 10) {
+print "Your search terms were to vague, and yeilded more than 10 results.  
+       Please try again.";
+
+} else {
+   $query = "SELECT computer_id,NEMS,owner,user,type,building 
+               FROM computer 
+              WHERE weight > 0 AND
+                    (owner LIKE '%$name%' OR user LIKE '%$name%')";
+   $sth = $adb->prepare($query);
+   $res = $sth->execute() or print( mysql_error().': '.$query );
+
+   echo "<table>";
+   echo "<th>Computer ID</th><th>Owner<th>User</th></th><th>Type</th><th>Location</th>";
+   while ( $row = $sth->fetchrow_hash() ) {
+      extract($row);
+
+      echo "<tr>";
+      echo "<td>";
+            $user || $user = $owner;
+  echo "<a href=\"../users/tracking-info.php?ID=$ID&changed=yes&customer=$user&computer_id=$computer_id\">$NEMS</a>";
+      echo "</td>"; 
+      echo "<td>$owner</td>";
+      echo "<td>$user</td>";
+      echo "<td>$type</td>";
+      echo "<td>$building</td>";
+      echo "</tr>";
+
+   } // End While
+   echo "</table>";
+
+} // End If
+
+
+commonFooter();
+
+?>

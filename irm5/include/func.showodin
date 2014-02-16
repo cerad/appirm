@@ -1,0 +1,71 @@
+<?php
+
+function ShowODIN($customer_id) 
+{
+ 
+   include_once("../include/func.showsoftware"); 
+
+  // Global variable for DataBase Handle
+  global $adb;   
+
+  // Init Surplus Variable
+  $surplus = 0;
+
+  // Get computer list for customer
+  $query = "SELECT lastname
+            FROM   customer
+            WHERE customer_id = $customer_id";
+
+  $sth = $adb->prepare($query);
+  $res = $sth->execute()  or die( mysql_error().': '.$query );
+
+  // Get lastname for this customer
+  list($lastname) = $sth->fetchrow_array($res);
+
+  // Get computer list for customer
+  $query = "SELECT *
+            FROM   odin
+            WHERE owner = '$lastname' ";
+
+  $sth = $adb->prepare($query);
+  $res = $sth->execute()  or die( mysql_error().': '.$query );
+
+  $surplus = $sth->rows($res);
+
+  // Get all computer_ids for this customer
+   while ( $row = $sth->fetchrow_hash() ) {
+      extract($row);
+     // Setup info for anchor
+     $form = "general-info.php";
+     $vars = "tablename=odin&field=odin_id&merge1=odin_id&merge2=owner";
+
+     echo "<p>
+        <table width=30% border=1 noshade>
+        <tr>
+          <th>Computer</th>
+          <th>Owner</th>
+          <th>User</th>
+          <th>Building</th>
+          <th>Room</th>
+          <th>IP</th>
+          <th>NetMask</th>
+          <th>Gateway</th>
+        </tr>
+        <tr>
+           <td><a href=\"$form?$vars&ID=$odin_id\">$odin_id</a></td>
+           <td>$owner</td>
+           <td>$building</td>
+           <td>$room</td>
+           <td>$ip</td>
+           <td>$netmask</td>
+           <td>$gateway</td>
+        </tr>
+        </table>
+        </p>";
+
+         ShowSoftware($odin_id);
+   }
+   return($surplus);
+}
+
+?>     

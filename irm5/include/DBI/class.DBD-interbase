@@ -1,0 +1,215 @@
+<?PHP // -*-Mode: C++;-*-
+/*
+  Dobrica Pavlinusic <dpavlin@rot13.org>
+  Based on DBD::Pg by
+  Joseph Artsimovich (joseph_a<at>mail<dot>ru)
+  DBD::interbase -- The InterBase Driver.
+  See: http://evil.inetarena.com/php/DBI.php for more info.
+
+  Licence: LGPL (http://www.gnu.org/).
+
+  This software is provided "AS IS" with no warrenty either implicit,
+  explicit or otherwise.  Use at your own risk.
+
+
+  Notes:
+  
+  o insert_id is not implemented
+  o rows() is not returning correct value
+*/
+
+class DBD_interbase {
+  
+  var $is_persisent;
+  var $DBI;
+  var $exit_on_fail = 0;
+  var $enable_cludge_sql = 1;	// enable by default
+  var $dbh;
+
+  function DBD_connect( $db_name, $db_host = '', 
+			$db_user = '', $db_passwd = '',
+			$is_persistent = 0){
+
+    //Track the $is_persistant just for fun...
+    $is_persistent = $is_persistent ? $is_persistent : 0;
+    $this->is_persistent = $is_persistent;
+
+    //DEBUG...
+    echo "DBD::interbase: [$db_name][$db_host][$db_user][$is_persistent]<br>\n";
+
+    $conn = array('','','');
+
+    if ($db_name) $conn[0] = $db_name ;	# can have hostname inside!
+    if ($db_host) $conn[0] = "$db_host:$db_name" ;
+    if ($db_user) $conn[1] = $db_user ;
+    if ($db_passwd) $conn[2] = $db_passwd ;
+
+    if( $is_persistent ){
+      $conn = ibase_pconnect( $conn[0],$conn[1],$conn[2] );
+    } else {
+      $conn = ibase_connect( $conn[0],$conn[1],$conn[2] );
+    }
+    
+    if( !$conn ){
+      $this->errstr = "DBD::interbase Error: Could not connect to the database.";
+      return;
+    }
+
+    $this->dbh = $conn;
+    return( $this );
+  }//end connect function
+
+
+
+  function disconnect( ){
+    ibase_close( $this->dbh );
+    $this->dbh = undef;
+    return( 1 );
+  }//end disconnect function
+
+  function cludge_sql ( $query, $enable ) {
+    if ($enable) {
+      //cludge for "=true|false" and "is true|false" 
+      $query=eregi_replace("= *true","='t'",$query);
+      $query=eregi_replace("= *false","='f'",$query);
+      $query=eregi_replace("is *true","='t'",$query);
+      $query=eregi_replace("is *false","='f'",$query);
+      //cludge for limit
+      $query=eregi_replace("limit.+","",$query);
+    }
+    return $query;
+  }
+
+  function prepare( $query ){
+    if( ! $this->dbh ){ return; }
+    //Does nothing but save the query...
+    $sth = new STH_interbase;
+    $sth->DBH( $this );
+    $sth->prepare( $this->cludge_sql($query,$this->enable_cludge_sql) );
+    return( $sth );
+  }//end dbh prepare fn
+
+
+  //do is a reserved word so I have to name this something else.
+  function dbh_do( $query ){
+    //run the query and return the number of affected rows.
+    $result = ibase_query( $this->dbh, $this->cludge_sql($query,$this->enable_cludge_sql) );
+    if( ! $result ){
+      $this->errstr = "DBI Error: 'dbh_do' failed: ".
+	ibase_errmsg( $this->dbh );
+
+      if( $this->exit_on_fail ){
+	echo $this->errstr."<br>\n";
+	$this->disconnect( );
+	exit( ); }
+
+      return;
+    }
+    $rows = ibase_num_fields( $result );
+    if( $rows == 0 ){ $rows = '0E0'; }
+    return( $rows );
+  }//end fn do
+
+
+  function insert_id( ){
+    //Get the last serial number from an insert.
+    $this->errstr  = "DBI Error: 'insertid' unimplemented.";
+    return( -1 );
+  }//end fn do
+
+
+  function quote( $string ){
+    if( $string ){
+      return( "'".addslashes( $string )."'" );
+    } else {
+      return( 'NULL' );
+    }
+  }//end fn quote
+
+
+}//end DBI class
+
+
+//===========================================================
+
+class STH_interbase extends DBD_interbase {
+
+  var $query;
+  var $DBH;
+  var $dbh;
+  var $result;
+  var $row = 0;
+
+  function STH( $dbh = '' ){
+    if( $dbh ){
+      $this->dbh = &$dbh;
+    }
+    return( $this );
+  }
+
+
+  function DBH( $dbh ){
+    $this->DBH = &$dbh;
+    $this->dbh = &$dbh->dbh;
+    return( $dbh );
+  }
+
+
+  function prepare( $query ){
+    if( ! $this->dbh ){ return; }
+    $this->query = $query;
+    return( $query );
+  }
+
+
+  function execute( ){
+    if( ! $this->dbh ){ return; }
+    //echo "Running query $this->query<br>\n";
+    $this->result = ibase_query( $this->dbh, $this->cludge_sql($this->query,$this->enable_cludge_sql) );
+    if( ! $this->result ){
+      $this->errstr = "STH Execute failed: ".ibase_errmsg( $this->dbh );
+      return;
+    }
+
+    return( 1 );
+  }//end execute fn
+
+
+  function finish( ){
+    if( ! $this->result ){ return; }
+    ibase_freeresult( $this->result );
+    $this->result = undef;
+    return( 1 );
+  }//end finish fn
+
+
+  function rows( ){
+      return( ibase_num_fields( $this->result ) );
+  } //end rows fn
+
+  function fetchrow_array( ){
+    if( ! $this->result ){
+      //echo "STH Error: Calling fetchrow on null result.<br>\n";
+      return;
+    }
+    return( ibase_fetch_row( $this->result ));
+  }
+
+
+  function fetchrow_hash( ){
+    if( ! $this->result ){
+      //echo "STH Error: Calling fetchrow on null result.<br>\n";
+      return;
+    }
+    if (! $ret = ibase_fetch_object( $this->result )) return 0;
+    // cludge to make column names lowercase
+    while ($tmp = each($ret)) {
+	$row[ strtolower($tmp[0]) ] = $tmp[1] ; // lower case
+	$row[ $tmp[0] ] = $tmp[1] ;		// upper case
+    }
+    return ( $row );
+  }
+}
+
+  
+$GLOBALS[classDBDinterbase_read] = 1;

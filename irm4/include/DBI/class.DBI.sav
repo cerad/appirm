@@ -1,0 +1,235 @@
+<?PHP // -*-Mode: C++;-*-
+/*
+  Bill Adams (bill<at>evil<dot>inetarena<dot>com)
+  DBI.php3 -- A perl DBI like class.
+  See: http://evil.inetarena.com/php/DBI.php for more info.
+
+  Licence: LGPL (http://www.gnu.org/).
+
+  This software is provided "AS IS" with no warrenty either implicit,
+  explicit or otherwise.  Use at your own risk.
+
+  ... 
+
+  Notes:
+
+  o 'do' is called 'dbh_do' in this because 'do' is a reserved word.
+
+  o Not every function is implemented.
+
+  
+  28 Mar 2000  baa  Fixed the sth function to call the right constructor so
+  .                   one can have multiple database connections.
+
+  31 Jan 2001  baa  Fixed the parse_dbi_string regex.
+
+*/
+
+//See if it is already loaded. This is so you can include it
+//  without worrying about error messages.  I do not remember why
+//  I need this. -- baa.
+
+if( ! isset( $GLOBALS[classDBI_connectiontrack] )){
+class DBI {
+
+  var $db_type  = '';
+  var $dbh      = '';
+  var $DBD;
+  var $errorstr = '';
+  var $is_persistent;
+  var $exit_on_fail = 0;
+
+  function parse_dbi_string( $dbi_connect_str ){
+
+    if( ereg( "(p)?dbi:([^:]+):([^:]+)[;:](host=)?(.+)", $dbi_connect_str, $regs ) ||
+	ereg( "(p)?dbi:([^:]+):([^:]+)", $dbi_connect_str, $regs )){
+      $dbi[db_type]       = $regs[2];
+      $dbi[db_name]       = $regs[3];
+      $dbi[db_host]       = ( $regs[5] ? $regs[5] : 'localhost' );
+      $dbi[is_persistent] = ( $regs[1] ? 1 : 0 );
+      //echo "Connecting: [ ",
+	//$dbi[db_type],"][", 
+	//$dbi[db_name],"][", 
+	//$dbi[dbh_user], "][",
+	//$dbi[db_host], "]<br>\n";
+      return( $dbi );
+
+    } else {
+      echo "DBI: Invalid Connect String '$dbi_connect_str'.<br>\n";
+      return;
+    }
+    
+  }
+
+  function DBI( $dbi_connect_str, $db_user = '', $db_passwd = '' ){
+
+    $this->is_persistent = 0;
+    $dbi_info =  $this->parse_dbi_string( $dbi_connect_str );
+    if( ! $dbi_info ){ return; }
+    $this->is_persistent = $db_info[is_persistent];
+
+
+    if( $dbi_info[db_type] != '' ){
+      $this->connect( $dbi_info[db_type], $dbi_info[db_name], 
+		      $dbi_info[db_host], 
+		      $db_user, $db_passwd,
+		      $dbi_info[is_persistent] );
+    }
+    return $this;
+    //Arrg! There is no way to return a false object on the new.
+    //  so that means the user will have to check $this->dbh to see if 
+    //  the connection was made.
+  }//end constructor
+
+
+  function connect( $db_type, $db_name, $db_host = '', 
+		    $db_user = '', $db_passwd = '',
+		    $is_persistent = 0 ){
+    
+    //See if we need to parse the db_type...
+    if( ereg( "(p)?dbi:(.+):(.+)[;:](.+)", $db_type, $regs ) ||
+	ereg( "(p)?dbi:(.+):(.+)[;:]?(.+)?", $db_type, $regs )){
+      $db_user = $db_name;
+      $db_passwd = $db_host;
+      $db_type   = $regs[2];
+      $db_name   = $regs[3];
+      $db_host   = ( $regs[4] ? $regs[4] : 'localhost' );
+      $is_persistent = ( $regs[1] ? 1 : 0 );
+      //echo "Connecting: [ $db_name ][ $dbh_user ][ $db_host ]<br>\n";
+    }
+
+    $this->is_persistent = $is_persistent;
+
+    //Select the database type.
+    if( eregi( "^mysql$", $db_type )){
+      $db_type = 'mysql';  //perl string for this database.
+    } else if( eregi( "informix", $db_type )){
+      $db_type = 'Informix';
+    } else if( eregi( "sybase", $db_type )){
+	  $db_type = 'sybase';
+    } else if (eregi( "Pg", $db_type )){
+      $db_type = 'Pg';
+    }
+    $this->db_type = $db_type;
+
+    
+    //Include the file only if we have not already read it.
+    if( ! $GLOBALS['classDBD'.$db_type."_read"] ){
+      include( 'class.DBD-'.$db_type );
+    }
+    
+    //Check to see if we could read it...
+    if( ! $GLOBALS['classDBD'.$db_type."_read"] ){
+      echo "Error: No DBD for $db_type.<br>\n";
+      $this->errstr = "Error: No DBD driver for '$db_type'.";
+      return;
+    }
+
+    //Track the connections.  The reason for doing this is that
+    //  if the user tries (at least with MySQL_* functions) to 
+    //  connecto to a mysql database with the same arguments
+    //  then mysql_connect will return the same connection handle.
+    //  This is a problem when the user tries to select two different
+    //  MySQL databases using the same host, user, and password.
+    //$GLOBALS[classDBI_connectiontrack] = array( );
+    if( $GLOBALS[classDBI_connectiontrack]
+	[$db_type][$db_host][$db_user][$db_passwd] 
+	&&
+	$GLOBALS[classDBI_connectiontrack]
+	[$db_type][$db_host][$db_user][$db_passwd]  != $db_name ){
+      echo "<B>DBI Warning:</B> You are trying to connect to two different ",
+	$db_type," databases with the same host, user, and password.  ",
+	"This will probably give you unexpected results. ",
+	"Expect problems.",
+	"<br>\n";
+    }
+    
+    $DBD_class                = 'DBD_'.$db_type;
+    $this->DBD                = new $DBD_class;
+
+    //Originally, I was going to have the sub class set the variables
+    //  in this class but when you do something like $class1 = $class2, 
+    //  PHP makes a copy of the class so changes to class2 will not
+    //  be shown in class1.  For this reason, functions will need to be
+    //  fully parameterized and the value of DBD->errstr will have to be
+    //  copied after the call.
+
+    //Note that the arg list for the DBD connect is different than that
+    //  of this connect.
+    $conn = $this->DBD->DBD_connect( $db_name, $db_host, 
+				     $db_user, $db_passwd,
+				     $this->is_persistent );
+
+    if( !$conn ){
+      $this->errstr = $this->DBD->errstr;
+      return;
+    }
+
+    $GLOBALS[classDBI_connectiontrack]
+      [$db_type][$db_host][$db_user][$db_passwd]  = $db_name;
+    
+    $this->dbh = $conn;
+    return( $this );
+  }//end connect function
+
+
+  function disconnect( ){
+    if( $this->DBD ){
+      $this->DBD->disconnect( );
+    }
+  }//end disconnect function
+
+
+  function exit_on_fail( $yesno = '' ){
+    //Should the program stop if a query fails?
+    //   This is partially implemented.
+    if( $yesno != '' ){
+      $this->DBD->exit_on_fail = $yesno;
+    }
+    return( $this->DBD->exit_on_fail );
+  }
+
+
+  function prepare( $query ){
+    //Does nothing but save the query.  Be sure we call the 
+    //  prepare of the DBD object.  Otherwise
+    //  we get conflicts if we try to have more than one
+    //  database handle.
+    if( ! $this->dbh ){ return; }
+    $sth = $this->DBD->prepare( $query );
+    $this->errstr = $this->DBD->errstr;
+    return( $sth );
+  }//end dbh prepare fn
+
+
+  //do is a reserved word so I have to name this something else.
+  function dbh_do( $query ){
+    //run the query and return the number of affected rows.
+    //Make sure that we clear out any error strings.
+    $this->errstr = $this->DBD->errstr = '';
+    $rows = $this->DBD->dbh_do( $query );
+    if( $this->DBD->errstr ){
+      $this->errstr = $this->DBD->errstr;
+      return;
+    }
+    if( $rows != '' && ereg( "^[0-9]+$", $rows ) && $rows == 0 ){ 
+      $rows = '0E0'; 
+    }
+    return( $rows );
+  }//end fn do
+
+
+  function insert_id( ){
+    //Get the last serial number from an insert.
+    return( $this->DBD->insert_id(  ));
+  }//end fn insert_id
+
+  function quote( $string ){
+    return( $this->DBD->quote( $string ));
+  }
+      
+}//end DBI class
+
+//Print out warnings if the user gets duplicate connections.
+$GLOBALS[classDBI_connectiontrack] = array( );  
+}

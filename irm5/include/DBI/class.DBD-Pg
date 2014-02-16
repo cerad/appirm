@@ -1,0 +1,229 @@
+<?PHP // -*-Mode: C++;-*-
+/*
+  Joseph Artsimovich (joseph_a<at>mail<dot>ru)
+  DBD::Pg -- The PostgreSQL Driver.
+  See: http://evil.inetarena.com/php/DBI.php for more info.
+
+  Licence: LGPL (http://www.gnu.org/).
+
+  This software is provided "AS IS" with no warrenty either implicit,
+  explicit or otherwise.  Use at your own risk.
+
+
+  Notes:
+  
+  o insert_id is not implemented
+
+  31 Jan 2001  baa  Allow prepared statements in execute; patch 
+  .                   by Norman Clarke.
+
+*/
+
+class DBD_Pg {
+  
+  var $is_persisent;
+  var $DBI;
+  var $exit_on_fail = 0;
+  var $dbh;
+
+  function DBD_connect( $db_name, $db_host = '', 
+			$db_user = '', $db_passwd = '',
+			$is_persistent = 0){
+
+    //Track the $is_persistant just for fun...
+    $is_persistent = $is_persistent ? $is_persistent : 0;
+    $this->is_persistent = $is_persistent;
+
+    //DEBUG...
+    //echo "DBD::Pg: [$db_name][$db_host][$db_user][$is_persistent]<br>\n";
+
+    $str = '';
+
+    //Because if you specify a host instead of a blank in
+    //  the localhost case, Pg will try to use a network
+    //  socket instead of a domain socket.  So we will try
+    //  to detect that case and Do The Right Thing (tm).
+    //  Thanks to James D. McIninch for pointing this out.
+    if ($db_host && !ereg("^localhost", $db_host) &&
+	!ereg("^127.0.0")) $str .= "host=$db_host ";
+    //if ($db_host) $str .= "host=$db_host ";
+    if ($db_name) $str .= "dbname=$db_name ";
+    if ($db_user) $str .= "user=$db_user ";
+    if ($db_passwd) $str .= "password=$db_passwd ";
+
+    $str = chop($str);
+
+    if( $is_persistent ){
+      $conn = pg_pconnect( $str );
+    } else {
+      $conn = pg_connect( $str );
+    }
+    
+    if( !$conn ){
+      $this->errstr = "DBD::Pg Error: Could not connect to the database.";
+      return;
+    }
+
+    $this->dbh = $conn;
+    return( $this );
+  }//end connect function
+
+
+
+  function disconnect( ){
+    pg_close( $this->dbh );
+    $this->dbh = undef;
+    return( 1 );
+  }//end disconnect function
+
+
+  function prepare( $query ){
+    if( ! $this->dbh ){ return; }
+    //Does nothing but save the query...
+    $sth = new STH_Pg;
+    $sth->DBH( $this );
+    $sth->prepare( $query );
+    return( $sth );
+  }//end dbh prepare fn
+
+
+  //do is a reserved word so I have to name this something else.
+  function dbh_do( $query ){
+    //run the query and return the number of affected rows.
+    $result = pg_exec( $this->dbh, $query );
+    if( ! $result ){
+      $this->errstr = "DBI Error: 'dbh_do' failed: ".
+	pg_errormessage( $this->dbh );
+
+      if( $this->exit_on_fail ){
+	echo $this->errstr."<br>\n";
+	$this->disconnect( );
+	exit( ); }
+
+      return;
+    }
+    $rows = pg_cmdtuples( $result );
+    if( $rows == 0 ){ $rows = '0E0'; }
+    return( $rows );
+  }//end fn do
+
+
+  function insert_id( ){
+    //Get the last serial number from an insert.
+    $this->errstr  = "DBI Error: 'insertid' unimplemented.";
+    return( -1 );
+  }//end fn do
+
+
+  function quote( $string ){
+    if( $string ){
+      return( "'".addslashes( $string )."'" );
+    } else {
+      return( 'NULL' );
+    }
+  }//end fn quote
+
+
+}//end DBI class
+
+
+//===========================================================
+
+class STH_Pg {
+
+  var $query;
+  var $DBH;
+  var $dbh;
+  var $result;
+  var $row = 0;
+
+  function STH( $dbh = '' ){
+    if( $dbh ){
+      $this->dbh = $dbh;
+    }
+    return( $this );
+  }
+
+
+  function DBH( $dbh ){
+    $this->DBH = $dbh;  //watch out, this copies the object not the reference.
+    $this->dbh = $dbh->dbh;
+    return( $dbh );
+  }
+
+
+  function prepare( $query ){
+    if( ! $this->dbh ){ return; }
+    $this->query = $query;
+    return( $query );
+  }
+
+
+  function execute( $args="" ){
+    if( ! $this->dbh ){ return; }
+    /* 
+    allow replacement of "?" values in prepared statements
+    */
+    if ( $args ) {
+       $tok = strtok( $this->query, " " );
+       while ( $tok ) {
+        if ( $tok == '?' ) {
+           if ( ereg( "^[0-9]+$", $args[0] ) ) {
+            $query .= "$args[0] ";
+           }
+           else {
+              $query .= "'" . addslashes( $args[0] ) . "'";
+           }
+           array_shift( $args );
+        }
+        else $query .= "$tok ";
+        $tok = strtok ( " " );
+       }
+       $this->query = $query;
+    }
+    //echo "Running query $this->query<br>\n";
+    $this->result = pg_exec( $this->dbh, $this->query );
+    
+    if( ! $this->result ){
+      $this->errstr = "STH Execute failed: ".pg_errormessage( $this->dbh );
+      return;
+    }
+
+    return( 1 );
+  }//end execute fn
+
+
+  function finish( ){
+    if( ! $this->result ){ return; }
+    pg_freeresult( $this->result );
+    $this->result = undef;
+    return( 1 );
+  }//end execute fn
+
+
+  function rows( ){
+      return( pg_numrows( $this->result ) );
+  } //end rows fn
+
+  function fetchrow_array( ){
+    if( ! $this->result ){
+      //echo "STH Error: Calling fetchrow on null result.<br>\n";
+      return;
+    }
+    if ($this->row >= pg_numrows($this->result)) return 0;
+    return( pg_fetch_row( $this->result, $this->row++ ));
+  }
+
+
+  function fetchrow_hash( ){
+    if( ! $this->result ){
+      //echo "STH Error: Calling fetchrow on null result.<br>\n";
+      return;
+    }
+    if ($this->row >= pg_numrows($this->result)) return 0;
+    return( pg_fetch_array( $this->result, $this->row++ ));
+  }
+}
+
+  
+$GLOBALS[classDBDPg_read] = 1;

@@ -1,0 +1,98 @@
+class.DBI + class.DBD::*
+
+------------------------------------------------------------------
+05-May-2001  -- Bill Adams Ver. 0.5.0
+
+o Fixed returning '0E0' when there was an error in dbh_do. (Zack Erhart)
+o Fixed Pg connection method so that it will use UNIX domain sockets 
+  instead of network sockets when connecting to the localhost.
+  (James D. McIninch)
+o Change all but sybase STH creation code to copy the REFERENCE of
+  the parent DBH rather than copy the object. (Mads Lie Jensen)
+
+
+------------------------------------------------------------------
+31-Jan-2001  -- Bill Adams Ver. 0.3.8
+
+o Fixed parse_dbi_string regex (Dan Morgan)
+o Allow prepared statements in mysql and Pg (Norman Clarke)
+
+------------------------------------------------------------------
+30-Aug-2000  -- Bill Adams Ver. 0.3.7
+
+o Added missing insert_id to class.DBD::sybase (Roland Lichti)
+
+
+------------------------------------------------------------------
+30-Aug-2000  -- Bill Adams Ver. 0.3.6
+
+o Oracle8 module by Philippe Allart.
+o Check in class.DBI to see if it is already loaded so you can
+  include it multiple times.
+
+
+------------------------------------------------------------------
+03-Aug-2000 -- Bill Adams
+
+o New Interbase Module by Dobrica Pavlinusic
+
+
+------------------------------------------------------------------
+07-May-2000 -- Bill Adams
+
+o Added rows( ) function to all of the STH objects.
+
+
+------------------------------------------------------------------
+12-Apr-2000 -- Bill Adams
+
+o New PostgreSQL class.
+
+------------------------------------------------------------------
+30-Mar-2000 -- Bill Adams
+
+o Added a warning message to class.DBI if you try to connect to
+  two different databases using the same host, user, and password.
+  This is an issue because PHP reuses database connections so
+  one ends up just having two DBI objects that point to the same
+  database.
+
+o Added comments on the web page that you have to use $sth->errstr
+  when checking for problems with prepared statements.
+
+
+------------------------------------------------------------------
+28-Mar-2000 -- Bill Adams
+
+o Fixed the DBD::* class to NOT ignore the is_persistent flag.
+
+o Fixed DBI::prepare( ) so that you can have more than one DBI
+  object connected to more than one database.
+
+------------------------------------------------------------------
+18-Mar-2000 -- Bill Adams
+
+o New Sybase driver by Roland Lichti
+
+
+------------------------------------------------------------------
+17-Mar-2000 -- Bill Adams
+Changes to version 0.3.0
+
+
+o  Moved the 'DBD' stuff to another file and separate classes.
+   (Thanks to Roland Lichti for help.)
+
+o  The 'DBD' Drivers are now dynamically loaded.
+
+o  Added support for Informix.
+ 
+o  Added the coveted ->quote( ) function.
+
+o  Changed 'errorstr' to 'errstr' ala perl DBI.
+
+o  Changed the fetchrow_arrayref and _hashref to 
+   fetchrow_array and fetchrow_hash since that is what they
+   do.  I think.
+
+

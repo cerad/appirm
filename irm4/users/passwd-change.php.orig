@@ -1,0 +1,26 @@
+<?php
+
+include_once("../include/irm_conf.php");
+include_once("../include/class.user");
+include_once("../include/func.header_footer");
+
+AuthCheck("normal");
+
+commonHeader("Daedalus - Change Password");
+
+if($IRMPass != md5($oldpassword))
+{
+  PRINT "You have incorrectly entered your old password.";
+} elseif ($newpassword != $confirm)
+{
+	PRINT "Your new password does not match the confirmation password.  They must be the same.";
+} else
+{
+	$user = new User($IRMName);
+	$user->setPassword($newpassword);
+	$user->commit();
+}
+
+commonFooter();
+
+?>

@@ -1,0 +1,60 @@
+<?php
+
+function displayTickets($field1,$value1, $field2 = '',$value2 = '', $not = '')
+{
+
+
+  include_once("../include/func.strings");
+
+  // Declare Global variables for database handle 
+  global $adb;
+
+  $list = 'ID, date, computer_id, contents';
+
+  $labels = explode(",", $list);
+
+  $query = "SELECT $list
+              FROM tracking
+             WHERE $field1 LIKE '%${value1}%' ";
+
+  if ( $field2 && $value2 ) {
+    $query .= " AND $field2 $not LIKE '%${value2}%'"; 
+  }
+
+  $sth = $adb->prepare($query);
+  $results = $sth->execute() or die( mysql_error().': '.$query );
+
+  echo "<p><div align='center'><h3>",ucfirst($value1)," Tickets</h3></div>";
+
+  echo "<table width=100% border=1>";
+
+  echo "<tr>";
+  foreach ($labels as $label) {
+     echo "<th>",ucfirst($label),"</th>";
+  }
+  echo "</tr>";
+
+  while ($data = $sth->fetchrow_array($results)) {
+
+    $ID = array_shift($data);
+
+    $form = 'tracking-info.php';
+    $anchor1 = "<a href=\"$form?tablename='tracking'&ID=$ID\">$ID</a>";
+
+    echo "<tr>"; 
+    echo "<td>$anchor1</td>";
+
+   foreach ($data as $value) {
+      $value = $value ? "$value" : "&nbsp;";
+      $value = snippet($value);      
+      echo "<td>$value</td>";
+   }
+   echo "</tr>";
+
+  } // End While Data From DataBase
+
+  echo "</table></p>";
+
+} // End displayTickets
+
+?>

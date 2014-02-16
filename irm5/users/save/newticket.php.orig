@@ -1,0 +1,60 @@
+<?php
+#    IRMplus - Resource and Trouble Tracking Manager
+#    Copyright (C) 2002 G. Hartlieb, M. Moorcroft
+#
+#    Derived from IRM
+#
+#    This program is free software; you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation; either version 2 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License (in file COPYING) for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program; if not, write to the Free Software
+#    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+#
+#
+################################################################################
+#                                  CHANGELOG                                   #
+################################################################################
+#  11/2002 - G. hartlieb: Created                                              #
+################################################################################
+
+include_once("../include/irm_conf.php");
+include_once("../include/func.header_footer");
+include_once("../include/class.user");
+
+include_once("../include/func.dropdown_groups");
+
+AuthCheck("post-only");
+
+commonHeader("IRM Help Desk");
+
+print "Welcome to the IRM Help Desk.<br />
+This is where you can request help with a computing resource problem. ";
+
+print "<hr noshade>\n";
+
+print "<form method=get action=\"../users/newticket-search.php\">
+       <p>Enter the name of the computer:<br>
+       Name: <input type=text name=name size=15> 
+       <input type=submit value=\"Continue with Name\">
+       </p>
+       </form>";
+
+print "<form method=get action=\"../users/newticket-add-form.php\">
+       Or Select a group of computers:<br>";
+
+Dropdown_groups("groups", "ID");
+
+print " <input type=submit value=\"Continue with group selection\">
+       </form>";
+
+commonFooter();
+
+?>

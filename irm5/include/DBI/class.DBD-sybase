@@ -1,0 +1,223 @@
+<?PHP // -*-Mode: C++;-*-
+/*
+  Roland Lichti (roland<at>lichti<dot>de)
+  DBD::sybase -- The Sybase Driver.
+  See: http://evil.inetarena.com/php/DBI.php for more info.
+
+  on basis of
+  Bill Adams (bill<at>evil<dot>inetarena<dot>com)
+  DBD::sybase -- The Sybase ASE Driver.
+
+  Licence: LGPL (http://www.gnu.org/).
+
+  This software is provided "AS IS" with no warrenty either implicit,
+  explicit or otherwise.  Use at your own risk.
+
+  Notes:
+
+  o insert_id is not implemented in sybase.
+
+  18 Mar 2000  rtl  Created sybase-driver
+  17 Mar 2000  baa  Moved the DBD stuff into their own class files.
+  07 May 2000  baa  Added rows( ) STH function.
+  01 Sep 2000  rtl  Added insert_id( ) DBH function.
+
+*/
+
+class DBD_sybase {
+  
+  var $is_persisent;
+  var $DBI;
+  var $exit_on_fail = 0;
+
+  function DBD_connect( $db_name, $db_host = '', 
+			$db_user = '', $db_passwd = '',
+			$is_persistent = 0){
+
+    //Track the $is_persistant just for fun...
+    $is_persistent = $is_persistent ? $is_persistent : 0;
+    $this->is_persistent = $is_persistent;
+
+    //DEBUG...
+    echo "DBD::sybase: [$db_name][$db_host][$db_user][$is_persistent]<br>\n";
+
+
+    if( $is_persistent ){
+      $conn = sybase_pconnect( $db_host, $db_user, $db_passwd );
+    } else {
+      $conn = sybase_connect( $db_host, $db_user, $db_passwd );
+    }
+    
+    if( !$conn ){
+      $this->errstr = "DBD::sybase Error: Could not connect to the database.";
+      return;
+    }
+    
+    if( ! sybase_select_db( $db_name, $conn )){
+      $this->errstr =  "DBD::sybase Error: Could not select the database.<br>\n";
+      return;
+    }
+    $this->dbh = $conn;
+    return( $this );
+  }//end connect function
+
+
+
+  function disconnect( ){
+    sybase_close( $this->dbh );
+    $this->dbh = undef;
+    return( 1 );
+  }//end disconnect function
+
+
+  function prepare( $query ){
+    if( ! $this->dbh ){ return; }
+    //Does nothing but save the query...
+    $sth = new STH_sybase;
+    $sth->DBH( $this );
+    $sth->prepare( $query );
+    return( $sth );
+  }//end dbh prepare fn
+
+
+  //do is a reserved word so I have to name this something else.
+  function dbh_do( $query ){
+    //run the query and return the number of affected rows.
+    $result = sybase_query( $query, $this->dbh );
+    if( ! $result ){
+      $this->errstr = "DBI Error: 'dbh_do' failed.";
+
+      if( $this->exit_on_fail ){
+	echo $this->errstr."<br>\n";
+	$this->disconnect( );
+	exit( ); }
+
+      return;
+    }
+    $rows   = sybase_affected_rows( $this->dbh );
+    return( $rows );
+  }//end fn do
+
+
+  function insert_id( ){
+    //Get the last serial number from an insert.
+    $result = sybase_query( "SELECT @@identity", $this->dbh);
+    if ( ! $result ){
+      $this->errstr = "DBI Error: 'insert_id' failed.";
+
+      if ( $this->exit_on_fail ) {
+      	echo $this->errstr."<BR>\n";
+	$this->disconnect();
+	exit();
+      }
+
+      return;
+    }
+
+    if (! sybase_result($result, 0, $identity)) {
+      $this->errstr = "DBI Error: 'insert_id' can't fetch id.";
+
+      if ($this->exit_on_fail) {
+        echo $this->errstr."<BR>\n";
+	$this->disconnect();
+	exit();
+      }
+
+      return(-1);
+    }
+
+    return($identity);
+  }//end fn insert_id
+
+
+  function quote( $string ){
+    if( $string ){
+      return( "'".addslashes( $string )."'" );
+    } else {
+      return( 'NULL' );
+    }
+  }//end fn quote
+
+
+}//end DBI class
+
+
+//===========================================================
+
+class STH_sybase {
+
+  var $query;
+  var $DBH;
+  var $dbh;
+  var $result;
+
+  function STH( $dbh = '' ){
+    if( $dbh ){
+      $this->dbh = &$dbh;
+    }
+    return( $this );
+  }
+
+
+  function DBH( $dbh ){
+    $this->DBH = &$dbh;
+    $this->dbh = &$dbh->dbh;
+    return( $dbh );
+  }
+
+
+  function prepare( $query ){
+    if( ! $this->dbh ){ return; }
+    $this->query = $query;
+    return( $query );
+  }
+
+
+  function execute( ){
+    if( ! $this->dbh ){ return; }
+
+    $this->result = sybase_query( $this->query, $this->dbh );
+    
+    if( ! $this->result ){
+      $this->errstr = "STH Execute failed (" . $this->query . ").";
+      return;
+    }
+    return( 1 );
+  }//end execute fn
+
+
+  function finish( ){
+    if( ! $this->result ){ return; }
+    sybase_free_result( $this->result );
+    $this->result = undef;
+    return( 1 );
+  }//end execute fn
+
+
+  function rows( ){
+    if( ! $this->dbh ){ return; }
+    return sybase_num_rows( $this->result );
+  }
+ 
+
+  function fetchrow_array( ){
+    if( ! $this->result ){
+      //echo "STH Error: Calling fetchrow on null result.<br>\n";
+      return;
+    }
+    return( sybase_fetch_row( $this->result ));
+  }
+
+
+  function fetchrow_hash( ){
+    if( ! $this->result ){
+      //echo "STH Error: Calling fetchrow on null result.<br>\n";
+      return;
+    }
+
+    return( sybase_fetch_array( $this->result ));
+  }
+}
+
+  
+$GLOBALS[classDBDsybase_read] = 1;
