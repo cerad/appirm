@@ -9,6 +9,8 @@
  */
 function initvar()
 {
+    // ***5 Don't want to do this
+    die('initvar');
     foreach( func_get_args() as $v )
     {
         if( is_array( $v ) )

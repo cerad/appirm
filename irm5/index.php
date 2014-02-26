@@ -20,6 +20,7 @@ Username: <input type=text name=name>
 <!-- Multiple database selection options.  The default is to use a database called 'irm'. -->
 <!-- To add more, simply add more option value=dbname lines here. -->
 
+<option value=irm5>irm5</option>
 <option value=irm>irm</option>
 
 <!-- End Multi-Database -->
@@ -46,18 +47,23 @@ free to post a request for help.
 <p>Dactyl is the first natural satellite of an asteroid ever discovered and photographed.
 <a href=http://solarviews.com/eng/asteroid.htm>Asteroid Intro</a>
 
-<form method=post action=login.php><select name=dbuse size=1>
+<form method="post" action="login.php">
+    
+<select name="dbuse" size=1>
 
 <!-- Multiple database selection options.  The default is to use a database called 'irm'. -->
 <!-- To add more, simply add more option value=dbname lines here. -->
 
+<option value=irm5>irm5</option>
 <option value=irm>irm</option>
 
 <!-- End Multi-Database -->
 
-</select><input type='hidden' name='password' value='irmconnect'><input type='hidden' name='name' value='IRMConnect'>
-<input type='hidden' name='f_req' value='yes'>
-<input type=submit value=Read FAQ></form>
+</select>
+<input type='hidden' name='password' value='irmconnect'>
+<input type='hidden' name='name'     value='IRMConnect'>
+<input type='hidden' name='f_req'    value='yes'>
+<input type=submit value="Read FAQ"></form>
 
 <!-- <h4>Request help</h4> -->
 <!-- You can request help without loging in to Daedalus. To do this you need to select the appropriate department, click the <b>Help</b> button below and then follow the -->

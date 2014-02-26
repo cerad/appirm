@@ -1,8 +1,16 @@
 <?php
-################################################################################
-#                                  CHANGELOG                                   #
-################################################################################
-################################################################################
+require_once '../bootstrap.php';
+
+$app = $GLOBALS['app'];
+
+$app->authCheck("post-only");
+
+$params = array(
+    'title'    => 'Daedalus Frequently Asked Questions',
+    'content'  => $app->render('faq.html.php'),
+);
+echo $app->render('layout.html.php',$params);
+exit();
 
 include_once("../include/irm_conf.php");
 include_once("../include/class.user");

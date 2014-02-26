@@ -24,7 +24,7 @@
 # is needed to find the configuration files. 
 # Default: $root_path = "/full/path/to/irm";
 
-$root_path = "/var/www/html/irm";
+//$root_path = "/var/www/html/irm";
 
 global $IRMName, $IRMPass, $cfg_dbdb;
 
@@ -36,12 +36,15 @@ $bgcl = "BGCOLOR=#DDDDDD";
 
 # There is NOTHING else to configure here.  EVERYTHING is in config.inc.php
 # 
+// ***5 Moved to config/config.php
+// include('include/config.inc.php');
 
-$include_path = "$root_path/include";
-include("$include_path/config.inc.php");
-#include_once("../include/func.initvar");
-include_once("$include_path/func.initvar");
-ini_set("include_path", $include_path."/DBI");
+// ***5 Just moves args to globals
+//include_once("../include/func.initvar");
+
+// ***5 Replace with autoload
+//ini_set("include_path", $include_path."/DBI");
+
 #
 # Start and register session variables
 session_start();
@@ -60,53 +63,46 @@ if ( !isset($_SESSION['IRMPass']) || $_SESSION['IRMPass'] == '' ) {
 }
 
 // if da name missing Goto Login
-if ( $cfg_dbdb == '' ) {
-   exit(header("Location: /irm/index.php"));
+if ( $_SESSION['cfg_dbdb'] == '' ) {
+   exit(header("Location: index.php"));
 }
 
 
-$dbstr = "dbi:" . $cfg_dbtype . ":" . $cfg_dbdb . ";" . $cfg_dbname;
-require("$root_path/include/DBI/class.DBI");
-$adb = new DBI($dbstr, $cfg_dbuser, $cfg_dbpasswd);
-if( !$adb->dbh ){
-  echo "Could not connect to the database [$cfg_dbdb].<BR>\n";
-  exit();
-}
+//$dbstr = "dbi:" . $cfg_dbtype . ":" . $cfg_dbdb . ";" . $cfg_dbname;
+//require("$root_path/include/DBI/class.DBI");
+
+// *** Exception is tossed if cannot connect
+$adb = new DBI($config['database'],$_SESSION['cfg_dbdb']);
 
 # Setup config values.
-$query = "select * from config";
-$sth = $adb->prepare($query);
-if($sth)
+$sql = "select * from config";
+$result = $adb->fetchRow($sql);
+if ($result)
 {
-	$res = $sth->execute();
-	$result = $sth->fetchrow_hash();
-	$cfg_notifyassignedbyemail = $result["notifyassignedbyemail"];
-	$cfg_notifynewtrackingbyemail = $result["notifynewtrackingbyemail"];
-	$cfg_newtrackingemail = $result["newtrackingemail"];
-	$cfg_groups = $result["groups"];
-	$cfg_usenamesearch = $result["usenamesearch"];
-	$cfg_userupdates = $result["userupdates"];
-	$cfg_sendexpire = $result["sendexpire"];
-	$cfg_showjobsonlogin = $result["showjobsonlogin"];
-	$cfg_minloglevel = $result["minloglevel"];
-	$LOGO = $result["logo"];
-	$cfg_snmp = $result["snmp"];
-	$cfg_snmp_rcommunity = $result["snmp_rcommunity"];
-	$cfg_snmp_ping = $result["snmp_ping"];
-	$cfg_knowledgebase = $result["knowledgebase"];
-	$cfg_fasttrack = $result["fasttrack"];
+    $cfg_notifyassignedbyemail = $result["notifyassignedbyemail"];
+    $cfg_notifynewtrackingbyemail = $result["notifynewtrackingbyemail"];
+    $cfg_newtrackingemail = $result["newtrackingemail"];
+    $cfg_groups = $result["groups"];
+    $cfg_usenamesearch = $result["usenamesearch"];
+    $cfg_userupdates = $result["userupdates"];
+    $cfg_sendexpire = $result["sendexpire"];
+    $cfg_showjobsonlogin = $result["showjobsonlogin"];
+    $cfg_minloglevel = $result["minloglevel"];
+    $LOGO = $result["logo"];
+    $cfg_snmp = $result["snmp"];
+    $cfg_snmp_rcommunity = $result["snmp_rcommunity"];
+    $cfg_snmp_ping = $result["snmp_ping"];
+    $cfg_knowledgebase = $result["knowledgebase"];
+    $cfg_fasttrack = $result["fasttrack"];
         $cfg_anonymous = $result["anonymous"];
         $cfg_anon_faq = $result["anon_faq"];
          $cfg_anon_req = $result["anon_req"];
-	$irm_version = $result["version"];
-	#$irm_build = $result["build"];
-	$sth->finish();
-} else {
-  PRINT "Could not prepare query: ".$sth->errstr."<BR>\n";
+    $irm_version = $result["version"];
+    #$irm_build = $result["build"];
 }
 
-if ($cfg_snmp == 1) {
-  include("$include_path/snmp.inc.php");
+if (isset($cfg_snmp) && ($cfg_snmp == 1)) {
+  include("include/snmp.inc.php");
 }
 
 
@@ -125,41 +121,42 @@ function AuthCheck($authtype)
       exit();
     } else 
       {
-	if ($authtype == "normal") 
-	  {
-	    if ($type != "normal" && $type != "tech" && $type != "admin")
-	      {
-		commonHeader("Permission Denied");
-		PRINT "You are not a Normal User!";
-		commonFooter();
-		exit();
-	      }
-	  } else if ($authtype == "tech") 
-	    {
-	      if ($type != "tech" && $type != "admin")
-		{
-		  commonHeader("Permission Denied");
-		  PRINT "You are not an Technician!";
-		  commonFooter();
-		  exit();
-		}
-	    } else if ($authtype == "admin")
-	      {
-		if($type != "admin")
-		  {
-		    commonHeader("Permission Denied");
-		    PRINT "You are not an Administrator!";
-		    commonFooter();
-		    exit();
-		  }
-	      }
-	{
-	  return 0;
-	}
+    if ($authtype == "normal") 
+      {
+        if ($type != "normal" && $type != "tech" && $type != "admin")
+          {
+        commonHeader("Permission Denied");
+        PRINT "You are not a Normal User!";
+        commonFooter();
+        exit();
+          }
+      } else if ($authtype == "tech") 
+        {
+          if ($type != "tech" && $type != "admin")
+        {
+          commonHeader("Permission Denied");
+          PRINT "You are not an Technician!";
+          commonFooter();
+          exit();
+        }
+        } else if ($authtype == "admin")
+          {
+        if($type != "admin")
+          {
+            commonHeader("Permission Denied");
+            PRINT "You are not an Administrator!";
+            commonFooter();
+            exit();
+          }
+          }
+    {
+      return 0;
+    }
       }
 }
 
 function logevent($item, $itemtype, $level, $service, $event) {
+    die('irm_config.logevent');
   global $cfg_minloglevel, $adb;
   if ($level <= $cfg_minloglevel)
         {
