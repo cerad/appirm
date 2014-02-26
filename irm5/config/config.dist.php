@@ -1,14 +1,16 @@
 <?php
 /* =============================================
  * ***5 Wrap all this stuff into a single config object
+ * Copy the distributation file into config.php
+ * Make sure it's protected
  */
 $config = array(
     'database' => array(
         'type' => 'mysql',
         'host' => '127.0.0.1',
         'port' => null,
-        'user' => 'impd',
-        'pass' => 'impd894',
+        'user' => 'USER',
+        'pass' => 'PASSWORD',
         'name' => 'irm5',
         'dsn'  => 'mysql:dbname=irm5',
     ),
