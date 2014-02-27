@@ -15,14 +15,14 @@ $cfg_dbdb = isset($dbuse) ? $dbuse : null;
 // User object with an invalid username?  If that's the case, then we should
 // be able to solve the problem using the "exists()" method of the user class.
 $user = new User();
-
+die('empty user');
 $user = new User($_SESSION['IRMName']);
 
 if($user->authenticate($_SESSION['IRMName'], md5($_SESSION['IRMPass'])))
 {
         header("Location: index.php");
- 	print "Bad username or password.";
- 	logevent(-1, "IRM", 1, "login", "Failed login: $name");
+     print "Bad username or password.";
+     logevent(-1, "IRM", 1, "login", "Failed login: $name");
 } else
 {
 
@@ -36,20 +36,20 @@ if($user->authenticate($_SESSION['IRMName'], md5($_SESSION['IRMPass'])))
            exit(header("Location: users/passwd.php"));
          }
 
-	if ($f_req=='yes')
-	{
-		header("Location: users/faq-index.php");
-		// Can we pull this out yet?!?!  I guess we need to modify the update
-		// script to search through all users and set up these prefs before we
-		// do.
-		$user->initPrefs();
-	} else 
-	{
-		header("Location: users/");
-		// Can we pull this out yet?!?!  I guess we need to modify the update
-		// script to search through all users and set up these prefs before we
-		// do.
-		$user->initPrefs();
-	}
+    if ($f_req=='yes')
+    {
+        header("Location: users/faq-index.php");
+        // Can we pull this out yet?!?!  I guess we need to modify the update
+        // script to search through all users and set up these prefs before we
+        // do.
+        $user->initPrefs();
+    } else 
+    {
+        header("Location: users/");
+        // Can we pull this out yet?!?!  I guess we need to modify the update
+        // script to search through all users and set up these prefs before we
+        // do.
+        $user->initPrefs();
+    }
 }
 ?>
