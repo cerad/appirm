@@ -4,6 +4,8 @@
 ################################################################################
 ################################################################################
 
+error_reporting(E_ALL);
+
 include_once("../include/irm_conf.php");
 include_once("../include/class.user");
 include_once("../include/func.header_footer");

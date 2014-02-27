@@ -4,6 +4,8 @@
 ################################################################################
 ################################################################################
 
+error_reporting(E_ALL);
+
 include_once("../include/irm_conf.php");
 include_once("../include/class.user");
 include_once("../include/func.header_footer");
@@ -15,6 +17,7 @@ AuthCheck("post-only");
 commonHeader("Daedalus Frequently Asked Question - Detailed View");
 ?>
 <?php
+$ID = $_REQUEST['ID'];
 kbdisplayfullarticle($ID);
 commonFooter();
 ?>

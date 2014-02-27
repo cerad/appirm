@@ -5,6 +5,8 @@
 #  11/2002 - G. hartlieb: Created                                              #
 ################################################################################
 
+error_reporting(E_ALL);
+
 include_once("../include/irm_conf.php");
 include_once("../include/class.user");
 include_once("../include/func.header_footer");
@@ -34,6 +36,8 @@ initvar('test','logical','value','match','field','sort','fail','count');
 
 // Do Authorization
 AuthCheck("normal");
+
+$tablename = $_REQUEST['tablename'];
 
 $name  = ucfirst($tablename);
 $normal = strpos($tablename, 'surplus');
