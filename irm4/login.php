@@ -1,12 +1,13 @@
 <?php
+error_reporting(E_ALL);
 
-$cfg_dbdb = $dbuse;
+$cfg_dbdb = isset($dbuse) ? $dbuse : null;
 
 include_once("./include/irm_conf.php");
 include_once("./include/class.user");
 include_once("./include/func.header_footer");
 
-$cfg_dbdb = $dbuse;
+$cfg_dbdb = isset($dbuse) ? $dbuse : null;
 
 #error_reporting(16);
 
@@ -15,11 +16,11 @@ $cfg_dbdb = $dbuse;
 // be able to solve the problem using the "exists()" method of the user class.
 $user = new User();
 
-$user = new User($name);
+$user = new User($_SESSION['IRMName']);
 
-if($user->authenticate($name, $password))
+if($user->authenticate($_SESSION['IRMName'], md5($_SESSION['IRMPass'])))
 {
-        header("Location: /irm");
+        header("Location: index.php");
  	print "Bad username or password.";
  	logevent(-1, "IRM", 1, "login", "Failed login: $name");
 } else

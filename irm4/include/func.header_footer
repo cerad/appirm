@@ -4,7 +4,7 @@
 function commonHeader($title) 
 {
   global $cfg_dbdb, $adb, $IRMName, $cfg_knowledgebase, $USERPREFIX, $PREFIX, $LOGO;
-
+  global $cfg_sendexpire;
   if ($cfg_sendexpire == 1) {
     header("Expires: Fri, Jun 12 1981 08:20:00 GMT Pragma: no-cache");
   }

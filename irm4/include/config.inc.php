@@ -32,7 +32,7 @@ $irm_build = "05-01-2005";
 # Syntax: $PREFIX = "<path, i.e. /helpdesk/irm, /irm, /~joeuser/irm>";
 # Default: $PREFIX = "/irm";
 
-$PREFIX = "/irm"; 
+$PREFIX = "/irm4";  // Should pull from $_SERVER
 
 # USERPREFIX: The location of the "users" directory relative to the installed
 # location of IRM. This should never need to be changed,  unless you move the 
@@ -84,6 +84,7 @@ $cfg_dbuser = "admin";
 # Default: $cfg_dbpasswd = "";
 #$cfg_dbpasswd = "el0ret_kts";
 $cfg_dbpasswd = "el0ret_kts";
+$cfg_dbpasswd = "admin894";
 
 # cfg_dbtype: Database type
 # Syntax: $cfg_dbtype = "<database type>";

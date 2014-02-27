@@ -1,4 +1,8 @@
 <?php
+error_reporting(E_ALL);
+//session_start();
+//$_SESSION = array();
+//session_destroy();
 ?>
 <HTML><HEAD><TITLE>Daedalus - Information Resource Manager and Trouble Desk</TITLE>
 </HEAD>
@@ -7,7 +11,7 @@
 <img src=irm-jr1.jpg>
 <br>
   
-
+<a href="login.php">Login</a>
 <table border="0">
 <tr>
 <td valign='top'><h3>Login</h3>

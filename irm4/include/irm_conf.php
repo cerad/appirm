@@ -25,6 +25,7 @@
 # Default: $root_path = "/full/path/to/irm";
 
 $root_path = "/var/www/html/irm";
+$root_path = __DIR__ . '/..';
 
 global $IRMName, $IRMPass, $cfg_dbdb;
 
@@ -45,29 +46,33 @@ ini_set("include_path", $include_path."/DBI");
 #
 # Start and register session variables
 session_start();
+//print_r($_SESSION);
 #session_register("IRMName", "IRMPass", "cfg_dbdb");
 
 if ( !isset($_SESSION['cfg_dbdb']) || $_SESSION['cfg_dbdb'] == '' ) {
-  $_SESSION['cfg_dbdb'] = $_REQUEST['dbuse'];
+  $_SESSION['cfg_dbdb'] = isset($_REQUEST['dbuse']) ? $_REQUEST['dbuse'] : null;
 }
+$cfg_dbdb = $_SESSION['cfg_dbdb'];
 
 if ( !isset($_SESSION['IRMName']) || $_SESSION['IRMName'] == '' ) {
-  $_SESSION['IRMName'] = $_REQUEST['name'];
+  $_SESSION['IRMName'] = isset($_REQUEST['name']) ? $_REQUEST['name'] : null;
 }
+$IRMName = $_SESSION['IRMName'];
 
 if ( !isset($_SESSION['IRMPass']) || $_SESSION['IRMPass'] == '' ) {
-  $_SESSION['IRMPass'] = $_REQUEST['password'];
+  $_SESSION['IRMPass'] = isset($_REQUEST['password']) ? $_REQUEST['password'] : null;
 }
 
 // if da name missing Goto Login
 if ( $cfg_dbdb == '' ) {
-   exit(header("Location: /irm/index.php"));
+   //return;
+   //die('***5 missing cfg_dbdb');
+   exit(header("Location: $PREFIX"));
 }
-
-
+// dbi:mysql:irm;localhost
 $dbstr = "dbi:" . $cfg_dbtype . ":" . $cfg_dbdb . ";" . $cfg_dbname;
 require("$root_path/include/DBI/class.DBI");
-$adb = new DBI($dbstr, $cfg_dbuser, $cfg_dbpasswd);
+$adb = new DBI($cfg_dbtype, $cfg_dbname, $cfg_dbdb, $cfg_dbuser, $cfg_dbpasswd);
 if( !$adb->dbh ){
   echo "Could not connect to the database [$cfg_dbdb].<BR>\n";
   exit();
@@ -78,29 +83,29 @@ $query = "select * from config";
 $sth = $adb->prepare($query);
 if($sth)
 {
-	$res = $sth->execute();
-	$result = $sth->fetchrow_hash();
-	$cfg_notifyassignedbyemail = $result["notifyassignedbyemail"];
-	$cfg_notifynewtrackingbyemail = $result["notifynewtrackingbyemail"];
-	$cfg_newtrackingemail = $result["newtrackingemail"];
-	$cfg_groups = $result["groups"];
-	$cfg_usenamesearch = $result["usenamesearch"];
-	$cfg_userupdates = $result["userupdates"];
-	$cfg_sendexpire = $result["sendexpire"];
-	$cfg_showjobsonlogin = $result["showjobsonlogin"];
-	$cfg_minloglevel = $result["minloglevel"];
-	$LOGO = $result["logo"];
-	$cfg_snmp = $result["snmp"];
-	$cfg_snmp_rcommunity = $result["snmp_rcommunity"];
-	$cfg_snmp_ping = $result["snmp_ping"];
-	$cfg_knowledgebase = $result["knowledgebase"];
-	$cfg_fasttrack = $result["fasttrack"];
+    $res = $sth->execute();
+    $result = $sth->fetchrow_hash();
+    $cfg_notifyassignedbyemail = $result["notifyassignedbyemail"];
+    $cfg_notifynewtrackingbyemail = $result["notifynewtrackingbyemail"];
+    $cfg_newtrackingemail = $result["newtrackingemail"];
+    $cfg_groups = $result["groups"];
+    $cfg_usenamesearch = $result["usenamesearch"];
+    $cfg_userupdates = $result["userupdates"];
+    $cfg_sendexpire = $result["sendexpire"];
+    $cfg_showjobsonlogin = $result["showjobsonlogin"];
+    $cfg_minloglevel = $result["minloglevel"];
+    $LOGO = $result["logo"];
+    $cfg_snmp = $result["snmp"];
+    $cfg_snmp_rcommunity = $result["snmp_rcommunity"];
+    $cfg_snmp_ping = $result["snmp_ping"];
+    $cfg_knowledgebase = $result["knowledgebase"];
+    $cfg_fasttrack = $result["fasttrack"];
         $cfg_anonymous = $result["anonymous"];
         $cfg_anon_faq = $result["anon_faq"];
          $cfg_anon_req = $result["anon_req"];
-	$irm_version = $result["version"];
-	#$irm_build = $result["build"];
-	$sth->finish();
+    $irm_version = $result["version"];
+    #$irm_build = $result["build"];
+    $sth->finish();
 } else {
   PRINT "Could not prepare query: ".$sth->errstr."<BR>\n";
 }
@@ -125,37 +130,37 @@ function AuthCheck($authtype)
       exit();
     } else 
       {
-	if ($authtype == "normal") 
-	  {
-	    if ($type != "normal" && $type != "tech" && $type != "admin")
-	      {
-		commonHeader("Permission Denied");
-		PRINT "You are not a Normal User!";
-		commonFooter();
-		exit();
-	      }
-	  } else if ($authtype == "tech") 
-	    {
-	      if ($type != "tech" && $type != "admin")
-		{
-		  commonHeader("Permission Denied");
-		  PRINT "You are not an Technician!";
-		  commonFooter();
-		  exit();
-		}
-	    } else if ($authtype == "admin")
-	      {
-		if($type != "admin")
-		  {
-		    commonHeader("Permission Denied");
-		    PRINT "You are not an Administrator!";
-		    commonFooter();
-		    exit();
-		  }
-	      }
-	{
-	  return 0;
-	}
+    if ($authtype == "normal") 
+      {
+        if ($type != "normal" && $type != "tech" && $type != "admin")
+          {
+        commonHeader("Permission Denied");
+        PRINT "You are not a Normal User!";
+        commonFooter();
+        exit();
+          }
+      } else if ($authtype == "tech") 
+        {
+          if ($type != "tech" && $type != "admin")
+        {
+          commonHeader("Permission Denied");
+          PRINT "You are not an Technician!";
+          commonFooter();
+          exit();
+        }
+        } else if ($authtype == "admin")
+          {
+        if($type != "admin")
+          {
+            commonHeader("Permission Denied");
+            PRINT "You are not an Administrator!";
+            commonFooter();
+            exit();
+          }
+          }
+    {
+      return 0;
+    }
       }
 }
 
