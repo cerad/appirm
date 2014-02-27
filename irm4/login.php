@@ -15,7 +15,7 @@ $cfg_dbdb = isset($dbuse) ? $dbuse : null;
 // User object with an invalid username?  If that's the case, then we should
 // be able to solve the problem using the "exists()" method of the user class.
 $user = new User();
-die('empty user');
+
 $user = new User($_SESSION['IRMName']);
 
 if($user->authenticate($_SESSION['IRMName'], md5($_SESSION['IRMPass'])))
