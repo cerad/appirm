@@ -7,3 +7,29 @@ services:
         calls:
              - [setContainer,  ['@service_container']]
 
+# =========================================================
+# Doctrine stuff
+    cerad_app__entity_manager__doctrine:
+        alias: doctrine.orm.default_entity_manager
+
+    cerad_app__kbcategory_repository__doctrine:
+        class:  Cerad\Bundle\AppBundle\Doctrine\Repository\KBCategoryRepository
+        factory_service: 'cerad_app__entity_manager__doctrine'
+        factory_method:  'getRepository'
+        arguments:  
+            -   Cerad\Bundle\AppBundle\Doctrine\Entity\KBCategory
+            
+    cerad_app__kbcategory_repository:
+        alias: cerad_app__kbcategory_repository__doctrine
+
+    cerad_app__kbarticle_repository__doctrine:
+        class:  Cerad\Bundle\AppBundle\Doctrine\Repository\KBArticleRepository
+        factory_service: 'cerad_app__entity_manager__doctrine'
+        factory_method:  'getRepository'
+        arguments:  
+            -   Cerad\Bundle\AppBundle\Doctrine\Entity\KBArticle
+            
+    cerad_app__kbarticle_repository:
+        alias: cerad_app__kbarticle_repository__doctrine
+
+

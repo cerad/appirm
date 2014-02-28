@@ -1,0 +1,38 @@
+Cerad\Bundle\AppBundle\Doctrine\Entity\KBArticle:
+    type:  entity
+    table: kbarticles
+    repositoryClass: Cerad\Bundle\AppBundle\Doctrine\Repository\KBArticleRepository
+    
+    id:
+        id:
+            type:   integer
+            column: ID
+            generator: { strategy: AUTO }
+            
+    manyToOne:
+        category:
+            targetEntity: KBCategory
+            inversedBy:   articles
+            joinColumn:
+                name: categoryID
+                referencedColumnName: ID
+                
+    fields:
+      
+        question:
+            column:   question
+            type:     text
+            nullable: false
+            
+        answer:
+            column:   answer
+            type:     text
+            nullable: false
+            
+        faq:
+          column:   faq
+          type:     string
+          length:   4
+          nullable: false
+          
+ 

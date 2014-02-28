@@ -1,0 +1,37 @@
+Cerad\Bundle\AppBundle\Doctrine\Entity\KBCategory:
+    type:  entity
+    table: kbcategories
+    repositoryClass: Cerad\Bundle\AppBundle\Doctrine\Repository\KBCategoryRepository
+    
+    id:
+        id:
+            type:   integer
+            column: ID
+            generator: { strategy: AUTO }
+           #columnDefinition: int(11) unsigned auto_increment
+           
+    manyToOne:
+        parent:
+            targetEntity: KBCategory
+            inversedBy:   children
+            joinColumn:
+                name: parentID
+                referencedColumnName: ID
+                
+    oneToMany:
+        children:
+            targetEntity: KBCategory
+            mappedBy:     parent
+            
+        articles:
+            targetEntity: KBArticle
+            mappedBy:     category
+            
+    fields:
+        name:
+            column:   name
+            type:     text
+            nullable: false
+            
+          
+ 
