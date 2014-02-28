@@ -1,0 +1,9 @@
+parameters:
+#    cerad_app.example.class: Cerad\Bundle\AppBundle\Example
+
+services:
+    cerad_app__index___controller:
+        class: Cerad\Bundle\AppBundle\Action\Index\IndexController
+        calls:
+             - [setContainer,  ['@service_container']]
+
