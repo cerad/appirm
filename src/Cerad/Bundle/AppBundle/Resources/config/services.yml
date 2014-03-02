@@ -2,8 +2,21 @@ parameters:
 #    cerad_app.example.class: Cerad\Bundle\AppBundle\Example
 
 services:
+  
+# ======================================================
+# Controllers
     cerad_app__index___controller:
         class: Cerad\Bundle\AppBundle\Action\Index\IndexController
+        calls:
+             - [setContainer,  ['@service_container']]
+             
+    cerad_app__faqs__show_controller:
+        class: Cerad\Bundle\AppBundle\Action\Faqs\Show\FaqsShowController
+        calls:
+             - [setContainer,  ['@service_container']]
+             
+    cerad_app__faq__show_controller:
+        class: Cerad\Bundle\AppBundle\Action\Faq\Show\FaqShowController
         calls:
              - [setContainer,  ['@service_container']]
 

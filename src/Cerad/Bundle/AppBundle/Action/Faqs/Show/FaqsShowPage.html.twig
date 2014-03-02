@@ -1,0 +1,22 @@
+{% extends '@CeradApp/Layout.html.twig' %}
+{% block content %}
+This is the Daedalus FAQ system. It allows you to view the questions most 
+frequently asked of the helpdesk.
+<br>
+<ul>
+<li><strong>{{ root.name }}</strong></li>
+{% set kids = root.children %}
+{% for kid in kids %}
+  {% set articles = kid.faqArticles %}
+  {% if articles | length %}
+    <ul><li><strong>{{ kid.name }}</strong></li>
+    <ul>
+    {% for article in articles %}
+      <li><a href="{{ path('cerad_app__faq__show',{ '_faq' : article.id }) }}">{{ article.question }}</a></li>
+    {% endfor %}
+    </ul></ul>
+  {% endif %}
+{% endfor %}
+</ul>
+{% endblock %}
+

@@ -2,7 +2,19 @@ cerad_app_homepage:
     pattern:  /hello/{name}
     defaults: { _controller: CeradAppBundle:Default:index }
     
-cerad_app_index:
+cerad_app__index:
   path:  /
   defaults: 
     _controller: cerad_app__index__controller:action
+    
+cerad_app__faqs__show:
+  path:  /faqs
+  defaults: 
+    _title:      Daedalus Frequently Asked Questions
+    _controller: cerad_app__faqs__show_controller:action
+    
+cerad_app__faq__show:
+  path:  /faq/{_faq}/show
+  defaults: 
+    _title:      Daedalus Frequently Asked Question - Detailed View
+    _controller: cerad_app__faq__show_controller:action

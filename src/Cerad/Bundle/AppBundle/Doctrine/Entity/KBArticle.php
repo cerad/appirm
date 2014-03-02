@@ -10,10 +10,14 @@ class KBArticle
     protected $answer;
     protected $faq = 'yes';   // enum yes or no
     
+    public function getId() { return $this->id; }
+    
     public function getFaq() { return  $this->faq; }
     public function isFaq()  { return ($this->faq == 'yes') ? true : false; }
     
+    public function getAnswer()   { return $this->answer;   }
     public function getQuestion() { return $this->question; }
-    public function getAnswer()   { return $this->answer; }
+    public function getCategory() { return $this->category; }
+
 }
 ?>

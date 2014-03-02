@@ -1,0 +1,9 @@
+{% extends '@CeradApp/Layout.html.twig' %}
+{% block content %}
+<h2>Question (Main\IRM\{{ article.category.name }})</h2>
+{{ article.question }}
+<hr>
+<h2>Answer:</h2>
+{{ article.answer | nl2br }}
+{% endblock %}
+
