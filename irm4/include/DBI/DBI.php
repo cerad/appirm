@@ -4,13 +4,17 @@ class DBIStatement extends \PDOStatement
 {
     public function fetchrow_hash()
     {
-        $rows = $this->fetchAll();
-        return (count($rows) == 1) ? new DBIDataRow($rows[0]) : new DBIDataRow(array());
+        return $this->fetch();
+        
+      //$rows = $this->fetchAll();
+      //return (count($rows) == 1) ? new DBIDataRow($rows[0]) : new DBIDataRow(array());
     }
     public function fetchrow_array()
     {
-        $rows = $this->fetchAll(\PDO::FETCH_NUM);
-        return (count($rows) == 1) ? $rows[0] : array();
+        return $this->fetch(\PDO::FETCH_NUM);
+        
+      //$rows = $this->fetchAll(\PDO::FETCH_NUM);
+      //return (count($rows) == 1) ? $rows[0] : array();
     }
     public function finish() { }
 }
@@ -21,11 +25,10 @@ class DBI
     public function __construct($type, $host, $name, $user, $pass)
     {   
         $dsn = sprintf('%s:host=%s;dbname=%s',$type,$host,$name);
-        $this->dbh = new \PDO($dsn,$user,$pass,array(
-            \PDO::ATTR_ERRMODE,           PDO::ERRMODE_EXCEPTION,
-            \PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_ASSOC,
-        ));
-        $this->dbh->setAttribute(\PDO::ATTR_STATEMENT_CLASS,array('DBIStatement'));
+        $this->dbh = $dbh = new \PDO($dsn,$user,$pass);
+        $dbh->setAttribute(\PDO::ATTR_ERRMODE,           PDO::ERRMODE_EXCEPTION);
+        $dbh->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_ASSOC);
+        $dbh->setAttribute(\PDO::ATTR_STATEMENT_CLASS,array('DBIStatement'));
     }
     public function prepare($sql)
     {
