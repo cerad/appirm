@@ -16,6 +16,14 @@ class DBIStatement extends \PDOStatement
       //$rows = $this->fetchAll(\PDO::FETCH_NUM);
       //return (count($rows) == 1) ? $rows[0] : array();
     }
+    public function fetchOne()
+    {
+        $rows = $this->fetchAll();
+      
+        if (count($rows) != 1) throw new \Exception('Expected one row');
+      
+        return $rows[0];
+    }
     public function finish() { }
 }
 class DBI
@@ -33,6 +41,10 @@ class DBI
     public function prepare($sql)
     {
         return $this->dbh->prepare($sql);
+    }
+    public function dbh_do($sql)
+    {
+        return $this->dbh->exec($sql);
     }
 }
 class DBIDataRow implements \ArrayAccess,\Countable
